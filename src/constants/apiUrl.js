@@ -10,9 +10,14 @@ export const PRODUCT_IMAGE = BASE_URL_IMAGE + "products/";
 export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
 
 // brand
-export const GET_ALL_BRAND = BASE_URL_API + "brand/all-brand";
-export const DELETE_BRAND = BASE_URL_API + "brand/delete-brand";
+export const ALL_BRAND = BASE_URL_API + "brand/all-brand";
 export const UPDATE_BRAND = BASE_URL_API + "brand/update-brand";
+export const DELETE_BRAND = BASE_URL_API + "brand/delete-brand";
+
+// coupon
+export const ALL_COUPON = BASE_URL_API + "coupon/all-coupon";
+export const UPDATE_COUPON = BASE_URL_API + "brand/update-coupon";
+export const DELETE_COUPON = BASE_URL_API + "brand/delete-coupon";
 
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";

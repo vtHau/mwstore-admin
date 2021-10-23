@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Modal, Popconfirm, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { brandValid } from "./../../helpers/validate";
-import brandApi from "../../apis/brandApi";
-import { fetchAllBrand } from "./../../actions/action";
+import { brandValid } from "../../helpers/validate";
+import couponApi from "../../apis/couponApi";
+import { fetchAllCoupon } from "../../actions/action";
 import response from "../../constants/response";
-import useToggle from "./../../hooks/useToggle";
-import toast from "./../../helpers/toast";
+import useToggle from "../../hooks/useToggle";
+import toast from "../../helpers/toast";
 
-function BrandItem(props) {
-  const { index, brand } = props;
+function CouponItem(props) {
+  const { index, coupon } = props;
   const dispatch = useDispatch();
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
@@ -19,21 +19,21 @@ function BrandItem(props) {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: brand.name || "",
-      description: brand.description || "",
+      name: coupon.name || "",
+      description: coupon.code || "",
     },
     validationSchema: brandValid,
     onSubmit: (value) => {
-      value.id = brand.id;
+      value.id = coupon.id;
       setConfirmLoading(true);
 
-      brandApi
-        .updateBrand(value)
+      couponApi
+        .updateCoupon(value)
         .then((res) => {
           toggleModal();
           setConfirmLoading(false);
           if (res.status === response.SUCCESS) {
-            dispatch(fetchAllBrand());
+            dispatch(fetchAllCoupon());
             return toast.success("Success", "Update brand success");
           }
           return toast.success("Fail", "Update brand fail");
@@ -49,13 +49,13 @@ function BrandItem(props) {
   const handleDelete = () => {
     setConfirmLoading(true);
 
-    brandApi
-      .deleteBrand({ id: brand.id })
+    couponApi
+      .deleteCoupon({ id: coupon.id })
       .then((res) => {
         togglePop();
         setConfirmLoading(false);
         if (res.status === response.SUCCESS) {
-          dispatch(fetchAllBrand());
+          dispatch(fetchAllCoupon());
           return toast.success("Success", "Delete brand success");
         }
         return toast.success("Fail", "Delete brand fail");
@@ -69,36 +69,31 @@ function BrandItem(props) {
 
   return (
     <tr>
-      <td>{index + 1}</td>
-      <td>{brand.name}</td>
-      <td>{brand.description}</td>
-      <td>
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={toggleModal}
-          >
-            Edit
+      <td className="text-center">{index + 1}</td>
+      <td>{coupon.name}</td>
+      <td>{coupon.code}</td>
+      <td>{coupon.quantity}</td>
+      <td>{coupon.percent}</td>
+      <td>{coupon.start_coupon}</td>
+      <td>{coupon.end_coupon}</td>
+      <td>hehe</td>
+      <td className="text-center text-muted">
+        <button type="button" className="btn btn-primary" onClick={toggleModal}>
+          Edit
+        </button>
+        <Popconfirm
+          title="Bạn có thật sự muốn xóa ?"
+          visible={openPop}
+          onConfirm={handleDelete}
+          okButtonProps={{ loading: confirmLoading }}
+          onCancel={togglePop}
+          okText="Có chứ"
+          cancelText="Không nha"
+        >
+          <button type="button" className="btn btn-danger" onClick={togglePop}>
+            Delete
           </button>
-          <Popconfirm
-            title="Bạn có thật sự muốn xóa ?"
-            visible={openPop}
-            onConfirm={handleDelete}
-            okButtonProps={{ loading: confirmLoading }}
-            onCancel={togglePop}
-            okText="Có chứ"
-            cancelText="Không nha"
-          >
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={togglePop}
-            >
-              Delete
-            </button>
-          </Popconfirm>
-        </div>
+        </Popconfirm>
       </td>
       <Modal
         visible={openModal}
@@ -157,4 +152,4 @@ function BrandItem(props) {
   );
 }
 
-export default BrandItem;
+export default CouponItem;

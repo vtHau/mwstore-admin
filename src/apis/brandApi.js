@@ -3,7 +3,7 @@ import * as PATH_URL from "./../constants/apiUrl";
 
 const brandApi = {
   getAllBrand: () => {
-    return axiosClient.get(PATH_URL.GET_ALL_BRAND);
+    return axiosClient.get(PATH_URL.ALL_BRAND);
   },
   updateBrand: (brand) => {
     return axiosClient.post(PATH_URL.UPDATE_BRAND, brand);

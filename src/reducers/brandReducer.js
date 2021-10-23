@@ -11,10 +11,6 @@ const brandReducer = (state = initialState, action) => {
       return { brands };
     }
 
-    case types.DELETE_ALL_ORDER: {
-      return { brands: [] };
-    }
-
     default:
       return state;
   }

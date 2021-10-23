@@ -1,6 +1,7 @@
 import * as types from "./../constants/actionTypes";
 import response from "../constants/response";
 import brandApi from "./../apis/brandApi";
+import couponApi from "./../apis/couponApi";
 // import userApi from "./../apis/userApi";
 // import cartApi from "./../apis/cartApi";
 // import orderApi from "./../apis/orderApi";
@@ -119,12 +120,12 @@ import brandApi from "./../apis/brandApi";
 //   };
 // };
 
-export const initAddress = (values) => {
-  return {
-    type: types.INIT_ADDRESS,
-    payload: values,
-  };
-};
+// export const initAddress = (values) => {
+//   return {
+//     type: types.INIT_ADDRESS,
+//     payload: values,
+//   };
+// };
 
 export const fetchAllBrand = () => {
   return (dispatch) => {
@@ -142,6 +143,26 @@ export const fetchAllBrand = () => {
 export const initBrand = (values) => {
   return {
     type: types.INIT_BRAND,
+    payload: values,
+  };
+};
+
+export const fetchAllCoupon = () => {
+  return (dispatch) => {
+    couponApi
+      .getAllCoupon()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initCoupon(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initCoupon = (values) => {
+  return {
+    type: types.INIT_COUPON,
     payload: values,
   };
 };

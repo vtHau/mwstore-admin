@@ -12,6 +12,11 @@ import UserNew from "../pages/User/UserNew";
 
 //brand
 import Brand from "../pages/Brand/Brand";
+import BrandNew from "../pages/Brand/BrandNew";
+
+//coupon
+import Coupon from "../pages/Coupon/Coupon";
+import CouponNew from "../pages/Coupon/CouponNew";
 
 // Products physicaltest
 import Category from "./../components/products/physical/category";
@@ -61,6 +66,9 @@ function Routes() {
             <Route exact path={path.HOME} component={Home} />
             <Route path={path.USER_LIST} component={UserList} />
             <Route path={path.BRAND_LIST} component={Brand} />
+            <Route path={path.BRAND_NEW} component={BrandNew} />
+            <Route path={path.COUPON_LIST} component={Coupon} />
+            <Route path={path.COUPON_NEW} component={CouponNew} />
             <Route
               path={`${process.env.PUBLIC_URL}/users/create-user`}
               component={UserNew}

@@ -25,7 +25,7 @@ function BrandList() {
           </tbody>
         </Table>
       ) : (
-        <h6 className="no-item">Không có thương hiện nào để hiển thị</h6>
+        <h6 className="no-item">No item to show</h6>
       )}
     </>
   );

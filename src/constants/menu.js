@@ -36,6 +36,21 @@ export const MENUITEMS = [
         title: "Brand List",
         type: "link",
       },
+      {
+        path: path.BRAND_NEW,
+        title: "New Brand",
+        type: "link",
+      },
+    ],
+  },
+  {
+    title: "Coupon",
+    icon: DollarSign,
+    type: "sub",
+    active: false,
+    children: [
+      { path: path.COUPON_LIST, title: "Coupon List", type: "link" },
+      { path: path.COUPON_NEW, title: "New Coupon", type: "link" },
     ],
   },
   {
@@ -122,16 +137,7 @@ export const MENUITEMS = [
       },
     ],
   },
-  {
-    title: "Sales",
-    icon: DollarSign,
-    type: "sub",
-    active: false,
-    children: [
-      { path: "/sales/orders", title: "Orders", type: "link" },
-      { path: "/sales/transactions", title: "Transactions", type: "link" },
-    ],
-  },
+
   {
     title: "Coupons",
     icon: Tag,

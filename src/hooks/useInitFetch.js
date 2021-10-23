@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchAllBrand } from "./../actions/action";
+import { fetchAllBrand, fetchAllCoupon } from "./../actions/action";
 
 function useInitFetch() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllBrand());
+    dispatch(fetchAllCoupon());
   }, [dispatch]);
 }
 

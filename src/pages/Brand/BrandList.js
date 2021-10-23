@@ -12,11 +12,14 @@ function BrandList() {
   useTitle("Brand list");
 
   useEffect(() => {
-    brandApi.getAllBrand().then((res) => {
-      if (res.status === response.SUCCESS) {
-        setBrands(res.brands);
-      }
-    });
+    brandApi
+      .getAllBrand()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setBrands(res.brands);
+        }
+      })
+      .catch((err) => {});
   }, []);
 
   const handleDelete = () => {

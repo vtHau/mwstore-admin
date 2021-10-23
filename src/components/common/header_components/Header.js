@@ -5,7 +5,7 @@ import UserMenu from "./UserMenu";
 import { AlignLeft, Maximize2, Bell, MoreHorizontal } from "react-feather";
 
 //images
-import logo from "../../../assets/images/dashboard/multikart-logo.png";
+import logo from "../../../assets/images/dashboard/mwstore-logo.png";
 
 function Header() {
   const [sidebar, setSidebar] = useState(true);

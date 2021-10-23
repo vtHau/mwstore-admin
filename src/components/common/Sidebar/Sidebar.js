@@ -5,7 +5,7 @@ import { MENUITEMS } from "../../../constants/menu";
 import { path } from "../../../constants/path";
 
 // image import
-import logo from "../../../assets/images/dashboard/multikart-logo.png";
+import logo from "../../../assets/images/dashboard/mwstore-logo.png";
 
 export class sidebar extends Component {
   state = { selectedPath: "1", mainmenu: [] };

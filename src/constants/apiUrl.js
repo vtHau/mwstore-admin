@@ -11,6 +11,8 @@ export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
 
 // brand
 export const GET_ALL_BRAND = BASE_URL_API + "brand/all-brand";
+export const DELETE_BRAND = BASE_URL_API + "brand/delete-brand";
+export const UPDATE_BRAND = BASE_URL_API + "brand/update-brand";
 
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";

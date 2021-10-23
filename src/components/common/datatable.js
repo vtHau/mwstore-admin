@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 export class Datatable extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export class Datatable extends Component {
     this.setState({
       myData: updatedData,
     });
-    toast.success("Successfully Deleted !");
+    // toast.success("Successfully Deleted !");
   };
 
   renderEditable = (cellInfo) => {
@@ -146,7 +146,7 @@ export class Datatable extends Component {
                   data.splice(row.index, 1);
                   this.setState({ myData: data });
                 }
-                toast.success("Successfully Deleted !");
+                // toast.success("Successfully Deleted !");
               }}
             >
               <i
@@ -189,7 +189,7 @@ export class Datatable extends Component {
           className={myClass}
           showPagination={pagination}
         />
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </Fragment>
     );
   }

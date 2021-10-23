@@ -11,7 +11,7 @@ import UserList from "../pages/User/UserList";
 import UserNew from "../pages/User/UserNew";
 
 //brand
-import BrandList from "../pages/Brand/BrandList";
+import Brand from "../pages/Brand/Brand";
 
 // Products physicaltest
 import Category from "./../components/products/physical/category";
@@ -60,7 +60,7 @@ function Routes() {
           <App>
             <Route exact path={path.HOME} component={Home} />
             <Route path={path.USER_LIST} component={UserList} />
-            <Route path={path.BRAND_LIST} component={BrandList} />
+            <Route path={path.BRAND_LIST} component={Brand} />
             <Route
               path={`${process.env.PUBLIC_URL}/users/create-user`}
               component={UserNew}

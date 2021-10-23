@@ -1,5 +1,16 @@
 import * as Yup from "yup";
 
+export const brandValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Brand name short")
+    .max(50, "Brand name long")
+    .required("Please input brand name"),
+  description: Yup.string()
+    .min(2, "Brand description short")
+    .max(50, "Brand description long")
+    .required("Please input brand description"),
+});
+
 export const signInValid = Yup.object().shape({
   email: Yup.string()
     .min(3, "Địa chỉ email quá ngắn")
@@ -62,22 +73,6 @@ export const profileValid = Yup.object().shape({
     .min(2, "Trạng thái quá ngắn")
     .max(50, "Trạng thái quá dài"),
   address: Yup.string().min(2, "Địa chỉ quá ngắn").max(50, "Địa chỉ quá dài"),
-});
-
-export const contactValid = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Tên người nhận quá ngắn")
-    .max(20, "Tên người nhận quá dài")
-    .required("Vui lòng nhập tên người nhận"),
-  email: Yup.string()
-    .min(3, "Địa chỉ email quá ngắn")
-    .max(50, "Địa chỉ email quá dài")
-    .email("Địa chỉ email không hợp lệ")
-    .required("Vui lòng nhập địa chỉ email"),
-  message: Yup.string()
-    .min(2, "Trạng thái quá ngắn")
-    .max(500, "Trạng thái quá dài")
-    .required("Vui lòng nhập tin nhắn"),
 });
 
 export const passwordValid = Yup.object().shape({

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useInitFetch from "./hooks/useInitFetch";
 import Sidebar from "./components/common/Sidebar/Sidebar";
 import RightSidebar from "./components/common/RightSidebar";
 import Footer from "./components/common/Footer";
@@ -6,6 +7,8 @@ import Header from "./components/common/header_components/Header";
 
 function App(props) {
   const [divName, setDivName] = useState("RTL");
+
+  useInitFetch();
 
   const changeRtl = () => {
     if (divName === "RTL") {

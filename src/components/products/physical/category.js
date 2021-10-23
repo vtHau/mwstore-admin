@@ -1,7 +1,7 @@
 import React, { Component, Fragment} from 'react'
 import Breadcrumb from '../../common/breadcrumb';
 import Modal from 'react-responsive-modal';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import data from '../../../assets/data/category';
 import Datatable from '../../common/datatable';
 

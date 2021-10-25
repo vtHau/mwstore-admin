@@ -11,6 +11,25 @@ export const brandValid = Yup.object().shape({
     .required("Please input brand description"),
 });
 
+export const couponValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Coupon name short")
+    .max(50, "Coupon name long")
+    .required("Please input coupon name"),
+  code: Yup.string()
+    .min(2, "Coupon code short")
+    .max(50, "Coupon code long")
+    .required("Please input coupon code"),
+  quantity: Yup.number()
+    .min(1, "Coupon quantity from 1")
+    .max(100, "Coupon quantity to 100")
+    .required("Please input coupon quantity"),
+  percent: Yup.number()
+    .min(1, "Coupon percent from 1")
+    .max(100, "Coupon percent to 100")
+    .required("Please input coupon percent"),
+});
+
 export const signInValid = Yup.object().shape({
   email: Yup.string()
     .min(3, "Địa chỉ email quá ngắn")

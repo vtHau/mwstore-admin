@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Popconfirm, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { brandValid } from "../../helpers/validate";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import "react-datepicker/dist/react-datepicker.css";
+import { couponValid } from "../../helpers/validate";
 import couponApi from "../../apis/couponApi";
 import { fetchAllCoupon } from "../../actions/action";
 import response from "../../constants/response";
@@ -15,14 +18,18 @@ function CouponItem(props) {
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
+  const [startDate, setStartDate] = useState(new Date(coupon.start_coupon));
+  const [endDate, setEndDate] = useState(new Date(coupon.end_coupon));
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
       name: coupon.name || "",
-      description: coupon.code || "",
+      code: coupon.code || "",
+      quantity: coupon.quantity || "",
+      percent: coupon.percent || "",
     },
-    validationSchema: brandValid,
+    validationSchema: couponValid,
     onSubmit: (value) => {
       value.id = coupon.id;
       setConfirmLoading(true);
@@ -67,6 +74,18 @@ function CouponItem(props) {
       });
   };
 
+  const changeStartDate = (date) => {
+    setStartDate(date);
+  };
+
+  const changeEndDate = (date) => {
+    setEndDate(date);
+  };
+
+  useEffect(() => {
+    console.log(moment(startDate).format("YYYY-MM-DD"));
+  }, [startDate]);
+
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -76,7 +95,7 @@ function CouponItem(props) {
       <td>{coupon.percent}</td>
       <td>{coupon.start_coupon}</td>
       <td>{coupon.end_coupon}</td>
-      <td>hehe</td>
+      <td>hii</td>
       <td className="text-center text-muted">
         <button type="button" className="btn btn-primary" onClick={toggleModal}>
           Edit
@@ -120,20 +139,86 @@ function CouponItem(props) {
               )}
             </div>
             <div className="form-group">
-              <label className="col-form-label">Description</label>
-              <textarea
-                name="description"
-                rows="4"
-                cols="12"
+              <label className="col-form-label pt-0">Code</label>
+              <input
+                type="text"
+                name="code"
                 className="form-control"
-                value={formik.values.description}
+                value={formik.values.code}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                placeholder="Please input brand description..."
-              ></textarea>
-              {formik.errors.description && formik.touched.description && (
-                <p className="error-field">{formik.errors.description}</p>
+                placeholder="Please input brand name..."
+              />
+              {formik.errors.code && formik.touched.code && (
+                <p className="error-field">{formik.errors.code}</p>
               )}
+            </div>
+            <div className="form-group">
+              <label className="col-form-label pt-0">Quantity</label>
+              <input
+                type="number"
+                name="quantity"
+                className="form-control"
+                value={formik.values.quantity}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                placeholder="Please input brand name..."
+              />
+              {formik.errors.quantity && formik.touched.quantity && (
+                <p className="error-field">{formik.errors.quantity}</p>
+              )}
+            </div>
+            <div className="form-group">
+              <label className="col-form-label pt-0">Percent(%)</label>
+              <input
+                type="number"
+                name="percent"
+                className="form-control"
+                value={formik.values.percent}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                placeholder="Please input brand name..."
+              />
+              {formik.errors.percent && formik.touched.percent && (
+                <p className="error-field">{formik.errors.percent}</p>
+              )}
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <div className="col-6">
+                  <label className="col-form-label">Start coupon</label>
+                  <DatePicker
+                    className="form-control"
+                    selected={startDate}
+                    dateFormat="yyyy-MM-dd"
+                    onChange={changeStartDate}
+                    customInput={
+                      <input
+                        type="text"
+                        id="validationCustom01"
+                        placeholder="First name"
+                      />
+                    }
+                  />
+                </div>
+                <div className="col-6">
+                  <label className="col-form-label">End coupon</label>
+                  <DatePicker
+                    className="form-control"
+                    selected={endDate}
+                    dateFormat="yyyy-MM-dd"
+                    onChange={changeEndDate}
+                    customInput={
+                      <input
+                        type="text"
+                        id="validationCustom01"
+                        placeholder="First name"
+                      />
+                    }
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="submit-box">

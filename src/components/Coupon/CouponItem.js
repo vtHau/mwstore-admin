@@ -18,8 +18,6 @@ function CouponItem(props) {
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [startDate, setStartDate] = useState(new Date(coupon.start_coupon));
-  const [endDate, setEndDate] = useState(new Date(coupon.end_coupon));
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -28,27 +26,37 @@ function CouponItem(props) {
       code: coupon.code || "",
       quantity: coupon.quantity || "",
       percent: coupon.percent || "",
+      start_coupon: new Date(coupon.start_coupon),
+      end_coupon: new Date(coupon.end_coupon),
     },
     validationSchema: couponValid,
     onSubmit: (value) => {
-      value.id = coupon.id;
-      setConfirmLoading(true);
+      const newCoupon = {
+        ...value,
+        id: coupon.id,
+        code: coupon.code,
+        start_coupon: moment(value.start_coupon)
+          .format("YYYY-MM-DD")
+          .toString(),
+        end_coupon: moment(value.end_coupon).format("YYYY-MM-DD").toString(),
+      };
 
+      setConfirmLoading(true);
       couponApi
-        .updateCoupon(value)
+        .updateCoupon(newCoupon)
         .then((res) => {
           toggleModal();
           setConfirmLoading(false);
           if (res.status === response.SUCCESS) {
             dispatch(fetchAllCoupon());
-            return toast.success("Success", "Update brand success");
+            return toast.success("Success", "Update coupon success");
           }
-          return toast.success("Fail", "Update brand fail");
+          return toast.success("Fail", "Update coupon fail");
         })
         .catch((err) => {
           toggleModal();
           setConfirmLoading(false);
-          return toast.success("Fail", "Update brand fail");
+          return toast.success("Fail", "Update coupon fail");
         });
     },
   });
@@ -74,18 +82,6 @@ function CouponItem(props) {
       });
   };
 
-  const changeStartDate = (date) => {
-    setStartDate(date);
-  };
-
-  const changeEndDate = (date) => {
-    setEndDate(date);
-  };
-
-  useEffect(() => {
-    console.log(moment(startDate).format("YYYY-MM-DD"));
-  }, [startDate]);
-
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -97,22 +93,32 @@ function CouponItem(props) {
       <td>{coupon.end_coupon}</td>
       <td>hii</td>
       <td className="text-center text-muted">
-        <button type="button" className="btn btn-primary" onClick={toggleModal}>
-          Edit
-        </button>
-        <Popconfirm
-          title="Bạn có thật sự muốn xóa ?"
-          visible={openPop}
-          onConfirm={handleDelete}
-          okButtonProps={{ loading: confirmLoading }}
-          onCancel={togglePop}
-          okText="Có chứ"
-          cancelText="Không nha"
-        >
-          <button type="button" className="btn btn-danger" onClick={togglePop}>
-            Delete
+        <div className="btn-group">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={toggleModal}
+          >
+            Edit
           </button>
-        </Popconfirm>
+          <Popconfirm
+            title="Bạn có thật sự muốn xóa ?"
+            visible={openPop}
+            onConfirm={handleDelete}
+            okButtonProps={{ loading: confirmLoading }}
+            onCancel={togglePop}
+            okText="Có chứ"
+            cancelText="Không nha"
+          >
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={togglePop}
+            >
+              Delete
+            </button>
+          </Popconfirm>
+        </div>
       </td>
       <Modal
         visible={openModal}
@@ -143,6 +149,7 @@ function CouponItem(props) {
               <input
                 type="text"
                 name="code"
+                readOnly
                 className="form-control"
                 value={formik.values.code}
                 onBlur={formik.handleBlur}
@@ -158,6 +165,8 @@ function CouponItem(props) {
               <input
                 type="number"
                 name="quantity"
+                min="1"
+                max="100"
                 className="form-control"
                 value={formik.values.quantity}
                 onBlur={formik.handleBlur}
@@ -173,6 +182,8 @@ function CouponItem(props) {
               <input
                 type="number"
                 name="percent"
+                min="1"
+                max="100"
                 className="form-control"
                 value={formik.values.percent}
                 onBlur={formik.handleBlur}
@@ -189,34 +200,37 @@ function CouponItem(props) {
                 <div className="col-6">
                   <label className="col-form-label">Start coupon</label>
                   <DatePicker
+                    name="start_coupon"
                     className="form-control"
-                    selected={startDate}
+                    selected={formik.values.start_coupon}
                     dateFormat="yyyy-MM-dd"
-                    onChange={changeStartDate}
-                    customInput={
-                      <input
-                        type="text"
-                        id="validationCustom01"
-                        placeholder="First name"
-                      />
+                    onBlur={formik.handleBlur}
+                    onChange={(date) =>
+                      formik.setFieldValue("start_coupon", date)
                     }
                   />
+                  {formik.errors.start_coupon &&
+                    formik.touched.start_coupon && (
+                      <p className="error-field">
+                        {formik.errors.start_coupon}
+                      </p>
+                    )}
                 </div>
                 <div className="col-6">
                   <label className="col-form-label">End coupon</label>
                   <DatePicker
+                    name="end_coupon"
                     className="form-control"
-                    selected={endDate}
+                    selected={formik.values.end_coupon}
                     dateFormat="yyyy-MM-dd"
-                    onChange={changeEndDate}
-                    customInput={
-                      <input
-                        type="text"
-                        id="validationCustom01"
-                        placeholder="First name"
-                      />
+                    onChange={(date) =>
+                      formik.setFieldValue("end_coupon", date)
                     }
+                    onBlur={formik.handleBlur}
                   />
+                  {formik.errors.end_coupon && formik.touched.end_coupon && (
+                    <p className="error-field">{formik.errors.end_coupon}</p>
+                  )}
                 </div>
               </div>
             </div>

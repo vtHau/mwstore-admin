@@ -28,6 +28,12 @@ export const couponValid = Yup.object().shape({
     .min(1, "Coupon percent from 1")
     .max(100, "Coupon percent to 100")
     .required("Please input coupon percent"),
+  start_coupon: Yup.date()
+    // .min(new Date(), "Time bat dau khong nho hon ngay hien tai")
+    .required("Please input coupon percent"),
+  end_coupon: Yup.date()
+    // .min(Yup.ref("start_coupon"), "Time ket thuc khong nho hon ngay bat dau")
+    .required("Please input coupon percent"),
 });
 
 export const signInValid = Yup.object().shape({

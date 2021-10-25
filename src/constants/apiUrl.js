@@ -16,8 +16,8 @@ export const DELETE_BRAND = BASE_URL_API + "brand/delete-brand";
 
 // coupon
 export const ALL_COUPON = BASE_URL_API + "coupon/all-coupon";
-export const UPDATE_COUPON = BASE_URL_API + "brand/update-coupon";
-export const DELETE_COUPON = BASE_URL_API + "brand/delete-coupon";
+export const UPDATE_COUPON = BASE_URL_API + "coupon/update-coupon";
+export const DELETE_COUPON = BASE_URL_API + "coupon/delete-coupon";
 
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";

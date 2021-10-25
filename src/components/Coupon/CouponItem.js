@@ -91,7 +91,13 @@ function CouponItem(props) {
       <td>{coupon.percent}</td>
       <td>{coupon.start_coupon}</td>
       <td>{coupon.end_coupon}</td>
-      <td>hii</td>
+      <td>
+        {new Date(coupon.end_coupon) > new Date() ? (
+          <span className="badge badge-success">Active</span>
+        ) : (
+          <span className="badge badge-danger">Deactive</span>
+        )}
+      </td>
       <td className="text-center text-muted">
         <div className="btn-group">
           <button

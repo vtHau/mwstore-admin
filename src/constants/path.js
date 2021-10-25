@@ -6,4 +6,5 @@ export const path = {
   BRAND_NEW: "/brand/new-brand",
   COUPON_LIST: "/coupon/list-coupon",
   COUPON_NEW: "/coupon/new-coupon",
+  COMMENT_LIST: "/comment/list-comment",
 };

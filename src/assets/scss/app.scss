@@ -1,8 +1,6 @@
 @import "bootstrap.scss";
 @import "theme/variables";
 @import "theme/antd";
-@import "theme/custom_antd";
-@import "theme/custom_theme";
 @import "theme/admin_style";
 @import "theme/table";
 @import "theme/rtl";
@@ -10,3 +8,5 @@
 @import "themify.scss";
 @import "icoicon/icons";
 @import "font-awesome.scss";
+@import "theme/custom_antd";
+@import "theme/custom_theme";

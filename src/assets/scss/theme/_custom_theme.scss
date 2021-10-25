@@ -19,3 +19,35 @@
 .react-datepicker__input-container {
   width: 100%;
 }
+
+.widget-content {
+  padding: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget-content .widget-content-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+  align-items: center;
+}
+
+.flex2 {
+  flex: 2;
+}
+
+.widget-content .widget-content-left .widget-heading {
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.border-circle {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #5defb793;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}

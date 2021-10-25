@@ -20,6 +20,11 @@ export const NEW_COUPON = BASE_URL_API + "coupon/new-coupon";
 export const UPDATE_COUPON = BASE_URL_API + "coupon/update-coupon";
 export const DELETE_COUPON = BASE_URL_API + "coupon/delete-coupon";
 
+//comment
+export const ALL_COMMENT = BASE_URL_API + "comment/all-comment";
+export const UPDATE_COMMENT = BASE_URL_API + "comment/update-comment";
+export const DELETE_COMMENT = BASE_URL_API + "comment/delete-comment";
+
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";
 export const SIGN_IN = BASE_URL_API + "signin";
@@ -44,13 +49,6 @@ export const UPDATE_VIEW = BASE_URL_API + "product/update/";
 
 //slider
 export const GET_SLIDER = BASE_URL_API + "slider";
-
-//comment
-export const GET_COMMENT = BASE_URL_API + "comment/get";
-export const NEW_COMMENT = BASE_URL_API + "comment/new";
-export const UPDATE_COMMENT = BASE_URL_API + "comment/update";
-export const DELETE_COMMENT = BASE_URL_API + "comment/delete";
-export const PROUDCT_COMMENT = BASE_URL_API + "comment/product";
 
 //cart
 export const GET_CART = BASE_URL_API + "cart/get";

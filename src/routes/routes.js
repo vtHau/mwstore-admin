@@ -18,6 +18,9 @@ import BrandNew from "../pages/Brand/BrandNew";
 import Coupon from "../pages/Coupon/Coupon";
 import CouponNew from "../pages/Coupon/CouponNew";
 
+//comment
+import Comment from "../pages/Comment/Comment";
+
 // Products physicaltest
 import Category from "./../components/products/physical/category";
 import Sub_category from "./../components/products/physical/sub-category";
@@ -69,6 +72,8 @@ function Routes() {
             <Route path={path.BRAND_NEW} component={BrandNew} />
             <Route path={path.COUPON_LIST} component={Coupon} />
             <Route path={path.COUPON_NEW} component={CouponNew} />
+            <Route path={path.COMMENT_LIST} component={Comment} />
+
             <Route
               path={`${process.env.PUBLIC_URL}/users/create-user`}
               component={UserNew}

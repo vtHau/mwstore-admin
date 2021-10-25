@@ -54,6 +54,16 @@ export const MENUITEMS = [
     ],
   },
   {
+    title: "Comment",
+    icon: DollarSign,
+    type: "sub",
+    active: false,
+    children: [
+      { path: path.COMMENT_LIST, title: "Comment List", type: "link" },
+      { path: path.COUPON_NEW, title: "New Coupon", type: "link" },
+    ],
+  },
+  {
     title: "User List",
     path: path.USER_LIST,
     icon: Users,

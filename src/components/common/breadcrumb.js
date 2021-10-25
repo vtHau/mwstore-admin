@@ -20,7 +20,7 @@ function Breadcrumb(props) {
           <div className="col-lg-6">
             <ol className="breadcrumb pull-right">
               <li className="breadcrumb-item">
-                <Link to="mutikart-admin/dashboard">
+                <Link to="/">
                   <Home />
                 </Link>
               </li>

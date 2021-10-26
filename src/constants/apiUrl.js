@@ -23,6 +23,7 @@ export const DELETE_COUPON = BASE_URL_API + "coupon/delete-coupon";
 
 //comment
 export const ALL_COMMENT = BASE_URL_API + "comment/all-comment";
+export const NOT_CONFIRM_COMMENT = BASE_URL_API + "comment/notconfirm-comment";
 export const UPDATE_COMMENT = BASE_URL_API + "comment/update-comment";
 export const DELETE_COMMENT = BASE_URL_API + "comment/delete-comment";
 

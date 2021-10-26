@@ -20,6 +20,7 @@ import CouponNew from "../pages/Coupon/CouponNew";
 
 //comment
 import Comment from "../pages/Comment/Comment";
+import CommentNotConfirm from "../pages/Comment/CommentNotConfirm";
 
 // Products physicaltest
 import Category from "./../components/products/physical/category";
@@ -73,6 +74,10 @@ function Routes() {
             <Route path={path.COUPON_LIST} component={Coupon} />
             <Route path={path.COUPON_NEW} component={CouponNew} />
             <Route path={path.COMMENT_LIST} component={Comment} />
+            <Route
+              path={path.COMMENT_NOT_CONFIRM}
+              component={CommentNotConfirm}
+            />
 
             <Route
               path={`${process.env.PUBLIC_URL}/users/create-user`}

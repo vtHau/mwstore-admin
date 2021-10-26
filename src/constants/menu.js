@@ -60,7 +60,7 @@ export const MENUITEMS = [
     active: false,
     children: [
       { path: path.COMMENT_LIST, title: "Comment List", type: "link" },
-      { path: path.COUPON_NEW, title: "New Coupon", type: "link" },
+      { path: path.COMMENT_NOT_CONFIRM, title: "Not Confirm", type: "link" },
     ],
   },
   {

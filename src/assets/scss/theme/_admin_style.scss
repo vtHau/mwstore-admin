@@ -1667,7 +1667,7 @@ input {
     Header CSS Start
 ==========================**/
 
-$header-size: 80px;
+$header-size: 60px;
 
 %common {
   color: $theme-body-font-color;
@@ -2238,7 +2238,7 @@ ul.notification-dropdown.onhover-show-div {
           align-items: center;
 
           .blur-up.lazyloaded {
-            height: 56px;
+            height: 50px;
 
           }
         }
@@ -3348,7 +3348,7 @@ $i: 1;
       .main-header-left {
         .logo-wrapper {
           .blur-up.lazyloaded {
-            height: 56px;
+            height: 50px;
 
           }
           img {

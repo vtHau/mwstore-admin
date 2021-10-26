@@ -6,10 +6,6 @@ import App from "./../App";
 // Components
 import Home from "./../pages/Home";
 
-//user
-import UserList from "../pages/User/UserList";
-import UserNew from "../pages/User/UserNew";
-
 //brand
 import Brand from "../pages/Brand/Brand";
 import BrandNew from "../pages/Brand/BrandNew";
@@ -21,6 +17,9 @@ import CouponNew from "../pages/Coupon/CouponNew";
 //comment
 import Comment from "../pages/Comment/Comment";
 import CommentNotConfirm from "../pages/Comment/CommentNotConfirm";
+
+//user
+import User from "../pages/User/User";
 
 // Products physicaltest
 import Category from "./../components/products/physical/category";
@@ -68,7 +67,6 @@ function Routes() {
           <Route exact path={path.LOGIN} component={Login} />
           <App>
             <Route exact path={path.HOME} component={Home} />
-            <Route path={path.USER_LIST} component={UserList} />
             <Route path={path.BRAND_LIST} component={Brand} />
             <Route path={path.BRAND_NEW} component={BrandNew} />
             <Route path={path.COUPON_LIST} component={Coupon} />
@@ -78,11 +76,7 @@ function Routes() {
               path={path.COMMENT_NOT_CONFIRM}
               component={CommentNotConfirm}
             />
-
-            <Route
-              path={`${process.env.PUBLIC_URL}/users/create-user`}
-              component={UserNew}
-            />
+            <Route path={path.USER_LIST} component={User} />
 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

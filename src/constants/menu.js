@@ -64,11 +64,20 @@ export const MENUITEMS = [
     ],
   },
   {
-    title: "User List",
-    path: path.USER_LIST,
-    icon: Users,
-    type: "link",
+    title: "Feeship",
+    icon: DollarSign,
+    type: "sub",
     active: false,
+    children: [
+      { path: path.FEESHIP_LIST, title: "Feeship List", type: "link" },
+    ],
+  },
+  {
+    title: "User",
+    icon: Users,
+    type: "sub",
+    active: false,
+    children: [{ path: path.USER_LIST, title: "User List", type: "link" }],
   },
   // {
   //   title: "User",

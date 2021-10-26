@@ -8,4 +8,6 @@ export const path = {
   COUPON_NEW: "/coupon/new-coupon",
   COMMENT_LIST: "/comment/list-comment",
   COMMENT_NOT_CONFIRM: "/comment/notconfirm-comment",
+  FEESHIP_LIST: "/feeship/feeship-list",
+  USER_LIST: "/user/user-list",
 };

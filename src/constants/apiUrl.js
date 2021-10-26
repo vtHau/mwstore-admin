@@ -17,6 +17,7 @@ export const DELETE_BRAND = BASE_URL_API + "brand/delete-brand";
 // coupon
 export const ALL_COUPON = BASE_URL_API + "coupon/all-coupon";
 export const NEW_COUPON = BASE_URL_API + "coupon/new-coupon";
+export const SEND_COUPON = BASE_URL_API + "coupon/send-coupon";
 export const UPDATE_COUPON = BASE_URL_API + "coupon/update-coupon";
 export const DELETE_COUPON = BASE_URL_API + "coupon/delete-coupon";
 
@@ -24,6 +25,9 @@ export const DELETE_COUPON = BASE_URL_API + "coupon/delete-coupon";
 export const ALL_COMMENT = BASE_URL_API + "comment/all-comment";
 export const UPDATE_COMMENT = BASE_URL_API + "comment/update-comment";
 export const DELETE_COMMENT = BASE_URL_API + "comment/delete-comment";
+
+//user
+export const ALL_USER = BASE_URL_API + "user/all-user";
 
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";

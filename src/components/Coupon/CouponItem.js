@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Popconfirm, Button } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Table } from "react-bootstrap";
 import { useFormik } from "formik";
 import DatePicker from "react-datepicker";
 import moment from "moment";
@@ -11,12 +12,15 @@ import { fetchAllCoupon } from "../../actions/action";
 import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
+import SendCouponItem from "./SendCouponItem";
 
 function CouponItem(props) {
   const { index, coupon } = props;
+  const users = useSelector((state) => state.userReducer.users);
   const dispatch = useDispatch();
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
+  const [openSendCoupon, toggleSendCoupon] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const formik = useFormik({
@@ -100,11 +104,10 @@ function CouponItem(props) {
       </td>
       <td className="text-center text-muted">
         <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={toggleModal}
-          >
+          <button className="btn btn-success" onClick={toggleSendCoupon}>
+            Send
+          </button>
+          <button className="btn btn-primary" onClick={toggleModal}>
             Edit
           </button>
           <Popconfirm
@@ -252,6 +255,28 @@ function CouponItem(props) {
             </Button>
           </div>
         </form>
+      </Modal>
+      <Modal
+        visible={openSendCoupon}
+        onOk={toggleSendCoupon}
+        onCancel={toggleSendCoupon}
+        footer={null}
+      >
+        <p className="title-section">Send coupon</p>
+        <Table className="table-custom">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, key) => (
+              <SendCouponItem key={key} coupon={coupon} user={user} />
+            ))}
+          </tbody>
+        </Table>
       </Modal>
     </tr>
   );

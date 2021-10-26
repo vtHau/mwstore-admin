@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchAllBrand, fetchAllCoupon } from "./../actions/action";
+import {
+  fetchAllBrand,
+  fetchAllCoupon,
+  fetchAllUser,
+} from "./../actions/action";
 
 function useInitFetch() {
   const dispatch = useDispatch();
@@ -8,6 +12,7 @@ function useInitFetch() {
   useEffect(() => {
     dispatch(fetchAllBrand());
     dispatch(fetchAllCoupon());
+    dispatch(fetchAllUser());
   }, [dispatch]);
 }
 

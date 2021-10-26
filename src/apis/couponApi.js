@@ -11,6 +11,9 @@ const couponApi = {
   updateCoupon: (coupon) => {
     return axiosClient.post(PATH_URL.UPDATE_COUPON, coupon);
   },
+  sendCoupon: (coupon) => {
+    return axiosClient.post(PATH_URL.SEND_COUPON, coupon);
+  },
   deleteCoupon: (coupon) => {
     return axiosClient.post(PATH_URL.DELETE_COUPON, coupon);
   },

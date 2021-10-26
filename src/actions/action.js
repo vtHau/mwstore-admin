@@ -2,7 +2,7 @@ import * as types from "./../constants/actionTypes";
 import response from "../constants/response";
 import brandApi from "./../apis/brandApi";
 import couponApi from "./../apis/couponApi";
-// import userApi from "./../apis/userApi";
+import userApi from "./../apis/userApi";
 // import cartApi from "./../apis/cartApi";
 // import orderApi from "./../apis/orderApi";
 // import addressApi from "./../apis/addressApi";
@@ -163,6 +163,26 @@ export const fetchAllCoupon = () => {
 export const initCoupon = (values) => {
   return {
     type: types.INIT_COUPON,
+    payload: values,
+  };
+};
+
+export const fetchAllUser = () => {
+  return (dispatch) => {
+    userApi
+      .getAllUser()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initUser(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initUser = (values) => {
+  return {
+    type: types.INIT_USER,
     payload: values,
   };
 };

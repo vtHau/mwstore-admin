@@ -5,6 +5,7 @@ import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
 import * as PATH_URL from "./../../constants/apiUrl";
+import ProductLink from "./../ProductLink";
 
 function CommentItem(props) {
   const { index, comment, fetchAllComment } = props;
@@ -66,12 +67,31 @@ function CommentItem(props) {
             </div>
             <div className="widget-content-left flex2">
               <div className="widget-heading">{comment.user.name}</div>
-              <div className="widget-subheading opacity-7" />
             </div>
           </div>
         </div>
       </td>
-      <td>{comment.product.name}</td>
+      <td>
+        <div className="widget-content p-0">
+          <div className="widget-content-wrapper">
+            <div className="widget-content-left">
+              <img
+                className="border-circle"
+                src={PATH_URL.PRODUCT_IMAGE + comment.product.image}
+                alt={comment.product.name}
+              />
+            </div>
+            <div className="widget-content-left flex2">
+              <div className="widget-heading">
+                <ProductLink
+                  name={comment.product.name}
+                  slug={comment.product.slug}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
       <td>
         <Rate disabled value={comment.star} />
       </td>

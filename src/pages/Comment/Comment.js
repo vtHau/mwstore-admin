@@ -16,7 +16,6 @@ function Comment() {
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setComments(res.comments);
-          console.log(res.comments);
         }
       })
       .catch((err) => {});
@@ -42,7 +41,7 @@ function Comment() {
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
+                      <th>User</th>
                       <th>Product</th>
                       <th>Star</th>
                       <th>Comment</th>

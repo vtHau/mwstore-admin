@@ -32,8 +32,8 @@ const lineData = {
     {
       lagend: "none",
       data: [2.5, 3, 3, 0.9, 1.3, 1.8, 3.8, 1.5],
-      borderColor: "#ff8084",
-      backgroundColor: "#ff8084",
+      borderColor: " #194391",
+      backgroundColor: " #194391",
       borderWidth: 2,
     },
     {
@@ -61,7 +61,7 @@ const buyData = {
     },
     {
       backgroundColor: "transparent",
-      borderColor: "#ff8084",
+      borderColor: " #194391",
       data: [0, 30, 40, 10, 86, 40],
     },
   ],
@@ -71,7 +71,7 @@ const doughnutOptions = {
   title: "",
   pieHole: 0.35,
   pieSliceBorderColor: "none",
-  colors: ["#ff8084", "#13c9ca", "#a5a5a5"],
+  colors: [" #194391", "#13c9ca", "#a5a5a5"],
   legend: {
     position: "none",
   },
@@ -92,7 +92,7 @@ const pieOptions = {
   pieHole: 1,
   slices: [
     {
-      color: "#ff8084",
+      color: " #194391",
     },
     {
       color: "#13c9ca",
@@ -118,7 +118,7 @@ const LineOptions = {
     baselineColor: "transparent",
     gridlineColor: "transparent",
   },
-  colors: ["#ff8084"],
+  colors: [" #194391"],
   legend: "none",
 };
 const LineOptions1 = {

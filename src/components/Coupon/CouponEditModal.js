@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,6 +13,7 @@ import toast from "../../helpers/toast";
 
 function CouponEditModal(props) {
   const { coupon, openModal, toggleModal } = props;
+  const dispatch = useDispatch();
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const formik = useFormik({

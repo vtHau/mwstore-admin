@@ -21,6 +21,9 @@ import CommentNotConfirm from "../pages/Comment/CommentNotConfirm";
 //user
 import User from "../pages/User/User";
 
+//feeship
+import Feeship from "../pages/Feeship/Feeship";
+
 // Products physicaltest
 import Category from "./../components/products/physical/category";
 import Sub_category from "./../components/products/physical/sub-category";
@@ -77,6 +80,7 @@ function Routes() {
               component={CommentNotConfirm}
             />
             <Route path={path.USER_LIST} component={User} />
+            <Route path={path.FEESHIP_LIST} component={Feeship} />
 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

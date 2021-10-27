@@ -3,9 +3,89 @@ import response from "../constants/response";
 import brandApi from "./../apis/brandApi";
 import couponApi from "./../apis/couponApi";
 import userApi from "./../apis/userApi";
+import addressApi from "./../apis/addressApi";
 // import cartApi from "./../apis/cartApi";
 // import orderApi from "./../apis/orderApi";
-// import addressApi from "./../apis/addressApi";
+
+export const fetchAllBrand = () => {
+  return (dispatch) => {
+    brandApi
+      .getAllBrand()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initBrand(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initBrand = (values) => {
+  return {
+    type: types.INIT_BRAND,
+    payload: values,
+  };
+};
+
+export const fetchAllCoupon = () => {
+  return (dispatch) => {
+    couponApi
+      .getAllCoupon()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initCoupon(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initCoupon = (values) => {
+  return {
+    type: types.INIT_COUPON,
+    payload: values,
+  };
+};
+
+export const fetchAllUser = () => {
+  return (dispatch) => {
+    userApi
+      .getAllUser()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initUser(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initUser = (values) => {
+  return {
+    type: types.INIT_USER,
+    payload: values,
+  };
+};
+
+export const fetchAllAddress = () => {
+  return (dispatch) => {
+    addressApi
+      .getAllAddress()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initAddress(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initAddress = (values) => {
+  return {
+    type: types.INIT_ADDRESS,
+    payload: values,
+  };
+};
 
 // export const authToken = (setIsLoading) => {
 //   return (dispatch) => {
@@ -106,83 +186,3 @@ import userApi from "./../apis/userApi";
 //     type: types.DELETE_ALL_ORDER,
 //   };
 // };
-
-// export const getAddress = () => {
-//   return (dispatch) => {
-//     addressApi
-//       .getAddress()
-//       .then((res) => {
-//         if (res.status === response.SUCCESS) {
-//           dispatch(initAddress(res));
-//         }
-//       })
-//       .catch((err) => {});
-//   };
-// };
-
-// export const initAddress = (values) => {
-//   return {
-//     type: types.INIT_ADDRESS,
-//     payload: values,
-//   };
-// };
-
-export const fetchAllBrand = () => {
-  return (dispatch) => {
-    brandApi
-      .getAllBrand()
-      .then((res) => {
-        if (res.status === response.SUCCESS) {
-          dispatch(initBrand(res));
-        }
-      })
-      .catch((err) => {});
-  };
-};
-
-export const initBrand = (values) => {
-  return {
-    type: types.INIT_BRAND,
-    payload: values,
-  };
-};
-
-export const fetchAllCoupon = () => {
-  return (dispatch) => {
-    couponApi
-      .getAllCoupon()
-      .then((res) => {
-        if (res.status === response.SUCCESS) {
-          dispatch(initCoupon(res));
-        }
-      })
-      .catch((err) => {});
-  };
-};
-
-export const initCoupon = (values) => {
-  return {
-    type: types.INIT_COUPON,
-    payload: values,
-  };
-};
-
-export const fetchAllUser = () => {
-  return (dispatch) => {
-    userApi
-      .getAllUser()
-      .then((res) => {
-        if (res.status === response.SUCCESS) {
-          dispatch(initUser(res));
-        }
-      })
-      .catch((err) => {});
-  };
-};
-
-export const initUser = (values) => {
-  return {
-    type: types.INIT_USER,
-    payload: values,
-  };
-};

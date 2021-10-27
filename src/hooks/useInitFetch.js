@@ -4,6 +4,7 @@ import {
   fetchAllBrand,
   fetchAllCoupon,
   fetchAllUser,
+  fetchAllAddress,
 } from "./../actions/action";
 
 function useInitFetch() {
@@ -13,6 +14,7 @@ function useInitFetch() {
     dispatch(fetchAllBrand());
     dispatch(fetchAllCoupon());
     dispatch(fetchAllUser());
+    dispatch(fetchAllAddress());
   }, [dispatch]);
 }
 

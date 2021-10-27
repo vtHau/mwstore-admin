@@ -1,13 +1,10 @@
 import axiosClient from "./axiosClient";
 import * as PATH_URL from "./../constants/apiUrl";
 
-const addressApui = {
-  getAddress: () => {
-    return axiosClient.get(PATH_URL.GET_ADDRESS);
-  },
-  calcFeeship: (values) => {
-    return axiosClient.post(PATH_URL.GET_FEESHIP, values);
+const addressApi = {
+  getAllAddress: () => {
+    return axiosClient.get(PATH_URL.ALL_ADDRESS);
   },
 };
 
-export default addressApui;
+export default addressApi;

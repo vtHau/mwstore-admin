@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import { Divider } from "antd";
 import useTitle from "../../hooks/useTitle";
-import BrandList from "../../components/Brand/BrandList";
 import Breadcrumb from "../../components/common/breadcrumb";
-import commentApi from "../../apis/commentApi";
+import feeshipApi from "../../apis/feeshipApi";
 import AddressSelect from "./../../components/Address/AddressSelect";
+import response from "../../constants/response";
+import FeeshipItem from "./../../components/Feeship/FeeshipItem";
 
-function Brand() {
+function Feeship() {
+  const [feeships, setFeeships] = useState([]);
   useTitle("Feeship list");
+
+  const fetchAllFeeship = () => {
+    feeshipApi
+      .getAllFeeship()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setFeeships(res.feeships);
+        }
+      })
+      .catch((err) => {});
+  };
+
+  useEffect(() => {
+    fetchAllFeeship();
+  }, []);
 
   return (
     <>
@@ -19,7 +38,30 @@ function Brand() {
           <div className="card-body">
             <div className="clearfix"></div>
             <div className="product-physical">
-              <AddressSelect />
+              <AddressSelect fetchAllFeeship={fetchAllFeeship} />
+              <Divider />
+              <Table className="table-custom">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>City</th>
+                    <th>Province</th>
+                    <th>Village</th>
+                    <th>Feeship</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {feeships.map((feeship, key) => (
+                    <FeeshipItem
+                      feeship={feeship}
+                      key={key}
+                      index={key}
+                      fetchAllFeeship={fetchAllFeeship}
+                    />
+                  ))}
+                </tbody>
+              </Table>
             </div>
           </div>
         </div>
@@ -28,4 +70,4 @@ function Brand() {
   );
 }
 
-export default Brand;
+export default Feeship;

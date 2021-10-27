@@ -33,6 +33,7 @@ export const ALL_USER = BASE_URL_API + "user/all-user";
 //feeship
 export const ALL_FEESHIP = BASE_URL_API + "feeship/all-feeship";
 export const NEW_FEESHIP = BASE_URL_API + "feeship/new-feeship";
+export const DELETE_FEESHIP = BASE_URL_API + "feeship/delete-feeship";
 
 //address
 export const ALL_ADDRESS = BASE_URL_API + "address/all-address";

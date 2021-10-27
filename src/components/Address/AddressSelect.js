@@ -10,7 +10,7 @@ const { Option } = Select;
 const { Search } = Input;
 
 function AddressSelect(props) {
-  const { setFeeship } = props;
+  const { fetchAllFeeship } = props;
   const address = useSelector((state) => state.addressReducer.address);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [city, setCity] = useState("");
@@ -75,6 +75,7 @@ function AddressSelect(props) {
       .then((res) => {
         setConfirmLoading(false);
         if (res.status === response.SUCCESS) {
+          fetchAllFeeship();
           return toast.success("Success", "Save feeship success");
         }
         return toast.error("Fail", "Save feeship fail");
@@ -87,10 +88,10 @@ function AddressSelect(props) {
 
   return (
     <div className="address-section">
-      <h3 className="title-address">Địa chỉ nhận hàng</h3>
+      <h3 className="title-address">Address Receive Product</h3>
       <div className="row">
         <div className="col-12 col-md-3 col-lg-3 col-xl-3">
-          <p className="choose-address">Tỉnh /Thành phố</p>
+          <p className="choose-address">City</p>
           <Select
             showSearch
             optionFilterProp="children"
@@ -113,7 +114,7 @@ function AddressSelect(props) {
           </Select>
         </div>
         <div className="col-12 col-md-3 col-lg-3 col-xl-3">
-          <p className="choose-address">Quận /Huyện</p>
+          <p className="choose-address">Province</p>
           <Select
             showSearch
             optionFilterProp="children"
@@ -139,7 +140,7 @@ function AddressSelect(props) {
           </Select>
         </div>
         <div className="col-12 col-md-3 col-lg-3 col-xl-3">
-          <p className="choose-address">Xã /Phường</p>
+          <p className="choose-address">Village</p>
           <Select
             showSearch
             optionFilterProp="children"
@@ -162,7 +163,7 @@ function AddressSelect(props) {
           </Select>
         </div>
         <div className="col-12 col-md-3 col-lg-3 col-xl-3">
-          <p className="choose-address">Phí vận chuyển</p>
+          <p className="choose-address">Feeship</p>
           <div className="row">
             <Search
               placeholder="Input feeship..."
@@ -174,7 +175,7 @@ function AddressSelect(props) {
               addonBefore="VND"
               min="100"
               max="1000000"
-              enterButton="Add"
+              enterButton="Add /Update"
               loading={confirmLoading}
               onSearch={handleAdd}
             />

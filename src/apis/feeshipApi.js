@@ -8,6 +8,9 @@ const feeshipApi = {
   newFeeship: (feeship) => {
     return axiosClient.post(PATH_URL.NEW_FEESHIP, feeship);
   },
+  deleteFeeship: (feeship) => {
+    return axiosClient.post(PATH_URL.DELETE_FEESHIP, feeship);
+  },
 };
 
 export default feeshipApi;

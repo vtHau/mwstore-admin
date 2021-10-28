@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { Divider } from "antd";
+import { Divider, Button } from "antd";
 import { isEmpty } from "lodash";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
@@ -190,14 +190,22 @@ function OrderDetail() {
                             )}
                           </td>
                           <td>
-                            <a
-                              href={PATH_URL.PRINT_ORDER + order.code}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="btn"
+                            <Button
+                              type="primary"
+                              onClick={() => {
+                                const key = new Buffer(
+                                  `${order.id}--${order.code}--${order.user_id}--${order.time}`
+                                ).toString("base64");
+
+                                return window.open(
+                                  PATH_URL.PRINT_ORDER + key,
+                                  "Popup",
+                                  "width=600, height=600"
+                                );
+                              }}
                             >
-                              Print order
-                            </a>
+                              Print
+                            </Button>
                           </td>
                         </tr>
                       </tbody>

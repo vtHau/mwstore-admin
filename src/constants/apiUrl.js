@@ -43,7 +43,7 @@ export const ALL_ORDER = BASE_URL_API + "order/all-order";
 export const CONFIRM_ORDER = BASE_URL_API + "order/confirm-order";
 export const DETAIL_ORDER = BASE_URL_API + "order/detail-order";
 export const DELETE_ORDER = BASE_URL_API + "order/delete-order";
-export const PRINT_ORDER = BASE_URL_API + "order/print/";
+export const PRINT_ORDER = BASE_URL + "print/order/";
 
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";

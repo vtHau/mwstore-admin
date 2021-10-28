@@ -2,25 +2,14 @@ import axiosClient from "./axiosClient";
 import * as PATH_URL from "./../constants/apiUrl";
 
 const orderApi = {
-  getOrderAll: () => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.get(PATH_URL.GET_ORDER_ALL);
-    });
+  getAllOrder: () => {
+    return axiosClient.get(PATH_URL.ALL_ORDER);
   },
-  getOrderDetail: (id) => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.get(PATH_URL.GET_ORDER_DETAIL + id);
-    });
+  confirmOrder: (order) => {
+    return axiosClient.post(PATH_URL.CONFIRM_ORDER, order);
   },
-  newOrder: (value) => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.post(PATH_URL.NEW_ORDER, value);
-    });
-  },
-  orderCb: (value) => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.get(PATH_URL.ORDER_CB + value);
-    });
+  deleteOrder: (order) => {
+    return axiosClient.post(PATH_URL.DELETE_ORDER, order);
   },
 };
 

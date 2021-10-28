@@ -38,6 +38,11 @@ export const DELETE_FEESHIP = BASE_URL_API + "feeship/delete-feeship";
 //address
 export const ALL_ADDRESS = BASE_URL_API + "address/all-address";
 
+//order
+export const ALL_ORDER = BASE_URL_API + "order/all-order";
+export const CONFIRM_ORDER = BASE_URL_API + "order/confirm-order";
+export const DELETE_ORDER = BASE_URL_API + "order/delete-order";
+
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";
 export const SIGN_IN = BASE_URL_API + "signin";
@@ -57,10 +62,3 @@ export const UPDATE_VIEW = BASE_URL_API + "product/update/";
 
 //slider
 export const GET_SLIDER = BASE_URL_API + "slider";
-
-//order
-export const GET_ORDER_ALL = BASE_URL_API + "order";
-export const GET_ORDER_DETAIL = BASE_URL_API + "order/detail/";
-export const ORDER_CB = BASE_URL_API + "order/callback";
-export const NEW_ORDER = BASE_URL_API + "order/new";
-export const PRINT_ORDER = BASE_URL + "order/print/";

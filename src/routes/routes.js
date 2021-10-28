@@ -24,6 +24,9 @@ import User from "../pages/User/User";
 //feeship
 import Feeship from "../pages/Feeship/Feeship";
 
+//order
+import Order from "../pages/Order/Order";
+
 // Products physicaltest
 import Category from "./../components/products/physical/category";
 import Sub_category from "./../components/products/physical/sub-category";
@@ -81,6 +84,7 @@ function Routes() {
             />
             <Route path={path.USER_LIST} component={User} />
             <Route path={path.FEESHIP_LIST} component={Feeship} />
+            <Route path={path.ORDER_LIST} component={Order} />
 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

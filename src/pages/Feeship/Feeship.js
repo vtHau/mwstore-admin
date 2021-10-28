@@ -40,6 +40,7 @@ function Feeship() {
             <div className="product-physical">
               <AddressSelect fetchAllFeeship={fetchAllFeeship} />
               <Divider />
+              <h4>List Feeship</h4>
               <Table className="table-custom">
                 <thead>
                   <tr>

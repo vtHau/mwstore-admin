@@ -10,4 +10,5 @@ export const path = {
   COMMENT_NOT_CONFIRM: "/comment/notconfirm-comment",
   FEESHIP_LIST: "/feeship/feeship-list",
   USER_LIST: "/user/user-list",
+  ORDER_LIST: "/order/order-list",
 };

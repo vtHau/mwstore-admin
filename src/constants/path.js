@@ -11,4 +11,5 @@ export const path = {
   FEESHIP_LIST: "/feeship/feeship-list",
   USER_LIST: "/user/user-list",
   ORDER_LIST: "/order/order-list",
+  ORDER_DETAIL: "/order/detail/",
 };

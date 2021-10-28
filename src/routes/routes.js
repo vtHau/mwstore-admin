@@ -26,6 +26,7 @@ import Feeship from "../pages/Feeship/Feeship";
 
 //order
 import Order from "../pages/Order/Order";
+import OrderDetail from "../pages/Order/OrderDetail";
 
 // Products physicaltest
 import Category from "./../components/products/physical/category";
@@ -84,7 +85,8 @@ function Routes() {
             />
             <Route path={path.USER_LIST} component={User} />
             <Route path={path.FEESHIP_LIST} component={Feeship} />
-            <Route path={path.ORDER_LIST} component={Order} />
+            <Route exact path={path.ORDER_LIST} component={Order} />
+            <Route path={path.ORDER_DETAIL + ":code"} component={OrderDetail} />
 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

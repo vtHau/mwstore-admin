@@ -5,6 +5,8 @@ import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
 import * as PATH_URL from "../../constants/apiUrl";
+import { path } from "../../constants/path";
+import { Link } from "react-router-dom";
 
 function OrderItem(props) {
   const { order, fetchAllOrder } = props;
@@ -90,7 +92,9 @@ function OrderItem(props) {
               Confirm
             </Button>
           )}
-          <Button type="primary">Detail</Button>
+          <Button type="primary">
+            <Link to={path.ORDER_DETAIL + order.code}>Detail</Link>
+          </Button>
           <Popconfirm
             title="Bạn có thật sự muốn xóa ?"
             visible={openPop}

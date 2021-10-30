@@ -34,6 +34,28 @@ export const sliderValid = Yup.object().shape({
     ),
 });
 
+export const sliderUpdateValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Brand name short")
+    .max(50, "Brand name long")
+    .required("Please input brand name"),
+  product_id: Yup.string().required("Please choose product"),
+  show_hide: Yup.string().required("Please chooe display"),
+  image: Yup.mixed()
+    .test(
+      "fileSize",
+      "File Size is too large",
+      (value) => value === null || (value && value.size <= 2000000)
+    )
+    .test(
+      "fileType",
+      "Unsupported File Format",
+      (value) =>
+        value === null ||
+        (value && ["image/jpeg", "image/jpg", "image/png"].includes(value.type))
+    ),
+});
+
 export const couponNewValid = Yup.object().shape({
   name: Yup.string()
     .min(2, "Coupon name short")

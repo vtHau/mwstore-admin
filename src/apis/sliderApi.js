@@ -13,6 +13,9 @@ const sliderApi = {
   newSlider: (slider) => {
     return axiosClientFM.post(PATH_URL.NEW_SLIDER, slider);
   },
+  updateSlider: (slider) => {
+    return axiosClientFM.post(PATH_URL.UPDATE_SLIDER, slider);
+  },
   deleteSlider: (slider) => {
     return axiosClient.post(PATH_URL.DELETE_SLIDER, slider);
   },

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { Button, Popconfirm, Modal } from "antd";
+import { Button, Popconfirm } from "antd";
 import * as PATH_URL from "./../../constants/apiUrl";
-import { useDispatch } from "react-redux";
 import sliderApi from "../../apis/sliderApi";
 import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
-import BrandEditModal from "./BrandEditModal";
+import SliderEditModal from "./SliderEditModal";
 
 function SliderItem(props) {
   const { index, slider, fetchAllSlider } = props;
-  const dispatch = useDispatch();
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -83,11 +81,12 @@ function SliderItem(props) {
           </Popconfirm>
         </div>
       </td>
-      {/* <BrandEditModal
-        brand={brand}
+      <SliderEditModal
+        slider={slider}
         openModal={openModal}
         toggleModal={toggleModal}
-      /> */}
+        fetchAllSlider={fetchAllSlider}
+      />
     </tr>
   );
 }

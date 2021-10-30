@@ -48,6 +48,7 @@ export const PRINT_ORDER = BASE_URL + "print/order/";
 //slider
 export const ALL_SLIDER = BASE_URL_API + "slider/all-slider";
 export const NEW_SLIDER = BASE_URL_API + "slider/new-slider";
+export const UPDATE_SLIDER = BASE_URL_API + "slider/update-slider";
 export const DELETE_SLIDER = BASE_URL_API + "slider/delete-slider";
 
 // authentication

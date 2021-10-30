@@ -45,6 +45,11 @@ export const DETAIL_ORDER = BASE_URL_API + "order/detail-order";
 export const DELETE_ORDER = BASE_URL_API + "order/delete-order";
 export const PRINT_ORDER = BASE_URL + "print/order/";
 
+//slider
+export const ALL_SLIDER = BASE_URL_API + "slider/all-slider";
+export const NEW_SLIDER = BASE_URL_API + "slider/new-slider";
+export const DELETE_SLIDER = BASE_URL_API + "slider/delete-slider";
+
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";
 export const SIGN_IN = BASE_URL_API + "signin";
@@ -54,13 +59,4 @@ export const SIGN_UP = BASE_URL_API + "signup";
 export const SIGN_OUT = BASE_URL_API + "signout";
 
 //product
-export const GET_PRODUCT = BASE_URL_API + "product/";
-export const PRODUCT_SEARCH = BASE_URL_API + "product/search";
-export const PRODUCT_NEW = BASE_URL_API + "product/new";
-export const PRODUCT_FEATHER = BASE_URL_API + "product/feather";
-export const PRODUCT_BRAND = BASE_URL_API + "product/brand/";
-export const PRODUCT_MORE = BASE_URL_API + "product/more";
-export const UPDATE_VIEW = BASE_URL_API + "product/update/";
-
-//slider
-export const GET_SLIDER = BASE_URL_API + "slider";
+export const ALL_PRODUCT = BASE_URL_API + "product/all-product";

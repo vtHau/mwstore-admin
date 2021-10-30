@@ -1,9 +1,20 @@
 import axiosClient from "./axiosClient";
 import * as PATH_URL from "./../constants/apiUrl";
 
+const axiosClientFM = axiosClient;
+axiosClientFM.options = {
+  headers: { "content-type": "multipart/form-data" },
+};
+
 const sliderApi = {
-  getAll: () => {
-    return axiosClient.get(PATH_URL.GET_SLIDER);
+  getAllSlider: () => {
+    return axiosClient.get(PATH_URL.ALL_SLIDER);
+  },
+  newSlider: (slider) => {
+    return axiosClientFM.post(PATH_URL.NEW_SLIDER, slider);
+  },
+  deleteSlider: (slider) => {
+    return axiosClient.post(PATH_URL.DELETE_SLIDER, slider);
   },
 };
 

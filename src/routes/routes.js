@@ -28,6 +28,10 @@ import Feeship from "../pages/Feeship/Feeship";
 import Order from "../pages/Order/Order";
 import OrderDetail from "../pages/Order/OrderDetail";
 
+//slider
+import Slider from "../pages/Slider/Slider";
+import SliderNew from "../pages/Slider/SliderNew";
+
 // Products physicaltest
 import Category from "./../components/products/physical/category";
 import Sub_category from "./../components/products/physical/sub-category";
@@ -87,6 +91,8 @@ function Routes() {
             <Route path={path.FEESHIP_LIST} component={Feeship} />
             <Route exact path={path.ORDER_LIST} component={Order} />
             <Route path={path.ORDER_DETAIL + ":code"} component={OrderDetail} />
+            <Route path={path.SLIDER_LIST} component={Slider} />
+            <Route path={path.SLIDER_NEW} component={SliderNew} />
 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

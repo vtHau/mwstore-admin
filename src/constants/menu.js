@@ -86,6 +86,16 @@ export const MENUITEMS = [
     active: false,
     children: [{ path: path.ORDER_LIST, title: "Order List", type: "link" }],
   },
+  {
+    title: "Slider",
+    icon: Users,
+    type: "sub",
+    active: false,
+    children: [
+      { path: path.SLIDER_LIST, title: "Slider List", type: "link" },
+      { path: path.SLIDER_NEW, title: "Slider New", type: "link" },
+    ],
+  },
   // {
   //   title: "User",
   //   icon: UserPlus,

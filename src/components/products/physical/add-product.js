@@ -69,6 +69,10 @@ export class Add_product extends Component {
     reader.readAsDataURL(file);
   }
 
+  handleChangeEdit(e) {
+    console.log(e);
+  }
+
   render() {
     return (
       <Fragment>
@@ -247,7 +251,7 @@ export class Add_product extends Component {
                                 events={{
                                   blur: this.onBlur,
                                   afterPaste: this.afterPaste,
-                                  change: this.onChange,
+                                  change: this.handleChangeEdit,
                                 }}
                               />
                             </div>

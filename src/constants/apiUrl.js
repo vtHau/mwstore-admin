@@ -64,3 +64,9 @@ export const ALL_PRODUCT = BASE_URL_API + "product/all-product";
 
 //visitor
 export const ALL_VISITOR = BASE_URL_API + "visitor/all-visitor";
+
+//post
+export const ALL_POST = BASE_URL_API + "post/all-post";
+export const GET_POST = BASE_URL_API + "post/get-post";
+export const UPDATE_POST = BASE_URL_API + "post/update-post";
+export const DELETE_POST = BASE_URL_API + "post/delete-post";

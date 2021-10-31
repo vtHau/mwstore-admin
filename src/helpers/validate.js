@@ -11,6 +11,16 @@ export const brandValid = Yup.object().shape({
     .required("Please input brand description"),
 });
 
+export const postUpdateValid = Yup.object().shape({
+  product_id: Yup.string().required("Please choose product"),
+  title: Yup.string()
+    .min(2, "Post title short")
+    .required("Please input post title"),
+  content: Yup.string()
+    .min(2, "Post content short")
+    .required("Please input post content"),
+});
+
 export const sliderValid = Yup.object().shape({
   name: Yup.string()
     .min(2, "Brand name short")

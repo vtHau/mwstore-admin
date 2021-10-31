@@ -4,10 +4,10 @@ import visitorApi from "../../apis/visitorApi";
 import response from "../../constants/response";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";
-import CommentItem from "../../components/Comment/CommentItem";
 
 function Visitor() {
   const [visitors, setVisitors] = useState([]);
+
   useTitle("All Visitor");
 
   const fetchAllVisitor = () => {

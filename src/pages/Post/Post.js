@@ -1,61 +1,60 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { Divider } from "antd";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";
-import orderApi from "../../apis/orderApi";
+import postApi from "../../apis/postApi";
 import response from "../../constants/response";
-import OrderItem from "../../components/Order/OrderItem";
+import PostItem from "../../components/Post/PostItem";
 
-function Order() {
-  const [orders, setOrders] = useState([]);
-  useTitle("Order list");
+function Post() {
+  const [posts, setPosts] = useState([]);
 
-  const fetchAllOrder = () => {
-    orderApi
-      .getAllOrder()
+  useTitle("Post list");
+
+  const fetchAllPost = () => {
+    postApi
+      .getAllPost()
       .then((res) => {
-        console.log(res);
         if (res.status === response.SUCCESS) {
-          setOrders(res.orders);
+          setPosts(res.posts);
         }
       })
       .catch((err) => {});
   };
 
   useEffect(() => {
-    fetchAllOrder();
+    fetchAllPost();
   }, []);
 
   return (
     <>
-      <Breadcrumb title="Order List" parent="Order" />
+      <Breadcrumb title="Post List" parent="Post" />
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Order Details</h5>
+            <h5>Post Details</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>
             <div className="product-physical">
-              {orders.length ? (
+              {posts.length ? (
                 <Table className="table-custom">
                   <thead>
                     <tr>
-                      <th>Code Order</th>
-                      <th className="text-left">Name</th>
-                      <th>Email</th>
-                      <th>Time</th>
-                      <th>Status</th>
+                      <th>#</th>
+                      <th className="text-left">Title</th>
+                      <th>Desc</th>
+                      <th>Content</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {orders.map((order, key) => (
-                      <OrderItem
+                    {posts.map((post, key) => (
+                      <PostItem
                         key={key}
-                        order={order}
-                        fetchAllOrder={fetchAllOrder}
+                        index={key + 1}
+                        post={post}
+                        fetchAllPost={fetchAllPost}
                       />
                     ))}
                   </tbody>
@@ -71,4 +70,4 @@ function Order() {
   );
 }
 
-export default Order;
+export default Post;

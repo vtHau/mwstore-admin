@@ -9,10 +9,12 @@ export const path = {
   COMMENT_LIST: "/comment/list-comment",
   COMMENT_NOT_CONFIRM: "/comment/notconfirm-comment",
   FEESHIP_LIST: "/feeship/feeship-list",
-  USER_LIST: "/user/user-list",
   ORDER_LIST: "/order/order-list",
   ORDER_DETAIL: "/order/detail/",
   SLIDER_LIST: "/slider/slider-list/",
   SLIDER_NEW: "/slider/slider-new/",
+  POST_LIST: "/post/list-post/",
+  POST_NEW: "/post/new-post/",
+  POST_EDIT: "/post/edit-post/",
   VISITOR: "/visitor",
 };

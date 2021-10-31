@@ -97,6 +97,16 @@ export const MENUITEMS = [
     ],
   },
   {
+    title: "Post",
+    icon: Users,
+    type: "sub",
+    active: false,
+    children: [
+      { path: path.POST_LIST, title: "Post List", type: "link" },
+      { path: path.POST_NEW, title: "Post New", type: "link" },
+    ],
+  },
+  {
     title: "Visitor",
     path: path.VISITOR,
     icon: BarChart,
@@ -156,16 +166,6 @@ export const MENUITEMS = [
         type: "sub",
         active: false,
         children: [
-          {
-            path: "/products/digital/digital-category",
-            title: "Category",
-            type: "link",
-          },
-          {
-            path: "/products/digital/digital-sub-category",
-            title: "Sub Category",
-            type: "link",
-          },
           {
             path: "/products/digital/digital-product-list",
             title: "Product List",

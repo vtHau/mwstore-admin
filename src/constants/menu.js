@@ -96,6 +96,13 @@ export const MENUITEMS = [
       { path: path.SLIDER_NEW, title: "Slider New", type: "link" },
     ],
   },
+  {
+    title: "Visitor",
+    path: path.VISITOR,
+    icon: BarChart,
+    type: "link",
+    active: false,
+  },
   // {
   //   title: "User",
   //   icon: UserPlus,

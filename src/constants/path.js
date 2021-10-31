@@ -14,4 +14,5 @@ export const path = {
   ORDER_DETAIL: "/order/detail/",
   SLIDER_LIST: "/slider/slider-list/",
   SLIDER_NEW: "/slider/slider-new/",
+  VISITOR: "/visitor",
 };

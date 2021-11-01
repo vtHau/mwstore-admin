@@ -2,84 +2,85 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Button } from "antd";
 import response from "../../constants/response";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "../../helpers/toast";
 import productApi from "../../apis/productApi";
-import sliderApi from "../../apis/sliderApi";
-import { sliderValid } from "../../helpers/validate";
+import { productValid } from "../../helpers/validate";
+import { fetchAllProduct } from "./../../actions/action";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 
-function SliderNew() {
-  const [products, setProducts] = useState([]);
+function ProductNew() {
+  const dispatch = useDispatch();
+  const brands = useSelector((state) => state.brandReducer.brands);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  useTitle("Slider list");
+  useTitle("Product New");
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
       name: "",
-      product_id: (products[0] && products[0].id) || "",
-      show_hide: 1,
+      price: 1000,
+      brand_id: brands[0].id || "",
+      feather: 1,
+      description: "",
       image: null,
     },
-    validationSchema: sliderValid,
+    validationSchema: productValid,
     onSubmit: (value) => {
       setConfirmLoading(true);
-      const slider = new FormData();
 
-      slider.append("name", value.name);
-      slider.append("product_id", value.product_id);
-      slider.append("show_hide", value.show_hide);
-      slider.append("image", value.image);
+      const newProduct = new FormData();
 
-      sliderApi
-        .newSlider(slider)
+      newProduct.append("name", value.name);
+      newProduct.append("price", value.price);
+      newProduct.append("brand_id", value.brand_id);
+      newProduct.append("feather", value.feather);
+      newProduct.append("description", value.description);
+
+      if (value.image) {
+        newProduct.append("image", value.image);
+      }
+
+      productApi
+        .newProduct(newProduct)
         .then((res) => {
           setConfirmLoading(false);
           if (res.status === response.SUCCESS) {
-            toast.success("Success", "Save slider success");
+            dispatch(fetchAllProduct());
+            toast.success("Success", "Save product success");
             return setRedirect(true);
           }
-          return toast.success("Fail", "Save slider fail");
+          return toast.success("Fail", "Save product fail");
         })
         .catch((err) => {
           setConfirmLoading(false);
-          return toast.success("Fail", "Save slider fail");
+          return toast.success("Fail", "Save product fail");
         });
     },
   });
 
-  useEffect(() => {
-    productApi
-      .getAllProduct()
-      .then((res) => {
-        if (res.status === response.SUCCESS) {
-          setProducts(res.products);
-        }
-      })
-      .catch((err) => {});
-  }, []);
-
   if (redirect) {
-    return <Redirect to={path.SLIDER_LIST} />;
+    return <Redirect to={path.PRODUCT_LIST} />;
   }
 
   return (
     <>
-      <Breadcrumb title="Slider New" parent="Slider" />
+      <Breadcrumb title="Product New" parent="Product" />
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Slider new</h5>
+            <h5>Product new</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>
             <div className="product-physical">
               <form className="form-custom" onSubmit={formik.handleSubmit}>
+                <p className="title-section">Update product</p>
                 <div className="digital-add needs-validation">
                   <div className="form-group">
                     <label className="col-form-label pt-0">Name</label>
@@ -90,7 +91,7 @@ function SliderNew() {
                       value={formik.values.name}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      placeholder="Please input slider name..."
+                      placeholder="Please input product name..."
                     />
                     {formik.errors.name && formik.touched.name && (
                       <p className="error-field">{formik.errors.name}</p>
@@ -98,44 +99,80 @@ function SliderNew() {
                   </div>
 
                   <div className="form-group">
-                    <label className="col-form-label pt-0">Product</label>
-                    <select
-                      className="browser-default custom-select"
-                      name="product_id"
-                      value={formik.values.product_id}
+                    <label className="col-form-label pt-0">Price</label>
+                    <input
+                      type="number"
+                      name="price"
+                      className="form-control"
+                      value={formik.values.price}
                       onBlur={formik.handleBlur}
-                      onChange={(e) =>
-                        formik.setFieldValue("product_id", e.target.value)
-                      }
-                    >
-                      {products.map((product, key) => (
-                        <option key={key} value={product.id}>
-                          {product.name}
-                        </option>
-                      ))}
-                    </select>
-                    {formik.errors.product_id && formik.touched.product_id && (
-                      <p className="error-field">{formik.errors.product_id}</p>
+                      onChange={formik.handleChange}
+                      placeholder="Please input product price..."
+                    />
+                    {formik.errors.price && formik.touched.price && (
+                      <p className="error-field">{formik.errors.price}</p>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label className="col-form-label pt-0">Show /Hide</label>
+                    <label className="col-form-label pt-0">Brand</label>
                     <select
                       className="browser-default custom-select"
-                      name="show_hide"
-                      value={formik.values.show_hide}
+                      name="brand_id"
+                      value={formik.values.brand_id}
                       onBlur={formik.handleBlur}
                       onChange={(e) =>
-                        formik.setFieldValue("show_hide", e.target.value)
+                        formik.setFieldValue("brand_id", e.target.value)
                       }
                     >
-                      <option value="1">Show</option>
-                      <option value="0">Hide</option>
+                      {brands.map((brand, key) => (
+                        <option key={key} value={brand.id}>
+                          {brand.name}
+                        </option>
+                      ))}
                     </select>
-                    {formik.errors.show_hide && formik.touched.show_hide && (
-                      <p className="error-field">{formik.errors.show_hide}</p>
+                    {formik.errors.brand_id && formik.touched.brand_id && (
+                      <p className="error-field">{formik.errors.brand_id}</p>
                     )}
+                  </div>
+
+                  <div className="form-group">
+                    <label className="col-form-label pt-0">Feather</label>
+                    <select
+                      className="browser-default custom-select"
+                      name="feather"
+                      value={formik.values.feather}
+                      onBlur={formik.handleBlur}
+                      onChange={(e) =>
+                        formik.setFieldValue("feather", e.target.value)
+                      }
+                    >
+                      <option value="1">Feather</option>
+                      <option value="0">Not Feather</option>
+                    </select>
+                    {formik.errors.feather && formik.touched.feather && (
+                      <p className="error-field">{formik.errors.feather}</p>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label className="col-form-label">Description</label>
+                    <textarea
+                      name="description"
+                      rows="3"
+                      cols="12"
+                      className="form-control"
+                      value={formik.values.description}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      placeholder="Please input brand description..."
+                    ></textarea>
+                    {formik.errors.description &&
+                      formik.touched.description && (
+                        <p className="error-field">
+                          {formik.errors.description}
+                        </p>
+                      )}
                   </div>
 
                   <div className="form-group">
@@ -176,4 +213,4 @@ function SliderNew() {
   );
 }
 
-export default SliderNew;
+export default ProductNew;

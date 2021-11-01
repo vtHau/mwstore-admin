@@ -61,6 +61,7 @@ export const SIGN_OUT = BASE_URL_API + "signout";
 
 //product
 export const ALL_PRODUCT = BASE_URL_API + "product/all-product";
+export const PRODUCT_NOT_POST = BASE_URL_API + "product/not-post";
 
 //visitor
 export const ALL_VISITOR = BASE_URL_API + "visitor/all-visitor";

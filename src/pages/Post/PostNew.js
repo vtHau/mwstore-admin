@@ -49,7 +49,7 @@ function PostNew() {
 
   useEffect(() => {
     productApi
-      .getAllProduct()
+      .getProductNotPost()
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setProducts(res.products);

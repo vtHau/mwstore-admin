@@ -5,6 +5,9 @@ const productApi = {
   getAllProduct: () => {
     return axiosClient.get(PATH_URL.ALL_PRODUCT);
   },
+  getProductNotPost: () => {
+    return axiosClient.get(PATH_URL.PRODUCT_NOT_POST);
+  },
 };
 
 export default productApi;

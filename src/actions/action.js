@@ -4,7 +4,7 @@ import brandApi from "./../apis/brandApi";
 import couponApi from "./../apis/couponApi";
 import userApi from "./../apis/userApi";
 import addressApi from "./../apis/addressApi";
-// import cartApi from "./../apis/cartApi";
+import productApi from "./../apis/productApi";
 // import orderApi from "./../apis/orderApi";
 
 export const fetchAllBrand = () => {
@@ -83,6 +83,26 @@ export const fetchAllAddress = () => {
 export const initAddress = (values) => {
   return {
     type: types.INIT_ADDRESS,
+    payload: values,
+  };
+};
+
+export const fetchAllProduct = () => {
+  return (dispatch) => {
+    productApi
+      .getAllProduct()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          dispatch(initProduct(res));
+        }
+      })
+      .catch((err) => {});
+  };
+};
+
+export const initProduct = (values) => {
+  return {
+    type: types.INIT_PRODUCT,
     payload: values,
   };
 };

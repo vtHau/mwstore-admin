@@ -44,6 +44,16 @@ export const MENUITEMS = [
     ],
   },
   {
+    title: "Product",
+    icon: Box,
+    type: "sub",
+    active: false,
+    children: [
+      { path: path.PRODUCT_LIST, title: "Product List", type: "link" },
+      { path: path.PRODUCT_NEW, title: "Product New", type: "link" },
+    ],
+  },
+  {
     title: "Coupon",
     icon: DollarSign,
     type: "sub",
@@ -106,6 +116,7 @@ export const MENUITEMS = [
       { path: path.POST_NEW, title: "Post New", type: "link" },
     ],
   },
+
   {
     title: "Visitor",
     path: path.VISITOR,

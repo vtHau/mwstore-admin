@@ -3,6 +3,7 @@ import { ScrollContext } from "react-router-scroll-4";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { path } from "./../constants/path";
 import App from "./../App";
+
 // Components
 import Home from "./../pages/Home";
 
@@ -40,16 +41,13 @@ import Post from "../pages/Post/Post";
 import PostEdit from "../pages/Post/PostEdit";
 import PostNew from "../pages/Post/PostNew";
 
-// Products physicaltest
-import Category from "./../components/products/physical/category";
-import Sub_category from "./../components/products/physical/sub-category";
-import Product_list from "./../components/products/physical/product-list";
-import Add_product from "./../components/products/physical/add-product";
-import Product_detail from "./../components/products/physical/product-detail";
+//product
+import Product from "../pages/Product/Product";
+import ProductNew from "../pages/Product/ProductNew";
 
-//Product Digital
-import Digital_pro_list from "./../components/products/digital/digital-pro-list";
-import Digital_add_pro from "./../components/products/digital/digital-add-pro";
+// Products physicaltest
+import Product_list from "./../components/products/physical/product-list";
+import Product_detail from "./../components/products/physical/product-detail";
 
 //Sales
 import Orders from "./../components/sales/orders";
@@ -102,6 +100,8 @@ function Routes() {
             <Route path={path.POST_LIST} component={Post} />
             <Route path={path.POST_EDIT + ":id"} component={PostEdit} />
             <Route path={path.POST_NEW} component={PostNew} />
+            <Route path={path.PRODUCT_LIST} component={Product} />
+            <Route path={path.PRODUCT_NEW} component={ProductNew} />
             {/* 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

@@ -1,4 +1,28 @@
 import * as Yup from "yup";
+export function checkIfFilesAreTooBig(files) {
+  let valid = true;
+  if (files) {
+    files.map((file) => {
+      const size = file.size / 1024 / 1024;
+      if (size > 10) {
+        valid = false;
+      }
+    });
+  }
+  return valid;
+}
+
+export function checkIfFilesAreCorrectType(files) {
+  let valid = true;
+  if (files) {
+    files.map((file) => {
+      if (!["application/pdf", "image/jpeg", "image/png"].includes(file.type)) {
+        valid = false;
+      }
+    });
+  }
+  return valid;
+}
 
 export const brandValid = Yup.object().shape({
   name: Yup.string()
@@ -19,6 +43,28 @@ export const postUpdateValid = Yup.object().shape({
   content: Yup.string()
     .min(2, "Post content short")
     .required("Please input post content"),
+});
+
+export const galleryValid = Yup.object().shape({
+  image: Yup.mixed()
+    .required("Please input file")
+    .test("fileSize", "File Size  is too large", (files) => {
+      let valid = true;
+      for (const file of files) {
+        valid = file === null || (file && file.size <= 1000000);
+      }
+      return valid;
+    })
+    .test("fileType", "Unsupported File Format", (files) => {
+      let valid = true;
+      for (const file of files) {
+        valid =
+          file === null ||
+          (file &&
+            ["image/jpeg", "image/jpg", "image/png"].includes(file.type));
+      }
+      return valid;
+    }),
 });
 
 export const sliderValid = Yup.object().shape({

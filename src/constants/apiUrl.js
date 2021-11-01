@@ -69,6 +69,11 @@ export const PRODUCT_NOT_POST = BASE_URL_API + "product/not-post";
 //visitor
 export const ALL_VISITOR = BASE_URL_API + "visitor/all-visitor";
 
+//gallery
+export const GALLERY_PRODUCT = BASE_URL_API + "gallery/gallery-product";
+export const NEW_GALLERY = BASE_URL_API + "gallery/new-gallery";
+export const DELETE_GALLERY = BASE_URL_API + "gallery/delete-gallery";
+
 //post
 export const ALL_POST = BASE_URL_API + "post/all-post";
 export const GET_POST = BASE_URL_API + "post/get-post";

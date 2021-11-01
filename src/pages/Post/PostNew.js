@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 import { Button } from "antd";
 import { useFormik } from "formik";
 import { Redirect } from "react-router-dom";
-import { postUpdateValid } from "./../../helpers/validate";
+import { postUpdateValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";
 import productApi from "../../apis/productApi";

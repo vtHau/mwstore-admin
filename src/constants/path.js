@@ -19,4 +19,5 @@ export const path = {
   VISITOR: "/visitor",
   PRODUCT_LIST: "/product/list-product/",
   PRODUCT_NEW: "/product/new-product/",
+  GALLERY_DETAIL: "/gallery/detail/",
 };

@@ -156,6 +156,7 @@ function SliderNew() {
                       )}
                     </div>
                   </div>
+                  
                 </div>
                 <div className="submit-box">
                   <Button

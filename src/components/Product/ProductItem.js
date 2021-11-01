@@ -9,6 +9,8 @@ import toast from "../../helpers/toast";
 import { formatPrice, formatString } from "../../helpers/formats";
 import ProductEditModal from "./ProductEditModal";
 import { useDispatch } from "react-redux";
+import { path } from "../../constants/path";
+import { Link } from "react-router-dom";
 
 function SliderItem(props) {
   const { index, product } = props;
@@ -71,6 +73,16 @@ function SliderItem(props) {
       </td>
       <td>
         <div className="btn-group">
+          <Button type="primary">
+            <Link
+              to={{
+                pathname: path.GALLERY_DETAIL + product.id,
+                state: { productName: product.name },
+              }}
+            >
+              Gallery
+            </Link>
+          </Button>
           <Button type="primary" onClick={toggleModal}>
             Edit
           </Button>

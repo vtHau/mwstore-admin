@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Popconfirm } from "antd";
+import { Modal, Popconfirm, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
@@ -59,12 +59,12 @@ function CouponItem(props) {
       </td>
       <td className="text-center text-muted">
         <div className="btn-group">
-          <button className="btn btn-success" onClick={toggleSendCoupon}>
+          <Button type="primary" onClick={toggleSendCoupon}>
             Send
-          </button>
-          <button className="btn btn-primary" onClick={toggleModal}>
+          </Button>
+          <Button type="primary" onClick={toggleModal}>
             Edit
-          </button>
+          </Button>
           <Popconfirm
             title="Bạn có thật sự muốn xóa ?"
             visible={openPop}
@@ -74,13 +74,9 @@ function CouponItem(props) {
             okText="Có chứ"
             cancelText="Không nha"
           >
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={togglePop}
-            >
+            <Button type="danger" onClick={togglePop}>
               Delete
-            </button>
+            </Button>
           </Popconfirm>
         </div>
       </td>

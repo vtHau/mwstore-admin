@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { useFormik } from "formik";
-import { isEmpty, values } from "lodash";
+import { values } from "lodash";
 import { Table } from "react-bootstrap";
-import { useParams, Redirect, useLocation } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { galleryValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";

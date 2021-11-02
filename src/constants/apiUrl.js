@@ -79,3 +79,13 @@ export const ALL_POST = BASE_URL_API + "post/all-post";
 export const GET_POST = BASE_URL_API + "post/get-post";
 export const UPDATE_POST = BASE_URL_API + "post/update-post";
 export const DELETE_POST = BASE_URL_API + "post/delete-post";
+
+//export
+export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";
+export const EXPORT_EXCEL_USER = BASE_URL_API + "export/user";
+export const EXPORT_EXCEL_COUPON = BASE_URL_API + "export/coupon";
+export const EXPORT_EXCEL_VISITOR = BASE_URL_API + "export/visitor";
+
+//import
+export const IMPORT_EXCEL_BRAND = BASE_URL_API + "import/brand";
+export const IMPORT_EXCEL_COUPON = BASE_URL_API + "import/coupon";

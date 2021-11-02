@@ -4,6 +4,9 @@ import visitorApi from "../../apis/visitorApi";
 import response from "../../constants/response";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/common/breadcrumb";
+import { Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
+import * as PATH_URL from "../../constants/apiUrl";
 
 function Visitor() {
   const [visitors, setVisitors] = useState([]);
@@ -70,6 +73,19 @@ function Visitor() {
               ) : (
                 <h6 className="no-item">No item to show</h6>
               )}
+            </div>
+            <div className="pull-right import-export">
+              <Button
+                type="primary"
+                shape="round"
+                size="large"
+                icon={<DownloadOutlined />}
+                onClick={() => {
+                  return window.open(PATH_URL.EXPORT_EXCEL_VISITOR);
+                }}
+              >
+                Export Excel
+              </Button>
             </div>
           </div>
         </div>

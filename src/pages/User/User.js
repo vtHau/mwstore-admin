@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import useTitle from "../../hooks/useTitle";
 import response from "../../constants/response";
+import * as PATH_URL from "../../constants/apiUrl";
 import UserItem from "./../../components/User/UserItem";
 import Breadcrumb from "../../components/common/breadcrumb";
 
@@ -40,6 +43,20 @@ function User() {
                   ))}
                 </tbody>
               </Table>
+            </div>
+
+            <div className="pull-right import-export">
+              <Button
+                type="primary"
+                shape="round"
+                size="large"
+                icon={<DownloadOutlined />}
+                onClick={() => {
+                  return window.open(PATH_URL.EXPORT_EXCEL_USER);
+                }}
+              >
+                Export Excel
+              </Button>
             </div>
           </div>
         </div>

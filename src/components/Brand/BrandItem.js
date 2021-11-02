@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Popconfirm } from "antd";
+import { Popconfirm, Button } from "antd";
 import { useDispatch } from "react-redux";
 import brandApi from "../../apis/brandApi";
 import { fetchAllBrand } from "./../../actions/action";
@@ -43,13 +43,9 @@ function BrandItem(props) {
       <td>{brand.description}</td>
       <td>
         <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={toggleModal}
-          >
+          <Button type="primary" onClick={toggleModal}>
             Edit
-          </button>
+          </Button>
           <Popconfirm
             title="Bạn có thật sự muốn xóa ?"
             visible={openPop}
@@ -59,13 +55,9 @@ function BrandItem(props) {
             okText="Có chứ"
             cancelText="Không nha"
           >
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={togglePop}
-            >
+            <Button type="danger" onClick={togglePop}>
               Delete
-            </button>
+            </Button>
           </Popconfirm>
         </div>
       </td>

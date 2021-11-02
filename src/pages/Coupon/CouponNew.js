@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "antd";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
@@ -19,7 +19,7 @@ function CouponNew() {
   const dispatch = useDispatch();
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate] = useState(new Date());
 
   useTitle("Coupon new");
 

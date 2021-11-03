@@ -48,6 +48,9 @@ import ProductNew from "../pages/Product/ProductNew";
 //product
 import Gallery from "../pages/Gallery/Gallery";
 
+//statistic
+import Statistic from "../pages/Statistic/Statistic";
+
 // Products physicaltest
 import Product_list from "./../components/products/physical/product-list";
 import Product_detail from "./../components/products/physical/product-detail";
@@ -106,6 +109,8 @@ function Routes() {
             <Route path={path.PRODUCT_LIST} component={Product} />
             <Route path={path.PRODUCT_NEW} component={ProductNew} />
             <Route path={path.GALLERY_DETAIL + ":id"} component={Gallery} />
+            <Route path={path.STATISTIC} component={Statistic} />
+
             {/* 
             <Route
               path={`${process.env.PUBLIC_URL}/products/physical/category`}

@@ -326,6 +326,10 @@ function Home() {
               </div>
             </div>
           </div>
+
+
+
+
           <div className="col-xl-3 col-md-6 xl-50">
             <div className="card order-graph sales-carousel">
               <div className="card-header">

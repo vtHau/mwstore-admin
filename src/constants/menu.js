@@ -83,6 +83,13 @@ export const MENUITEMS = [
     ],
   },
   {
+    title: "Statistic",
+    path: path.STATISTIC,
+    icon: BarChart,
+    type: "link",
+    active: false,
+  },
+  {
     title: "User",
     icon: Users,
     type: "sub",

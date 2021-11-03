@@ -80,6 +80,9 @@ export const GET_POST = BASE_URL_API + "post/get-post";
 export const UPDATE_POST = BASE_URL_API + "post/update-post";
 export const DELETE_POST = BASE_URL_API + "post/delete-post";
 
+//statistic
+export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";
+
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";
 export const EXPORT_EXCEL_USER = BASE_URL_API + "export/user";

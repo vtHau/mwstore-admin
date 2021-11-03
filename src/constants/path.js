@@ -17,6 +17,7 @@ export const path = {
   POST_NEW: "/post/new-post/",
   POST_EDIT: "/post/edit-post/",
   VISITOR: "/visitor",
+  STATISTIC: "/statistic",
   PRODUCT_LIST: "/product/list-product/",
   PRODUCT_NEW: "/product/new-product/",
   GALLERY_DETAIL: "/gallery/detail/",

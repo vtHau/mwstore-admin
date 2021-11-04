@@ -8,6 +8,9 @@ const statisticApi = {
   filterDate: (date) => {
     return axiosClient.post(PATH_URL.FILTER_DATE, date);
   },
+  filterOther: (date) => {
+    return axiosClient.post(PATH_URL.FILTER_OTHER, date);
+  },
 };
 
 export default statisticApi;

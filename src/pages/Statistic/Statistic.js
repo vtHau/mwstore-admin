@@ -106,7 +106,7 @@ function Statistic() {
 
   useEffect(() => {
     statisticApi
-      .getStatistic()
+      .filterOther({ date_filter: "TODAY" })
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setStatistics(handleDataStatistic(res.data));
@@ -147,7 +147,14 @@ function Statistic() {
   };
 
   const handleChangeFilter = (e) => {
-    console.log(e.target.value);
+    statisticApi
+      .filterOther({ date_filter: e.target.value })
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setStatistics(handleDataStatistic(res.data));
+        }
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -286,9 +293,13 @@ function Statistic() {
                           className="browser-default custom-select"
                           onChange={handleChangeFilter}
                         >
-                          <option value="1">Today</option>
-                          <option value="12">Todayy</option>
-                          <option value="1232">Todayy</option>
+                          <option value="TODAY">Today</option>
+                          <option value="YESTERDAY">Yesterday</option>
+                          <option value="LAST_FIVE_DAYS">Last five days</option>
+                          <option value="LAST_TEN_DAYS">Last ten days</option>
+                          <option value="LAST_ONE_WEEK">Last one week</option>
+                          <option value="LAST_ONE_MONTH">Last one month</option>
+                          <option value="LAST_ONE_YEAR">Last one year</option>
                         </select>
                       </div>
                     </div>

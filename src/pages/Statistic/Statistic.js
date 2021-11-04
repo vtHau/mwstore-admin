@@ -10,6 +10,7 @@ import {
   ShoppingCart,
   Calendar,
 } from "react-feather";
+import moment from "moment";
 import CountUp from "react-countup";
 import { Chart } from "react-google-charts";
 import DatePicker from "react-datepicker";
@@ -99,8 +100,8 @@ const lineOptions = {
 
 function Statistic() {
   const [statistics, setStatistics] = useState({});
-  const [start_filter, setStartFilter] = useState(new Date());
-  const [end_filter, setEndFilter] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [errorDay, setErrorDay] = useState(false);
 
   useEffect(() => {
@@ -116,18 +117,32 @@ function Statistic() {
 
   const handleChangeDate = (date, type) => {
     let isValid = true;
+    let startFilter, endFilter;
+
     if (type === "START_FILTER") {
-      setStartFilter(date);
-      isValid = date < end_filter;
+      setStartDate(date);
+      isValid = date < endDate;
+      startFilter = moment(date).format("YYYY-MM-DD").toString();
+      endFilter = moment(endDate).format("YYYY-MM-DD").toString();
     }
+
     if (type === "END_FILTER") {
-      setEndFilter(date);
-      isValid = date > start_filter;
+      setEndDate(date);
+      isValid = date > startDate;
+      startFilter = moment(startDate).format("YYYY-MM-DD").toString();
+      endFilter = moment(date).format("YYYY-MM-DD").toString();
     }
     setErrorDay(!isValid);
 
     if (isValid) {
-      console.log("holop ne");
+      statisticApi
+        .filterDate({ start_date: startFilter, end_date: endFilter })
+        .then((res) => {
+          if (res.status === response.SUCCESS) {
+            setStatistics(handleDataStatistic(res.data));
+          }
+        })
+        .catch((err) => {});
     }
   };
 
@@ -236,7 +251,7 @@ function Statistic() {
                         <DatePicker
                           name="start_filter"
                           className="form-control"
-                          selected={start_filter}
+                          selected={startDate}
                           dateFormat="yyyy-MM-dd"
                           onChange={(date) =>
                             handleChangeDate(date, "START_FILTER")
@@ -253,7 +268,7 @@ function Statistic() {
                         <DatePicker
                           name="end_filter"
                           className="form-control"
-                          selected={end_filter}
+                          selected={endDate}
                           dateFormat="yyyy-MM-dd"
                           onChange={(date) =>
                             handleChangeDate(date, "END_FILTER")

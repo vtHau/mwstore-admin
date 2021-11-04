@@ -82,6 +82,7 @@ export const DELETE_POST = BASE_URL_API + "post/delete-post";
 
 //statistic
 export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";
+export const FILTER_DATE = BASE_URL_API + "statistic/filter-date";
 
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";

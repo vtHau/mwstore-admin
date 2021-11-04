@@ -5,6 +5,9 @@ const statisticApi = {
   getStatistic: () => {
     return axiosClient.post(PATH_URL.GET_STATISTIC);
   },
+  filterDate: (date) => {
+    return axiosClient.post(PATH_URL.FILTER_DATE, date);
+  },
 };
 
 export default statisticApi;

@@ -15,7 +15,6 @@ function Order() {
     orderApi
       .getAllOrder()
       .then((res) => {
-        console.log(res);
         if (res.status === response.SUCCESS) {
           setOrders(res.orders);
         }

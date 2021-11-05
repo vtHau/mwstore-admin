@@ -10,6 +10,8 @@ import {
   ShoppingCart,
   Calendar,
 } from "react-feather";
+import { isEmpty } from "lodash";
+import { Table } from "react-bootstrap";
 import moment from "moment";
 import CountUp from "react-countup";
 import { Chart } from "react-google-charts";
@@ -29,6 +31,7 @@ import man from "../../assets/images/dashboard/man.png";
 import user from "../../assets/images/dashboard/user.png";
 import designer from "../../assets/images/dashboard/designer.jpg";
 import statisticApi from "../../apis/statisticApi";
+import visitorApi from "../../apis/visitorApi";
 
 const handleDataStatistic = (data) => {
   const { date, sale, profit, quantity, total } = data;
@@ -101,6 +104,7 @@ const lineOptions = {
 function Statistic() {
   const [statistics, setStatistics] = useState({});
   const [startDate, setStartDate] = useState(new Date());
+  const [visitor, setVisitor] = useState({});
   const [endDate, setEndDate] = useState(new Date());
   const [errorDay, setErrorDay] = useState(false);
 
@@ -110,6 +114,15 @@ function Statistic() {
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setStatistics(handleDataStatistic(res.data));
+        }
+      })
+      .catch((err) => {});
+
+    visitorApi
+      .getCountVisitor()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setVisitor(res.data);
         }
       })
       .catch((err) => {});
@@ -242,7 +255,6 @@ function Statistic() {
               </div>
             </div>
           </div>
-
           <div className="col-12 xl-100">
             <div className="card">
               <div className="card-header">
@@ -317,6 +329,42 @@ function Statistic() {
             </div>
           </div>
         </div>
+        {!isEmpty(visitor) && (
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-header">
+                  <h5>Visitor Details</h5>
+                </div>
+                <div className="card-body">
+                  <div className="clearfix"></div>
+                  <div className="product-physical">
+                    <Table className="table-custom">
+                      <thead>
+                        <tr>
+                          <th>Today</th>
+                          <th>Last Week</th>
+                          <th>Last Month</th>
+                          <th>Last Year</th>
+                          <th>All</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{visitor.today}</td>
+                          <td>{visitor.week}</td>
+                          <td>{visitor.month}</td>
+                          <td>{visitor.year}</td>
+                          <td>{visitor.all}</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

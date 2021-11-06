@@ -1,8 +1,9 @@
 import React from "react";
 
-function ProductLink({ name, slug }) {
+function ProductLink({ name, slug, className }) {
   return (
     <a
+      className={className || ""}
       href={`${process.env.REACT_APP_BASE_URL_USER}product/${slug}`}
       target="_blank"
     >

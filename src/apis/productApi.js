@@ -5,6 +5,9 @@ const productApi = {
   getAllProduct: () => {
     return axiosClient.get(PATH_URL.ALL_PRODUCT);
   },
+  getTopProduct: () => {
+    return axiosClient.get(PATH_URL.TOP_PRODUCT);
+  },
   newProduct: (product) => {
     return axiosClient.post(PATH_URL.NEW_PRODUCT, product);
   },

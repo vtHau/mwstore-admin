@@ -61,6 +61,7 @@ export const SIGN_OUT = BASE_URL_API + "signout";
 
 //product
 export const ALL_PRODUCT = BASE_URL_API + "product/all-product";
+export const TOP_PRODUCT = BASE_URL_API + "product/top-product";
 export const NEW_PRODUCT = BASE_URL_API + "product/new-product";
 export const UPDATE_PRODUCT = BASE_URL_API + "product/update-product";
 export const DELETE_PRODUCT = BASE_URL_API + "product/delete-product";
@@ -85,6 +86,7 @@ export const DELETE_POST = BASE_URL_API + "post/delete-post";
 export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";
 export const FILTER_DATE = BASE_URL_API + "statistic/filter-date";
 export const FILTER_OTHER = BASE_URL_API + "statistic/filter-other";
+export const COUNT_GENERAL = BASE_URL_API + "statistic/count-general";
 
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";

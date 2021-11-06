@@ -16,7 +16,7 @@ import moment from "moment";
 import CountUp from "react-countup";
 import { Chart } from "react-google-charts";
 import DatePicker from "react-datepicker";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 import response from "../../constants/response";
 import {
   // lineOptions,
@@ -30,8 +30,10 @@ import user1 from "../../assets/images/dashboard/user1.jpg";
 import man from "../../assets/images/dashboard/man.png";
 import user from "../../assets/images/dashboard/user.png";
 import designer from "../../assets/images/dashboard/designer.jpg";
+import ProductLink from "./../../components/ProductLink";
 import statisticApi from "../../apis/statisticApi";
 import visitorApi from "../../apis/visitorApi";
+import productApi from "../../apis/productApi";
 
 const handleDataStatistic = (data) => {
   const { date, sale, profit, quantity, total } = data;
@@ -101,10 +103,39 @@ const lineOptions = {
   },
 };
 
+const doughnut = {
+  labels: ["Brand ", "Product ", "Coupon ", "User ", "Order ", "Comment "],
+  datasets: [
+    {
+      label: "# of Votes",
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(255, 159, 64, 1)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
 function Statistic() {
   const [statistics, setStatistics] = useState({});
   const [startDate, setStartDate] = useState(new Date());
+  const [products, setProducts] = useState([]);
   const [visitor, setVisitor] = useState({});
+  const [dataDoughnut, setDataDoughnut] = useState({});
   const [endDate, setEndDate] = useState(new Date());
   const [errorDay, setErrorDay] = useState(false);
 
@@ -123,6 +154,26 @@ function Statistic() {
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setVisitor(res.data);
+        }
+      })
+      .catch((err) => {});
+
+    statisticApi
+      .countGeneral()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          const newData = doughnut;
+          newData.datasets[0].data = res.data;
+          setDataDoughnut(newData);
+        }
+      })
+      .catch((err) => {});
+
+    productApi
+      .getTopProduct()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setProducts(res.data);
         }
       })
       .catch((err) => {});
@@ -258,7 +309,7 @@ function Statistic() {
           <div className="col-12 xl-100">
             <div className="card">
               <div className="card-header">
-                <h5>Statistic order</h5>
+                <h5>Order Detail</h5>
               </div>
 
               <div className="card-body">
@@ -365,6 +416,39 @@ function Statistic() {
             </div>
           </div>
         )}
+        <div className="row">
+          <div className="col-6">
+            <div className="card">
+              <div className="card-header">
+                <h5>General Details</h5>
+              </div>
+              <div className="card-body">
+                <Doughnut height={200} data={dataDoughnut} />
+              </div>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="card">
+              <div className="card-header">
+                <h5>Top product view</h5>
+              </div>
+              <div className="card-body">
+                <ul class="list-group">
+                  {products.map((product, key) => (
+                    <a
+                      key={key}
+                      className="list-group-item list-group-item-action"
+                      href={`${process.env.REACT_APP_BASE_URL_USER}product/${product.slug}`}
+                      target="_blank"
+                    >
+                      {product.name} - {product.visit} <i class="fa fa-eye"></i>
+                    </a>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

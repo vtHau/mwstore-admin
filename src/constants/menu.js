@@ -123,7 +123,14 @@ export const MENUITEMS = [
       { path: path.POST_NEW, title: "Post New", type: "link" },
     ],
   },
-
+  {
+    path: path.PROFILE,
+    title: "Profile",
+    icon: Home,
+    type: "link",
+    badgeType: "primary",
+    active: false,
+  },
   {
     title: "Visitor",
     path: path.VISITOR,

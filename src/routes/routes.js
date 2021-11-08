@@ -50,6 +50,9 @@ import Gallery from "../pages/Gallery/Gallery";
 //statistic
 import Statistic from "../pages/Statistic/Statistic";
 
+//profile
+import Profile from "../pages/Profile/Profile";
+
 // Products physicaltest
 import Product_list from "../components/products/physical/product-list";
 import Product_detail from "../components/products/physical/product-detail";
@@ -72,7 +75,6 @@ import Create_vendors from "../components/vendors/create.vendors";
 import Translations from "../components/localization/translations";
 import Rates from "../components/localization/rates";
 import Taxes from "../components/localization/taxes";
-import Profile from "../components/settings/profile";
 import Reports from "../components/reports/report";
 import Invoice from "../components/invoice";
 import Datatable from "../components/common/datatable";
@@ -101,7 +103,8 @@ function Routes() {
       <Route path={path.PRODUCT_NEW} component={ProductNew} />
       <Route path={path.GALLERY_DETAIL + ":id"} component={Gallery} />
       <Route path={path.STATISTIC} component={Statistic} />
-      <Route
+      <Route path={path.PROFILE} component={Profile} />
+      {/* <Route
         path={`${process.env.PUBLIC_URL}/products/physical/product-list`}
         component={Product_list}
       />
@@ -172,19 +175,19 @@ function Routes() {
       <Route
         path={`${process.env.PUBLIC_URL}/reports/report`}
         component={Reports}
-      />
+      /> */}
 
-      <Route
+      {/* <Route
         path={`${process.env.PUBLIC_URL}/settings/profile`}
         component={Profile}
-      />
+      /> */}
 
-      <Route path={`${process.env.PUBLIC_URL}/invoice`} component={Invoice} />
+      {/* <Route path={`${process.env.PUBLIC_URL}/invoice`} component={Invoice} />
 
       <Route
         path={`${process.env.PUBLIC_URL}/data-table`}
         component={Datatable}
-      />
+      /> */}
     </>
   );
 }

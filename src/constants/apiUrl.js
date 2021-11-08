@@ -5,6 +5,7 @@ export const BASE_URL_IMAGE = BASE_URL + "admins/uploads/";
 
 //image
 export const AVATAR_IMAGE = BASE_URL_IMAGE + "avatars/";
+export const ADMIN_AVATAR_IMAGE = BASE_URL + "admins/img/avatars/";
 export const SLIDER_IMAGE = BASE_URL_IMAGE + "sliders/";
 export const PRODUCT_IMAGE = BASE_URL_IMAGE + "products/";
 export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";

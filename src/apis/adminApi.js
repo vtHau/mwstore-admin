@@ -12,10 +12,11 @@ const adminApi = {
       return axiosClient.post(PATH_URL.SIGN_IN, value);
     });
   },
+  updateProfile: (value) => {
+    return axiosClient.post(PATH_URL.UPDATE_PROFILE, value);
+  },
   signOut: () => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.post(PATH_URL.SIGN_OUT);
-    });
+    return axiosClient.post(PATH_URL.SIGN_OUT);
   },
   // signInSocial: (social) => {
   //   return axiosClient.get(PATH_URL.SIGN_IN_SOCIAL + social);

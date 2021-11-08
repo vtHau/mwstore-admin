@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import useToggle from "./../../hooks/useToggle";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
+import ProfileEditModal from "./../../components/Profile/ProfileEditModal";
 import { User } from "react-feather";
+import { authToken } from "./../../actions/action";
 
 function Tabset_profile() {
   const admin = useSelector((state) => state.adminReducer.admin);
+  const [openModal, toggleModal] = useToggle(false);
 
   return (
     <div>
@@ -40,10 +44,18 @@ function Tabset_profile() {
                   </tr>
                 </tbody>
               </table>
+              <div className="btn btn-primary ml-2" onClick={toggleModal}>
+                Edit
+              </div>
             </div>
           </div>
         </TabPanel>
       </Tabs>
+      <ProfileEditModal
+        admin={admin}
+        openModal={openModal}
+        toggleModal={toggleModal}
+      />
     </div>
   );
 }

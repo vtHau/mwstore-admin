@@ -35,6 +35,17 @@ export const brandValid = Yup.object().shape({
     .required("Please input brand description"),
 });
 
+export const adminUpdateValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Brand name short")
+    .max(50, "Brand name long")
+    .required("Please input brand name"),
+  description: Yup.string()
+    .min(2, "Brand description short")
+    .max(50, "Brand description long")
+    .required("Please input brand description"),
+});
+
 export const postUpdateValid = Yup.object().shape({
   product_id: Yup.string().required("Please choose product"),
   title: Yup.string()

@@ -2,43 +2,42 @@ import React, { useState } from "react";
 import { Modal, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { brandValid } from "./../../helpers/validate";
-import brandApi from "../../apis/brandApi";
-import { fetchAllBrand } from "./../../actions/action";
+import { adminUpdateValid } from "../../helpers/validate";
+import { authToken } from "../../actions/action";
 import response from "../../constants/response";
-import toast from "./../../helpers/toast";
+import toast from "../../helpers/toast";
+import adminApi from "../../apis/adminApi";
 
-function BrandEditModal(props) {
-  const { brand, openModal, toggleModal } = props;
+function ProfileEditModal(props) {
+  const { admin, openModal, toggleModal } = props;
   const dispatch = useDispatch();
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: brand.name || "",
-      description: brand.description || "",
+      name: admin.name || "",
+      description: admin.description || "",
     },
-    validationSchema: brandValid,
+    validationSchema: adminUpdateValid,
     onSubmit: (value) => {
-      value.id = brand.id;
       setConfirmLoading(true);
 
-      brandApi
-        .updateBrand(value)
+      adminApi
+        .updateProfile(value)
         .then((res) => {
           toggleModal();
           setConfirmLoading(false);
           if (res.status === response.SUCCESS) {
-            dispatch(fetchAllBrand());
-            return toast.success("Success", "Update brand success");
+            dispatch(authToken());
+            return toast.success("Success", "Update profile success");
           }
-          return toast.success("Fail", "Update brand fail");
+          return toast.success("Fail", "Update profile fail");
         })
         .catch((err) => {
           toggleModal();
           setConfirmLoading(false);
-          return toast.success("Fail", "Update brand fail");
+          return toast.success("Fail", "Update profile fail");
         });
     },
   });
@@ -51,7 +50,7 @@ function BrandEditModal(props) {
       footer={null}
     >
       <form className="form-custom" onSubmit={formik.handleSubmit}>
-        <p className="title-section">Update brand</p>
+        <p className="title-section">Update admin</p>
         <div className="digital-add needs-validation">
           <div className="form-group">
             <label className="col-form-label pt-0">Name</label>
@@ -70,16 +69,15 @@ function BrandEditModal(props) {
           </div>
           <div className="form-group">
             <label className="col-form-label">Description</label>
-            <textarea
+            <input
+              type="text"
               name="description"
-              rows="4"
-              cols="12"
               className="form-control"
               value={formik.values.description}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              placeholder="Please input brand description..."
-            ></textarea>
+              placeholder="Please input brand name..."
+            />
             {formik.errors.description && formik.touched.description && (
               <p className="error-field">{formik.errors.description}</p>
             )}
@@ -100,4 +98,4 @@ function BrandEditModal(props) {
   );
 }
 
-export default BrandEditModal;
+export default ProfileEditModal;

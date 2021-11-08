@@ -5,7 +5,7 @@ import couponApi from "./../apis/couponApi";
 import userApi from "./../apis/userApi";
 import addressApi from "./../apis/addressApi";
 import productApi from "./../apis/productApi";
-// import orderApi from "./../apis/orderApi";
+import adminApi from "./../apis/adminApi";
 
 export const fetchAllBrand = () => {
   return (dispatch) => {
@@ -107,63 +107,54 @@ export const initProduct = (values) => {
   };
 };
 
-// export const authToken = (setIsLoading) => {
-//   return (dispatch) => {
-//     userApi
-//       .authToken()
-//       .then((res) => {
-//         if (res.status === response.AUTH_SUCCESS) {
-//           dispatch(signIn(res));
-//           dispatch(getCart());
-//           dispatch(getOrder());
-//           dispatch(getAddress());
-//         } else {
-//           dispatch(signOut());
-//           dispatch(deleteAllCart());
-//           dispatch(deleteAllOrder());
-//         }
-//         if (setIsLoading !== undefined) {
-//           setIsLoading(true);
-//         }
-//       })
-//       .catch((err) => {
-//         dispatch(signOut());
-//         dispatch(deleteAllCart());
-//         dispatch(deleteAllOrder());
-//         if (setIsLoading !== undefined) {
-//           setIsLoading(true);
-//         }
-//       });
-//   };
-// };
+export const authToken = (setIsLoading) => {
+  return (dispatch) => {
+    adminApi
+      .authToken()
+      .then((res) => {
+        if (res.status === response.AUTH_SUCCESS) {
+          dispatch(signIn(res));
+        } else {
+          dispatch(signOut());
+        }
+        if (setIsLoading !== undefined) {
+          setIsLoading(true);
+        }
+      })
+      .catch((err) => {
+        dispatch(signOut());
+        if (setIsLoading !== undefined) {
+          setIsLoading(true);
+        }
+      });
+  };
+};
 
-// export const signIn = (data) => {
-//   return {
-//     type: types.SIGN_IN,
-//     payload: data,
-//   };
-// };
+export const signIn = (data) => {
+  return {
+    type: types.SIGN_IN,
+    payload: data,
+  };
+};
 
-// export const signOutReq = () => {
-//   return (dispatch) => {
-//     userApi
-//       .signOut()
-//       .then((res) => {
-//         if (res.status === response.SIGN_OUT_SUCCESS) {
-//           dispatch(signOut());
-//           dispatch(deleteAllCart());
-//           dispatch(deleteAllOrder());
-//         }
-//       })
-//       .catch((err) => {});
-//   };
-// };
+export const signOutReq = () => {
+  return (dispatch) => {
+    adminApi
+      .signOut()
+      .then((res) => {
+        if (res.status === response.SIGN_OUT_SUCCESS) {
+          dispatch(signOut());
+        }
+      })
+      .catch((err) => {});
+  };
+};
 
-// export const signOut = () => {
-//   return {
-//     type: types.SIGN_OUT,
-//   };
-// };
+export const signOut = () => {
+  return {
+    type: types.SIGN_OUT,
+  };
+};
 
 // export const getCart = () => {
 //   return (dispatch) => {

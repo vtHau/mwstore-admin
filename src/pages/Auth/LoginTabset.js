@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
 import { User } from "react-feather";
 import { useHistory } from "react-router-dom";
-import { path } from "./../../constants/path";
+import { path } from "../../constants/path";
 
 function LoginTabset() {
   const history = useHistory();

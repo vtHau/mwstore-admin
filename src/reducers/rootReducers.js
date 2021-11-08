@@ -4,6 +4,7 @@ import couponReducer from "./couponReducer";
 import userReducer from "./userReducer";
 import addressReducer from "./addressReducer";
 import productReducer from "./productReducer";
+import adminReducer from "./adminReducer";
 
 const rootReducers = combineReducers({
   brandReducer,
@@ -11,6 +12,7 @@ const rootReducers = combineReducers({
   userReducer,
   addressReducer,
   productReducer,
+  adminReducer,
 });
 
 export default rootReducers;

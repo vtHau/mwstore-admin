@@ -9,6 +9,14 @@ export const SLIDER_IMAGE = BASE_URL_IMAGE + "sliders/";
 export const PRODUCT_IMAGE = BASE_URL_IMAGE + "products/";
 export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
 
+// authentication
+export const AUTH_TOKEN = BASE_URL_API + "auth-token";
+export const SIGN_IN = BASE_URL_API + "signin";
+export const SIGN_IN_SOCIAL = BASE_URL_API + "signin/redirect/";
+export const SIGN_IN_SOCIAL_CB = BASE_URL_API + "signin/callback/";
+export const SIGN_UP = BASE_URL_API + "signup";
+export const SIGN_OUT = BASE_URL_API + "signout";
+
 // brand
 export const ALL_BRAND = BASE_URL_API + "brand/all-brand";
 export const UPDATE_BRAND = BASE_URL_API + "brand/update-brand";
@@ -50,14 +58,6 @@ export const ALL_SLIDER = BASE_URL_API + "slider/all-slider";
 export const NEW_SLIDER = BASE_URL_API + "slider/new-slider";
 export const UPDATE_SLIDER = BASE_URL_API + "slider/update-slider";
 export const DELETE_SLIDER = BASE_URL_API + "slider/delete-slider";
-
-// authentication
-export const AUTH_TOKEN = BASE_URL_API + "auth-token";
-export const SIGN_IN = BASE_URL_API + "signin";
-export const SIGN_IN_SOCIAL = BASE_URL_API + "signin/redirect/";
-export const SIGN_IN_SOCIAL_CB = BASE_URL_API + "signin/callback/";
-export const SIGN_UP = BASE_URL_API + "signup";
-export const SIGN_OUT = BASE_URL_API + "signout";
 
 //product
 export const ALL_PRODUCT = BASE_URL_API + "product/all-product";

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { authToken } from "./../../actions/action";
 import { ArrowLeft } from "react-feather";
+import { useSelector, useDispatch } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import stats from "../../assets/images/dashboard/stats.png";
 import LoginTabset from "./LoginTabset";
+import { Redirect } from "react-router-dom";
+import { path } from "../../constants/path";
+import AuthLoading from "./../../components/Loading/AuthLoading";
 
 const settings = {
   dots: true,
@@ -13,7 +18,23 @@ const settings = {
   arrows: false,
 };
 
-function Login() {
+function SignIn() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.adminReducer.isAuth);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    dispatch(authToken(setIsLoading));
+  }, [dispatch]);
+
+  if (!isLoading) {
+    return <AuthLoading />;
+  }
+
+  if (isAuth) {
+    return <Redirect to={path.HOME} />;
+  }
+
   return (
     <>
       <div className="page-wrapper">
@@ -64,4 +85,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;

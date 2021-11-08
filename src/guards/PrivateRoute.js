@@ -4,8 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import { path } from "./../constants/path";
 
 function PrivateRoute({ component: Component, ...rest }) {
-  // const isAuth = useSelector((state) => state.userReducer.isAuth);
-  const isAuth = false;
+  const isAuth = useSelector((state) => state.adminReducer.isAuth);
 
   return (
     <Route
@@ -16,7 +15,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: path.LOGIN,
+              pathname: path.SIGN_IN,
               state: { from: props.location },
             }}
           />

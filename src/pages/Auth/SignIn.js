@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import useAuth from "./../../hooks/useAuth";
 import { authToken } from "./../../actions/action";
 import { ArrowLeft } from "react-feather";
-import { useSelector, useDispatch } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,13 +19,7 @@ const settings = {
 };
 
 function SignIn() {
-  const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.adminReducer.isAuth);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    dispatch(authToken(setIsLoading));
-  }, [dispatch]);
+  const [isAuth, isLoading] = useAuth();
 
   if (!isLoading) {
     return <AuthLoading />;

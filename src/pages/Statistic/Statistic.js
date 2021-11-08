@@ -1,40 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumb from "../../components/common/breadcrumb";
-import {
-  Navigation,
-  Box,
-  MessageSquare,
-  Users,
-  Grid,
-  CreditCard,
-  ShoppingCart,
-  Calendar,
-} from "react-feather";
+import { Box, MessageSquare, Users, Grid } from "react-feather";
 import { isEmpty } from "lodash";
 import { Table } from "react-bootstrap";
 import moment from "moment";
 import CountUp from "react-countup";
-import { Chart } from "react-google-charts";
 import DatePicker from "react-datepicker";
 import { Bar, Doughnut } from "react-chartjs-2";
 import response from "../../constants/response";
-import {
-  // lineOptions,
-  buyOption,
-  employeeData,
-  employeeOptions,
-} from "../../constants/chartData";
-// image impoer
-import user2 from "../../assets/images/dashboard/user2.jpg";
-import user1 from "../../assets/images/dashboard/user1.jpg";
-import man from "../../assets/images/dashboard/man.png";
-import user from "../../assets/images/dashboard/user.png";
-import designer from "../../assets/images/dashboard/designer.jpg";
-import ProductLink from "./../../components/ProductLink";
 import statisticApi from "../../apis/statisticApi";
 import visitorApi from "../../apis/visitorApi";
 import productApi from "../../apis/productApi";
-import { isEmptyArray } from "formik";
 
 const handleDataStatistic = (data) => {
   const { date, sale, profit, quantity, total } = data;

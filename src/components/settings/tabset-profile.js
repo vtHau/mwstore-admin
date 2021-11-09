@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import useToggle from "./../../hooks/useToggle";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
 import ProfileEditModal from "./../../components/Profile/ProfileEditModal";
+import PasswordEditModal from "./../../components/Profile/PasswordEditModal";
 import { User } from "react-feather";
 import { authToken } from "./../../actions/action";
 
 function Tabset_profile() {
   const admin = useSelector((state) => state.adminReducer.admin);
   const [openModal, toggleModal] = useToggle(false);
+  const [openPassword, togglePassword] = useToggle(false);
 
   return (
     <div>
@@ -47,6 +49,9 @@ function Tabset_profile() {
               <div className="btn btn-primary ml-2" onClick={toggleModal}>
                 Edit
               </div>
+              <div className="btn btn-primary ml-2" onClick={togglePassword}>
+                Change Password
+              </div>
             </div>
           </div>
         </TabPanel>
@@ -55,6 +60,10 @@ function Tabset_profile() {
         admin={admin}
         openModal={openModal}
         toggleModal={toggleModal}
+      />
+      <PasswordEditModal
+        openPassword={openPassword}
+        togglePassword={togglePassword}
       />
     </div>
   );

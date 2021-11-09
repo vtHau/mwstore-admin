@@ -13,6 +13,7 @@ export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";
 export const UPDATE_PROFILE = BASE_URL_API + "update-profile";
+export const UPDATE_PASSWORD = BASE_URL_API + "update-password";
 export const SIGN_IN = BASE_URL_API + "signin";
 export const SIGN_IN_SOCIAL = BASE_URL_API + "signin/redirect/";
 export const SIGN_IN_SOCIAL_CB = BASE_URL_API + "signin/callback/";

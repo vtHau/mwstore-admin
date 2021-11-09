@@ -15,6 +15,9 @@ const adminApi = {
   updateProfile: (value) => {
     return axiosClient.post(PATH_URL.UPDATE_PROFILE, value);
   },
+  updatePassword: (value) => {
+    return axiosClient.post(PATH_URL.UPDATE_PASSWORD, value);
+  },
   signOut: () => {
     return axiosClient.post(PATH_URL.SIGN_OUT);
   },

@@ -83,7 +83,7 @@ export const MENUITEMS = [
     icon: DollarSign,
     type: "sub",
     active: false,
-    role: role.DELIVERY,
+    role: role.FEESHIP,
     children: [
       { path: path.FEESHIP_LIST, title: "Feeship List", type: "link" },
     ],

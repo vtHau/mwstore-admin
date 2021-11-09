@@ -120,7 +120,7 @@ function Routes() {
       <PrivateRoute
         path={path.FEESHIP_LIST}
         component={Feeship}
-        role={role.DELIVERY}
+        role={role.FEESHIP}
       />
       <PrivateRoute
         exact

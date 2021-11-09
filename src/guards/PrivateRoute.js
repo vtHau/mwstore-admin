@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { path } from "./../constants/path";
+import { role as ROLE } from "./../constants/role";
 
 function PrivateRoute({ component: Component, role, ...rest }) {
   const isAuth = useSelector((state) => state.adminReducer.isAuth);
@@ -21,7 +22,11 @@ function PrivateRoute({ component: Component, role, ...rest }) {
             />
           );
 
-        if (role && !admin.roles.includes(role.toLowerCase()))
+        if (
+          role &&
+          !admin.roles.includes(role.toLowerCase()) &&
+          admin.role !== ROLE.FULL_PERMISSION
+        )
           return <h2>Khong co quyen truy cap</h2>;
         return <Component {...props} />;
       }}

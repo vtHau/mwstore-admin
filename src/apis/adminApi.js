@@ -12,8 +12,14 @@ const adminApi = {
       return axiosClient.post(PATH_URL.SIGN_IN, value);
     });
   },
+  getAllAdmin: () => {
+    return axiosClient.get(PATH_URL.ALL_ADMIN);
+  },
   updateProfile: (value) => {
     return axiosClient.post(PATH_URL.UPDATE_PROFILE, value);
+  },
+  deleteAdmin: (value) => {
+    return axiosClient.post(PATH_URL.DELETE_ADMIN, value);
   },
   updatePassword: (value) => {
     return axiosClient.post(PATH_URL.UPDATE_PASSWORD, value);

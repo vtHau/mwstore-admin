@@ -27,6 +27,17 @@ export const MENUITEMS = [
     active: false,
   },
   {
+    title: "Admin",
+    icon: Users,
+    type: "sub",
+    active: false,
+    role: role.ADMIN,
+    children: [
+      { path: path.ADMIN_LIST, title: "Admin List", type: "link" },
+      { path: path.ADMIN_NEW, title: "Admin New", type: "link" },
+    ],
+  },
+  {
     title: "Brand",
     icon: Chrome,
     type: "sub",

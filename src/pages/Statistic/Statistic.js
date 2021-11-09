@@ -13,7 +13,7 @@ import visitorApi from "../../apis/visitorApi";
 import productApi from "../../apis/productApi";
 
 const handleDataStatistic = (data) => {
-  const { date, sale, profit, quantity, total } = data;
+  const { date, sale, profit } = data;
 
   return {
     labels: date,

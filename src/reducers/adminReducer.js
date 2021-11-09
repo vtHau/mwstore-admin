@@ -8,7 +8,9 @@ const initialState = {
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_IN: {
-      const { token, admin } = action.payload;
+      const { token, admin, roles } = action.payload.data;
+
+      admin.roles = roles;
       const newState = { isAuth: true, admin };
 
       if (token) {

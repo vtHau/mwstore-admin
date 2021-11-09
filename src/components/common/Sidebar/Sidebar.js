@@ -3,6 +3,7 @@ import UserPanel from "./UserPanel";
 import { Link } from "react-router-dom";
 import { MENUITEMS } from "../../../constants/menu";
 import { path } from "../../../constants/path";
+import RoleAllow from "./../../RoleAllow";
 
 // image import
 import logo from "../../../assets/images/dashboard/mwstore-logo.png";
@@ -68,123 +69,127 @@ export class sidebar extends Component {
 
   render() {
     const mainmenu = this.state.mainmenu.map((menuItem, i) => (
-      <li className={`${menuItem.active ? "active" : ""}`} key={i}>
-        {menuItem.sidebartitle ? (
-          <div className="sidebar-title">{menuItem.sidebartitle}</div>
-        ) : (
-          ""
-        )}
-        {menuItem.type === "sub" ? (
-          <a
-            className="sidebar-header "
-            href="javascript:void(0)"
-            onClick={() => this.setNavActive(menuItem)}
-          >
-            <menuItem.icon />
-            <span>{menuItem.title}</span>
-            <i className="fa fa-angle-right pull-right"></i>
-          </a>
-        ) : (
-          ""
-        )}
-        {menuItem.type === "link" ? (
-          <Link
-            to={`${process.env.PUBLIC_URL}${menuItem.path}`}
-            className={`sidebar-header ${menuItem.active ? "active" : ""}`}
-            onClick={() => this.setNavActive(menuItem)}
-          >
-            <menuItem.icon />
-            <span>{menuItem.title}</span>
-            {menuItem.children ? (
+      <RoleAllow key={i} allowedRole={menuItem.role}>
+        <li className={`${menuItem.active ? "active" : ""}`} key={i}>
+          {menuItem.sidebartitle ? (
+            <div className="sidebar-title">{menuItem.sidebartitle}</div>
+          ) : (
+            ""
+          )}
+          {menuItem.type === "sub" ? (
+            <a
+              className="sidebar-header "
+              href="javascript:void(0)"
+              onClick={() => this.setNavActive(menuItem)}
+            >
+              <menuItem.icon />
+              <span>{menuItem.title}</span>
               <i className="fa fa-angle-right pull-right"></i>
-            ) : (
-              ""
-            )}
-          </Link>
-        ) : (
-          ""
-        )}
-        {menuItem.children ? (
-          <ul
-            className={`sidebar-submenu ${menuItem.active ? "menu-open" : ""}`}
-            style={
-              menuItem.active
-                ? { opacity: 1, transition: "opacity 500ms ease-in" }
-                : {}
-            }
-          >
-            {menuItem.children.map((childrenItem, index) => (
-              <li
-                key={index}
-                className={
-                  childrenItem.children
-                    ? childrenItem.active
-                      ? "active"
+            </a>
+          ) : (
+            ""
+          )}
+          {menuItem.type === "link" ? (
+            <Link
+              to={`${process.env.PUBLIC_URL}${menuItem.path}`}
+              className={`sidebar-header ${menuItem.active ? "active" : ""}`}
+              onClick={() => this.setNavActive(menuItem)}
+            >
+              <menuItem.icon />
+              <span>{menuItem.title}</span>
+              {menuItem.children ? (
+                <i className="fa fa-angle-right pull-right"></i>
+              ) : (
+                ""
+              )}
+            </Link>
+          ) : (
+            ""
+          )}
+          {menuItem.children ? (
+            <ul
+              className={`sidebar-submenu ${
+                menuItem.active ? "menu-open" : ""
+              }`}
+              style={
+                menuItem.active
+                  ? { opacity: 1, transition: "opacity 500ms ease-in" }
+                  : {}
+              }
+            >
+              {menuItem.children.map((childrenItem, index) => (
+                <li
+                  key={index}
+                  className={
+                    childrenItem.children
+                      ? childrenItem.active
+                        ? "active"
+                        : ""
                       : ""
-                    : ""
-                }
-              >
-                {childrenItem.type === "sub" ? (
-                  <a
-                    href="javascript:void(0)"
-                    onClick={() => this.setNavActive(childrenItem)}
-                  >
-                    <i className="fa fa-circle"></i>
-                    {childrenItem.title}{" "}
-                    <i className="fa fa-angle-right pull-right"></i>
-                  </a>
-                ) : (
-                  ""
-                )}
+                  }
+                >
+                  {childrenItem.type === "sub" ? (
+                    <a
+                      href="javascript:void(0)"
+                      onClick={() => this.setNavActive(childrenItem)}
+                    >
+                      <i className="fa fa-circle"></i>
+                      {childrenItem.title}{" "}
+                      <i className="fa fa-angle-right pull-right"></i>
+                    </a>
+                  ) : (
+                    ""
+                  )}
 
-                {childrenItem.type === "link" ? (
-                  <Link
-                    to={`${process.env.PUBLIC_URL}${childrenItem.path}`}
-                    className={childrenItem.active ? "active" : ""}
-                    onClick={() => this.setNavActive(childrenItem)}
-                  >
-                    <i className="fa fa-circle"></i>
-                    {childrenItem.title}{" "}
-                  </Link>
-                ) : (
-                  ""
-                )}
-                {childrenItem.children ? (
-                  <ul
-                    className={`sidebar-submenu ${
-                      childrenItem.active ? "menu-open" : "active"
-                    }`}
-                  >
-                    {childrenItem.children.map((childrenSubItem, key) => (
-                      <li
-                        className={childrenSubItem.active ? "active" : ""}
-                        key={key}
-                      >
-                        {childrenSubItem.type === "link" ? (
-                          <Link
-                            to={`${process.env.PUBLIC_URL}${childrenSubItem.path}`}
-                            className={childrenSubItem.active ? "active" : ""}
-                            onClick={() => this.setNavActive(childrenSubItem)}
-                          >
-                            <i className="fa fa-circle"></i>
-                            {childrenSubItem.title}
-                          </Link>
-                        ) : (
-                          ""
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  ""
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ""
-        )}
-      </li>
+                  {childrenItem.type === "link" ? (
+                    <Link
+                      to={`${process.env.PUBLIC_URL}${childrenItem.path}`}
+                      className={childrenItem.active ? "active" : ""}
+                      onClick={() => this.setNavActive(childrenItem)}
+                    >
+                      <i className="fa fa-circle"></i>
+                      {childrenItem.title}{" "}
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                  {childrenItem.children ? (
+                    <ul
+                      className={`sidebar-submenu ${
+                        childrenItem.active ? "menu-open" : "active"
+                      }`}
+                    >
+                      {childrenItem.children.map((childrenSubItem, key) => (
+                        <li
+                          className={childrenSubItem.active ? "active" : ""}
+                          key={key}
+                        >
+                          {childrenSubItem.type === "link" ? (
+                            <Link
+                              to={`${process.env.PUBLIC_URL}${childrenSubItem.path}`}
+                              className={childrenSubItem.active ? "active" : ""}
+                              onClick={() => this.setNavActive(childrenSubItem)}
+                            >
+                              <i className="fa fa-circle"></i>
+                              {childrenSubItem.title}
+                            </Link>
+                          ) : (
+                            ""
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    ""
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            ""
+          )}
+        </li>
+      </RoleAllow>
     ));
 
     return (

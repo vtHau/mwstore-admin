@@ -15,6 +15,7 @@ import {
   LogIn,
 } from "react-feather";
 import { path } from "./path";
+import { role } from "./role";
 
 export const MENUITEMS = [
   {
@@ -30,6 +31,7 @@ export const MENUITEMS = [
     icon: Chrome,
     type: "sub",
     active: false,
+    role: role.BRAND,
     children: [
       {
         path: path.BRAND_LIST,

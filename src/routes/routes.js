@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { path } from "../constants/path";
+import { role } from "../constants/role";
 import PrivateRoute from "./../guards/PrivateRoute";
 
 // Components
@@ -83,14 +84,26 @@ function Routes() {
   return (
     <>
       <Route exact path={path.HOME} component={Home} />
-      <Route path={path.BRAND_LIST} component={Brand} />
-      <Route path={path.BRAND_NEW} component={BrandNew} />
+      <PrivateRoute
+        path={path.BRAND_LIST}
+        component={Brand}
+        role={role.BRAND}
+      />
+      <PrivateRoute
+        path={path.BRAND_NEW}
+        component={BrandNew}
+        role={role.BRAND}
+      />
       <Route path={path.COUPON_LIST} component={Coupon} />
       <Route path={path.COUPON_NEW} component={CouponNew} />
       <Route path={path.COMMENT_LIST} component={Comment} />
       <Route path={path.COMMENT_NOT_CONFIRM} component={CommentNotConfirm} />
       <Route path={path.USER_LIST} component={User} />
-      <Route path={path.FEESHIP_LIST} component={Feeship} />
+      <PrivateRoute
+        path={path.FEESHIP_LIST}
+        component={Feeship}
+        role={role.DELIVERY}
+      />
       <Route exact path={path.ORDER_LIST} component={Order} />
       <Route path={path.ORDER_DETAIL + ":code"} component={OrderDetail} />
       <Route path={path.SLIDER_LIST} component={Slider} />

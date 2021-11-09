@@ -84,6 +84,8 @@ function Routes() {
   return (
     <>
       <Route exact path={path.HOME} component={Home} />
+      <Route path={path.PROFILE} component={Profile} />
+
       <PrivateRoute
         path={path.BRAND_LIST}
         component={Brand}
@@ -94,110 +96,166 @@ function Routes() {
         component={BrandNew}
         role={role.BRAND}
       />
-      <Route path={path.COUPON_LIST} component={Coupon} />
-      <Route path={path.COUPON_NEW} component={CouponNew} />
-      <Route path={path.COMMENT_LIST} component={Comment} />
-      <Route path={path.COMMENT_NOT_CONFIRM} component={CommentNotConfirm} />
-      <Route path={path.USER_LIST} component={User} />
+      <PrivateRoute
+        path={path.COUPON_LIST}
+        component={Coupon}
+        role={role.COUPON}
+      />
+      <PrivateRoute
+        path={path.COUPON_NEW}
+        component={CouponNew}
+        role={role.COUPON}
+      />
+      <PrivateRoute
+        path={path.COMMENT_LIST}
+        component={Comment}
+        role={role.COMMENT}
+      />
+      <PrivateRoute
+        path={path.COMMENT_NOT_CONFIRM}
+        component={CommentNotConfirm}
+        role={role.COMMENT}
+      />
+      <PrivateRoute path={path.USER_LIST} component={User} role={role.USER} />
       <PrivateRoute
         path={path.FEESHIP_LIST}
         component={Feeship}
         role={role.DELIVERY}
       />
-      <Route exact path={path.ORDER_LIST} component={Order} />
-      <Route path={path.ORDER_DETAIL + ":code"} component={OrderDetail} />
-      <Route path={path.SLIDER_LIST} component={Slider} />
-      <Route path={path.SLIDER_NEW} component={SliderNew} />
-      <Route path={path.VISITOR} component={Visitor} />
-      <Route path={path.POST_LIST} component={Post} />
-      <Route path={path.POST_EDIT + ":id"} component={PostEdit} />
-      <Route path={path.POST_NEW} component={PostNew} />
-      <Route path={path.PRODUCT_LIST} component={Product} />
-      <Route path={path.PRODUCT_NEW} component={ProductNew} />
-      <Route path={path.GALLERY_DETAIL + ":id"} component={Gallery} />
-      <Route path={path.STATISTIC} component={Statistic} />
-      <Route path={path.PROFILE} component={Profile} />
-      {/* <Route
+      <PrivateRoute
+        exact
+        path={path.ORDER_LIST}
+        component={Order}
+        role={role.ORDER}
+      />
+      <PrivateRoute
+        path={path.ORDER_DETAIL + ":code"}
+        component={OrderDetail}
+        role={role.ORDER}
+      />
+      <PrivateRoute
+        path={path.SLIDER_LIST}
+        component={Slider}
+        role={role.SLIDER}
+      />
+      <PrivateRoute
+        path={path.SLIDER_NEW}
+        component={SliderNew}
+        role={role.SLIDER}
+      />
+      <PrivateRoute
+        path={path.VISITOR}
+        component={Visitor}
+        role={role.VISITOR}
+      />
+      <PrivateRoute path={path.POST_LIST} component={Post} role={role.POST} />
+      <PrivateRoute
+        path={path.POST_EDIT + ":id"}
+        component={PostEdit}
+        role={role.POST}
+      />
+      <PrivateRoute path={path.POST_NEW} component={PostNew} role={role.POST} />
+      <PrivateRoute
+        path={path.PRODUCT_LIST}
+        component={Product}
+        role={role.PRODUCT}
+      />
+      <PrivateRoute
+        path={path.PRODUCT_NEW}
+        component={ProductNew}
+        role={role.PRODUCT}
+      />
+      <PrivateRoute
+        path={path.GALLERY_DETAIL + ":id"}
+        component={Gallery}
+        role={role.GALLERY}
+      />
+      <PrivateRoute
+        path={path.STATISTIC}
+        component={Statistic}
+        role={role.STATISTIC}
+      />
+      {/*  <PrivateRoute
         path={`${process.env.PUBLIC_URL}/products/physical/product-list`}
         component={Product_list}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/products/physical/product-detail`}
         component={Product_detail}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/sales/orders`}
         component={Orders}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/sales/transactions`}
         component={Transactions_sales}
       />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/coupons/list-coupons`}
         component={ListCoupons}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/coupons/create-coupons`}
         component={Create_coupons}
       />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/pages/list-page`}
         component={ListPages}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/pages/create-page`}
         component={Create_page}
       />
 
-      <Route path={`${process.env.PUBLIC_URL}/media`} component={Media} />
+       <PrivateRoute path={`${process.env.PUBLIC_URL}/media`} component={Media} />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/menus/list-menu`}
         component={List_menu}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/menus/create-menu`}
         component={Create_menu}
       />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/vendors/list_vendors`}
         component={List_vendors}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/vendors/create-vendors`}
         component={Create_vendors}
       />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/localization/transactions`}
         component={Translations}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/localization/currency-rates`}
         component={Rates}
       />
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/localization/taxes`}
         component={Taxes}
       />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/reports/report`}
         component={Reports}
       /> */}
 
-      {/* <Route
+      {/*  <PrivateRoute
         path={`${process.env.PUBLIC_URL}/settings/profile`}
         component={Profile}
       /> */}
 
-      {/* <Route path={`${process.env.PUBLIC_URL}/invoice`} component={Invoice} />
+      {/*  <PrivateRoute path={`${process.env.PUBLIC_URL}/invoice`} component={Invoice} />
 
-      <Route
+       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/data-table`}
         component={Datatable}
       /> */}

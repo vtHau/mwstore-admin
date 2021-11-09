@@ -50,6 +50,7 @@ export const MENUITEMS = [
     icon: Box,
     type: "sub",
     active: false,
+    role: role.PRODUCT,
     children: [
       { path: path.PRODUCT_LIST, title: "Product List", type: "link" },
       { path: path.PRODUCT_NEW, title: "Product New", type: "link" },
@@ -60,6 +61,7 @@ export const MENUITEMS = [
     icon: DollarSign,
     type: "sub",
     active: false,
+    role: role.COUPON,
     children: [
       { path: path.COUPON_LIST, title: "Coupon List", type: "link" },
       { path: path.COUPON_NEW, title: "New Coupon", type: "link" },
@@ -70,6 +72,7 @@ export const MENUITEMS = [
     icon: DollarSign,
     type: "sub",
     active: false,
+    role: role.COMMENT,
     children: [
       { path: path.COMMENT_LIST, title: "Comment List", type: "link" },
       { path: path.COMMENT_NOT_CONFIRM, title: "Not Confirm", type: "link" },
@@ -80,6 +83,7 @@ export const MENUITEMS = [
     icon: DollarSign,
     type: "sub",
     active: false,
+    role: role.DELIVERY,
     children: [
       { path: path.FEESHIP_LIST, title: "Feeship List", type: "link" },
     ],
@@ -89,6 +93,7 @@ export const MENUITEMS = [
     path: path.STATISTIC,
     icon: BarChart,
     type: "link",
+    role: role.STATISTIC,
     active: false,
   },
   {
@@ -96,6 +101,7 @@ export const MENUITEMS = [
     icon: Users,
     type: "sub",
     active: false,
+    role: role.USER,
     children: [{ path: path.USER_LIST, title: "User List", type: "link" }],
   },
   {
@@ -103,6 +109,7 @@ export const MENUITEMS = [
     icon: Users,
     type: "sub",
     active: false,
+    role: role.ORDER,
     children: [{ path: path.ORDER_LIST, title: "Order List", type: "link" }],
   },
   {
@@ -110,6 +117,7 @@ export const MENUITEMS = [
     icon: Users,
     type: "sub",
     active: false,
+    role: role.SLIDER,
     children: [
       { path: path.SLIDER_LIST, title: "Slider List", type: "link" },
       { path: path.SLIDER_NEW, title: "Slider New", type: "link" },
@@ -120,6 +128,7 @@ export const MENUITEMS = [
     icon: Users,
     type: "sub",
     active: false,
+    role: role.POST,
     children: [
       { path: path.POST_LIST, title: "Post List", type: "link" },
       { path: path.POST_NEW, title: "Post New", type: "link" },
@@ -138,6 +147,7 @@ export const MENUITEMS = [
     path: path.VISITOR,
     icon: BarChart,
     type: "link",
+    role: role.VISITOR,
     active: false,
   },
   // {

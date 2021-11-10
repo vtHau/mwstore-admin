@@ -164,10 +164,10 @@ export class Product_detail extends Component {
                                     </Modal>
                                     <div className="size-box">
                                         <ul>
-                                            <li className="active"><a href="#">s</a></li>
+                                            {/* <li className="active"><a href="#">s</a></li>
                                             <li><a href="#">m</a></li>
                                             <li><a href="#">l</a></li>
-                                            <li><a href="#">xl</a></li>
+                                            <li><a href="#">xl</a></li> */}
                                         </ul>
                                     </div>
                                     <div className="add-product-form">

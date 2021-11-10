@@ -46,6 +46,42 @@ export const adminUpdateValid = Yup.object().shape({
     .required("Please input brand description"),
 });
 
+export const adminNormalUpdateValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Product name short")
+    .max(50, "Product name long")
+    .required("Please input Product name"),
+  email: Yup.string()
+    .min(3, "Địa chỉ email quá ngắn")
+    .max(50, "Địa chỉ email quá dài")
+    .email("Địa chỉ email không hợp lệ")
+    .required("Vui lòng nhập địa chỉ email"),
+  password: Yup.string()
+    .min(8, "Mật khẩu quá ngắn")
+    .max(50, "Mật khẩu quá dài"),
+  // .required("Vui lòng nhập mật khẩu"),
+  roles: Yup.array().min(1, "Min one role").required("Please choose role"),
+
+  // brand_id: Yup.string().required("Please choose brand"),
+  description: Yup.string()
+    .min(2, "Product description short")
+    .max(500, "Product description long")
+    .required("Please input product description"),
+  image: Yup.mixed()
+    .test(
+      "fileSize",
+      "File Size is too large",
+      (value) => value === null || (value && value.size <= 2000000)
+    )
+    .test(
+      "fileType",
+      "Unsupported File Format",
+      (value) =>
+        value === null ||
+        (value && ["image/jpeg", "image/jpg", "image/png"].includes(value.type))
+    ),
+});
+
 export const postUpdateValid = Yup.object().shape({
   product_id: Yup.string().required("Please choose product"),
   title: Yup.string()

@@ -5,6 +5,7 @@ import response from "../../constants/response";
 import toast from "../../helpers/toast";
 import useToggle from "../../hooks/useToggle";
 import * as PATH_URL from "../../constants/apiUrl";
+import AdminEditModal from "./AdminEditModal";
 
 function AdminItem(props) {
   const { admin, index, fetchAllAdmin } = props;
@@ -64,7 +65,9 @@ function AdminItem(props) {
       <td>{admin.description}</td>
       <td>
         <div className="btn-group">
-          <Button type="primary">Edit</Button>
+          <Button type="primary" onClick={toggleModal}>
+            Edit
+          </Button>
           <Popconfirm
             title="Bạn có thật sự muốn xóa ?"
             visible={openPop}
@@ -80,60 +83,12 @@ function AdminItem(props) {
           </Popconfirm>
         </div>
       </td>
-      {/* <Modal
-        visible={openModal}
-        onOk={toggleModal}
-        onCancel={toggleModal}
-        footer={null}
-      >
-        <p className="title-section">Device</p>
-        {admin.device === null ? (
-          <p className="text-center">No info of device</p>
-        ) : (
-          <div className="row">
-            <div className="col-6">
-              <div className="card-device">
-                <div className="card-device-title">
-                  <i className="fa fa-desktop"></i>
-                  <br />
-                  Device
-                </div>
-                <div className="card-device-body">{admin.device.device}</div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="card-device">
-                <div className="card-device-title">
-                  <i className="fa fa-windows"></i>
-                  <br />
-                  OS
-                </div>
-                <div className="card-device-body">{user.device.os}</div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="card-device">
-                <div className="card-device-title">
-                  <i className="fa fa-chrome"></i>
-                  <br />
-                  Browser
-                </div>
-                <div className="card-device-body">{user.device.browser}</div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="card-device">
-                <div className="card-device-title">
-                  <i className="fa fa-history"></i>
-                  <br />
-                  Last login
-                </div>
-                <div className="card-device-body">{user.device.last_login}</div>
-              </div>
-            </div>
-          </div>
-        )}
-      </Modal> */}
+      <AdminEditModal
+        admin={admin}
+        openModal={openModal}
+        toggleModal={toggleModal}
+        fetchAllAdmin={fetchAllAdmin}
+      />
     </tr>
   );
 }

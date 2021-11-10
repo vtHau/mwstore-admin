@@ -8,7 +8,7 @@ import productApi from "../../apis/productApi";
 import response from "../../constants/response";
 import toast from "../../helpers/toast";
 
-function SliderEditModal(props) {
+function ProductEditModal(props) {
   const { product, openModal, toggleModal } = props;
   const dispatch = useDispatch();
   const brands = useSelector((state) => state.brandReducer.brands);
@@ -189,4 +189,4 @@ function SliderEditModal(props) {
   );
 }
 
-export default SliderEditModal;
+export default ProductEditModal;

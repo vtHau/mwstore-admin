@@ -27,6 +27,7 @@ export const SIGN_OUT = BASE_URL_API + "signout";
 //role
 export const ALL_ROLE = BASE_URL_API + "role/all-role";
 export const GET_ROLE = BASE_URL_API + "role/get-role";
+export const NEW_ROLE = BASE_URL_API + "role/new-role";
 export const UPDATE_ROLE = BASE_URL_API + "role/update-role";
 export const DELETE_ROLE = BASE_URL_API + "role/delete-role";
 

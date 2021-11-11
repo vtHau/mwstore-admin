@@ -59,10 +59,7 @@ export const adminNormalUpdateValid = Yup.object().shape({
   password: Yup.string()
     .min(8, "Mật khẩu quá ngắn")
     .max(50, "Mật khẩu quá dài"),
-  // .required("Vui lòng nhập mật khẩu"),
   roles: Yup.array().min(1, "Min one role").required("Please choose role"),
-
-  // brand_id: Yup.string().required("Please choose brand"),
   description: Yup.string()
     .min(2, "Product description short")
     .max(500, "Product description long")
@@ -97,8 +94,6 @@ export const adminNormalValid = Yup.object().shape({
     .max(50, "Mật khẩu quá dài")
     .required("Vui lòng nhập mật khẩu"),
   roles: Yup.array().min(1, "Min one role").required("Please choose role"),
-
-  // brand_id: Yup.string().required("Please choose brand"),
   description: Yup.string()
     .min(2, "Product description short")
     .max(500, "Product description long")

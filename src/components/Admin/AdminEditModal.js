@@ -44,12 +44,17 @@ function AdminEditModal(props) {
       adminApi
         .updateAdmin(newAdmin)
         .then((res) => {
-          toggleModal();
           setConfirmLoading(false);
           if (res.status === response.SUCCESS) {
+            toggleModal();
             fetchAllAdmin();
             return toast.success("Success", "Update admin success");
           }
+          if (res.status === response.EMAIL_EXIST) {
+            formik.setFieldError("email", "Email exist");
+            return toast.success("Fail", "Save admin fail");
+          }
+
           return toast.success("Fail", "Update admin fail");
         })
         .catch((err) => {
@@ -175,8 +180,7 @@ function AdminEditModal(props) {
               <p className="error-field">{formik.errors.description}</p>
             )}
           </div>
-
-          {/* <div className="form-group">
+          <div className="form-group">
             <label className="col-form-label">Avatar</label>
             <div className="custom-file">
               <input
@@ -193,7 +197,7 @@ function AdminEditModal(props) {
                 <p className="error-field">{formik.errors.image}</p>
               )}
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="submit-box">
           <Button

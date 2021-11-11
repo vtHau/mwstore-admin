@@ -191,25 +191,24 @@ function AdminNew() {
                         </p>
                       )}
                   </div>
-
-                  {/* <div className="form-group">
-            <label className="col-form-label">Avatar</label>
-            <div className="custom-file">
-              <input
-                type="file"
-                className="form-control"
-                name="image"
-                id="validatedCustomFile"
-                onChange={(e) =>
-                  formik.setFieldValue("image", e.target.files[0])
-                }
-                accept=".PNG, .JPEG, .JPG"
-              />
-              {formik.errors.image && formik.touched.image && (
-                <p className="error-field">{formik.errors.image}</p>
-              )}
-            </div>
-          </div> */}
+                  <div className="form-group">
+                    <label className="col-form-label">Avatar</label>
+                    <div className="custom-file">
+                      <input
+                        type="file"
+                        className="form-control"
+                        name="image"
+                        id="validatedCustomFile"
+                        onChange={(e) =>
+                          formik.setFieldValue("image", e.target.files[0])
+                        }
+                        accept=".PNG, .JPEG, .JPG"
+                      />
+                      {formik.errors.image && formik.touched.image && (
+                        <p className="error-field">{formik.errors.image}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
                 <div className="submit-box">
                   <Button

@@ -7,8 +7,9 @@ import PrivateRoute from "./../guards/PrivateRoute";
 // Components
 import Home from "../pages/Home";
 
-//brand
+//admin
 import Admin from "../pages/Admin/Admin";
+import AdminNew from "../pages/Admin/AdminNew";
 
 //brand
 import Brand from "../pages/Brand/Brand";
@@ -92,6 +93,11 @@ function Routes() {
       <PrivateRoute
         path={path.ADMIN_LIST}
         component={Admin}
+        role={role.ADMIN}
+      />
+      <PrivateRoute
+        path={path.ADMIN_NEW}
+        component={AdminNew}
         role={role.ADMIN}
       />
       <PrivateRoute

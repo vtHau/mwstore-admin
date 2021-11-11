@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import * as PATH_URL from "./../../constants/apiUrl";
-import Tabset_profile from "./../../components/settings/tabset-profile";
+import TabProfile from "./../../components/settings/TabProfile";
 import Breadcrumb from "../../components/common/breadcrumb";
 
 function Profile() {
@@ -98,7 +98,7 @@ function Profile() {
           <div className="col-xl-8">
             <div className="card profile-card">
               <div className="card-body">
-                <Tabset_profile />
+                <TabProfile />
               </div>
             </div>
           </div>

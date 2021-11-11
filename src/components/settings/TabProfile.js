@@ -1,13 +1,12 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import useToggle from "./../../hooks/useToggle";
+import { useSelector } from "react-redux";
+import useToggle from "../../hooks/useToggle";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
-import ProfileEditModal from "./../../components/Profile/ProfileEditModal";
-import PasswordEditModal from "./../../components/Profile/PasswordEditModal";
+import ProfileEditModal from "../Profile/ProfileEditModal";
+import PasswordEditModal from "../Profile/PasswordEditModal";
 import { User } from "react-feather";
-import { authToken } from "./../../actions/action";
 
-function Tabset_profile() {
+function TabProfile() {
   const admin = useSelector((state) => state.adminReducer.admin);
   const [openModal, toggleModal] = useToggle(false);
   const [openPassword, togglePassword] = useToggle(false);
@@ -69,4 +68,4 @@ function Tabset_profile() {
   );
 }
 
-export default Tabset_profile;
+export default TabProfile;

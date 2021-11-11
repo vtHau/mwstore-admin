@@ -2,47 +2,13 @@ import React, { useState, useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import { Table } from "react-bootstrap";
 import Breadcrumb from "../../components/common/breadcrumb";
-import { Upload, Button } from "antd";
-import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
-import * as PATH_URL from "../../constants/apiUrl";
-import importApi from "../../apis/importApi";
 import adminApi from "../../apis/adminApi";
 import AdminItem from "./../../components/Admin/AdminItem";
-import toast from "../../helpers/toast";
 import response from "../../constants/response";
-import { useDispatch } from "react-redux";
-import { fetchAllBrand } from "../../actions/action";
 
 function Admin() {
-  const dispatch = useDispatch();
   const [admins, setAdmins] = useState([]);
-  const [confirmLoading, setConfirmLoading] = useState(false);
   useTitle("Admin List");
-
-  const importBrand = (options) => {
-    setConfirmLoading(true);
-    const { onSuccess, onError, file } = options;
-    const fmData = new FormData();
-    fmData.append("file", file);
-
-    importApi
-      .importBrand(fmData)
-      .then((res) => {
-        setConfirmLoading(false);
-        if (res.status === response.SUCCESS) {
-          onSuccess("Success");
-          dispatch(fetchAllBrand());
-          toast.success("Success", "Import success");
-        } else {
-          toast.success("Fail", "Import fail");
-        }
-      })
-      .catch((err) => {
-        setConfirmLoading(false);
-        onError("Fail");
-        toast.success("Fail", "Import fail");
-      });
-  };
 
   const fetchAllAdmin = () => {
     adminApi
@@ -92,20 +58,6 @@ function Admin() {
                   ))}
                 </tbody>
               </Table>
-            </div>
-
-            <div className="pull-right import-export">
-              <Button
-                type="primary"
-                shape="round"
-                size="large"
-                icon={<DownloadOutlined />}
-                onClick={() => {
-                  return window.open(PATH_URL.EXPORT_EXCEL_USER);
-                }}
-              >
-                Export Excel
-              </Button>
             </div>
           </div>
         </div>

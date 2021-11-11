@@ -15,6 +15,9 @@ const adminApi = {
   getAllAdmin: () => {
     return axiosClient.get(PATH_URL.ALL_ADMIN);
   },
+  newAdmin: (value) => {
+    return axiosClient.post(PATH_URL.NEW_ADMIN, value);
+  },
   updateAdmin: (value) => {
     return axiosClient.post(PATH_URL.UPDATE_ADMIN, value);
   },

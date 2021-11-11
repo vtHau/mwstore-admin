@@ -5,7 +5,7 @@ export const BASE_URL_IMAGE = BASE_URL + "admins/uploads/";
 
 //image
 export const AVATAR_IMAGE = BASE_URL_IMAGE + "avatars/";
-export const ADMIN_AVATAR_IMAGE = BASE_URL + "admins/img/avatars/";
+export const ADMIN_AVATAR_IMAGE = BASE_URL_IMAGE + "admins/avatars/";
 export const SLIDER_IMAGE = BASE_URL_IMAGE + "sliders/";
 export const PRODUCT_IMAGE = BASE_URL_IMAGE + "products/";
 export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
@@ -13,6 +13,7 @@ export const GALLERY_IMAGE = BASE_URL_IMAGE + "gallerys/";
 // authentication
 export const AUTH_TOKEN = BASE_URL_API + "auth-token";
 export const ALL_ADMIN = BASE_URL_API + "all-admin";
+export const NEW_ADMIN = BASE_URL_API + "new-admin";
 export const UPDATE_ADMIN = BASE_URL_API + "update-admin";
 export const UPDATE_PROFILE = BASE_URL_API + "update-profile";
 export const UPDATE_PASSWORD = BASE_URL_API + "update-password";

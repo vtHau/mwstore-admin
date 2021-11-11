@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Popconfirm, Modal } from "antd";
+import { Button, Popconfirm } from "antd";
 import adminApi from "../../apis/adminApi";
 import response from "../../constants/response";
 import toast from "../../helpers/toast";
@@ -54,14 +54,13 @@ function AdminItem(props) {
         </div>
       </td>
       <td>{admin.email}</td>
-      {/* <td>
-        {admin.block < 5 ? (
-          <span className="badge badge-success">Active</span>
-        ) : (
-          <span className="badge badge-danger">Blocked</span>
-        )}
-      </td> */}
-      <td>{admin.roles.map((role) => role.name + " ")}</td>
+      <td>
+        {admin.roles.map((role, key) => (
+          <span key={key} className="badge badge-success">
+            {role.name}
+          </span>
+        ))}
+      </td>
       <td>{admin.description}</td>
       <td>
         <div className="btn-group">

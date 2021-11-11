@@ -5,11 +5,14 @@ const roleApi = {
   getAllRole: () => {
     return axiosClient.get(PATH_URL.ALL_ROLE);
   },
-  updateBrand: (brand) => {
-    return axiosClient.post(PATH_URL.UPDATE_BRAND, brand);
+  getRole: (role) => {
+    return axiosClient.post(PATH_URL.GET_ROLE, role);
   },
-  deleteBrand: (brand) => {
-    return axiosClient.post(PATH_URL.DELETE_BRAND, brand);
+  updateRole: (role) => {
+    return axiosClient.post(PATH_URL.UPDATE_ROLE, role);
+  },
+  deleteRole: (role) => {
+    return axiosClient.post(PATH_URL.DELETE_ROLE, role);
   },
 };
 

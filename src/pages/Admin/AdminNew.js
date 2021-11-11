@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Button, Select } from "antd";
-import { useDispatch } from "react-redux";
 import response from "../../constants/response";
 import toast from "../../helpers/toast";
 import adminApi from "../../apis/adminApi";

@@ -37,9 +37,33 @@
   flex: 2;
 }
 
-.widget-content .widget-content-left .widget-heading {
-  opacity: 0.8;
-  font-weight: bold;
+.widget-content {
+  .widget-content-outer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .widget-content-left {
+    .widget-heading {
+      opacity: 0.8;
+      font-weight: bold;
+    }
+
+    .widget-subheading {
+      opacity: 0.5;
+    }
+  }
+
+  .widget-content-right {
+    margin-left: auto;
+  }
+}
+
+.card-shadow {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  border-width: 0;
+  transition: all 0.2s;
 }
 
 .border-circle {

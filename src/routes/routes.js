@@ -15,6 +15,11 @@ import AdminNew from "../pages/Admin/AdminNew";
 import Brand from "../pages/Brand/Brand";
 import BrandNew from "../pages/Brand/BrandNew";
 
+//brand
+import Role from "../pages/Role/Role";
+import RoleNew from "../pages/Role/RoleNew";
+import RoleEdit from "../pages/Role/RoleEdit";
+
 //coupon
 import Coupon from "../pages/Coupon/Coupon";
 import CouponNew from "../pages/Coupon/CouponNew";
@@ -99,6 +104,13 @@ function Routes() {
         path={path.ADMIN_NEW}
         component={AdminNew}
         role={role.ADMIN}
+      />
+      <PrivateRoute path={path.ROLE_LIST} component={Role} role={role.ROLE} />
+      <PrivateRoute path={path.ROLE_NEW} component={RoleNew} role={role.ROLE} />
+      <PrivateRoute
+        path={path.ROLE_EDIT + ":id"}
+        component={RoleEdit}
+        role={role.ROLE}
       />
       <PrivateRoute
         path={path.BRAND_LIST}

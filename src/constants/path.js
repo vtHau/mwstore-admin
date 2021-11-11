@@ -23,5 +23,8 @@ export const path = {
   STATISTIC: "/statistic",
   PRODUCT_LIST: "/product/list-product/",
   PRODUCT_NEW: "/product/new-product/",
+  ROLE_EDIT: "/role/edit-role/",
+  ROLE_LIST: "/role/list-role/",
+  ROLE_NEW: "/role/new-role/",
   GALLERY_DETAIL: "/gallery/detail/",
 };

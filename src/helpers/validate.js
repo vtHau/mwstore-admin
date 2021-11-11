@@ -1,28 +1,28 @@
 import * as Yup from "yup";
-export function checkIfFilesAreTooBig(files) {
-  let valid = true;
-  if (files) {
-    files.map((file) => {
-      const size = file.size / 1024 / 1024;
-      if (size > 10) {
-        valid = false;
-      }
-    });
-  }
-  return valid;
-}
+// export function checkIfFilesAreTooBig(files) {
+//   let valid = true;
+//   if (files) {
+//     files.map((file) => {
+//       const size = file.size / 1024 / 1024;
+//       if (size > 10) {
+//         valid = false;
+//       }
+//     });
+//   }
+//   return valid;
+// }
 
-export function checkIfFilesAreCorrectType(files) {
-  let valid = true;
-  if (files) {
-    files.map((file) => {
-      if (!["application/pdf", "image/jpeg", "image/png"].includes(file.type)) {
-        valid = false;
-      }
-    });
-  }
-  return valid;
-}
+// export function checkIfFilesAreCorrectType(files) {
+//   let valid = true;
+//   if (files) {
+//     files.map((file) => {
+//       if (!["application/pdf", "image/jpeg", "image/png"].includes(file.type)) {
+//         valid = false;
+//       }
+//     });
+//   }
+//   return valid;
+// }
 
 export const brandValid = Yup.object().shape({
   name: Yup.string()
@@ -33,6 +33,17 @@ export const brandValid = Yup.object().shape({
     .min(2, "Brand description short")
     .max(50, "Brand description long")
     .required("Please input brand description"),
+});
+
+export const roleValid = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Role name short")
+    .max(50, "Role name long")
+    .required("Please input role name"),
+  description: Yup.string()
+    .min(2, "Role description short")
+    .max(50, "Role description long")
+    .required("Please input role description"),
 });
 
 export const adminUpdateValid = Yup.object().shape({

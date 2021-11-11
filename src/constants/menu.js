@@ -38,6 +38,17 @@ export const MENUITEMS = [
     ],
   },
   {
+    title: "Role",
+    icon: Users,
+    type: "sub",
+    active: false,
+    role: role.ROLE,
+    children: [
+      { path: path.ROLE_LIST, title: "Role List", type: "link" },
+      { path: path.ROLE_NEW, title: "Role New", type: "link" },
+    ],
+  },
+  {
     title: "Brand",
     icon: Chrome,
     type: "sub",

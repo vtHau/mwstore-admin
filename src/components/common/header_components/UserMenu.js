@@ -1,10 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { signOutReq } from "../../../actions/action";
+import { useSelector, useDispatch } from "react-redux";
+import { path } from "../../../constants/path";
 import * as PATH_URL from "./../../../constants/apiUrl";
 
 function UserMenu() {
+  const dispatch = useDispatch();
   const admin = useSelector((state) => state.adminReducer.admin);
+
+  const handleLogout = () => {
+    dispatch(signOutReq());
+  };
 
   return (
     <li className="onhover-dropdown">
@@ -21,29 +28,12 @@ function UserMenu() {
       </div>
       <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
         <li>
-          <Link to={`${process.env.PUBLIC_URL}/settings/profile`}>
+          <Link to={path.PROFILE}>
             <i data-feather="user"></i>Edit Profile
           </Link>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i data-feather="mail"></i>Inbox
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i data-feather="lock"></i>Lock Screen
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i data-feather="settings"></i>Settings
-          </a>
-        </li>
-        <li>
-          <Link to={`${process.env.PUBLIC_URL}/`}>
-            <i data-feather="log-out"></i>Logout
-          </Link>
+        <li onClick={handleLogout}>
+          <i data-feather="log-out"></i>Logout
         </li>
       </ul>
     </li>

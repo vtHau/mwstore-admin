@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import SearchHeader from "./SearchHeader";
 import Notification from "./Notification";
+import { useSelector } from "react-redux";
 import UserMenu from "./UserMenu";
+import { path } from "../../../constants/path";
 import { AlignLeft, Maximize2, Bell, MoreHorizontal } from "react-feather";
 
 //images
 import logo from "../../../assets/images/dashboard/mwstore-logo.png";
+import { Redirect } from "react-router";
 
 function Header() {
+  const isAuth = useSelector((state) => state.adminReducer.isAuth);
   const [sidebar, setSidebar] = useState(true);
   const [navMenus, setNavMenus] = useState(true);
 
   const toggle = () => {
     setNavMenus((prevState) => !prevState.navMenus);
   };
+
+  if (!isAuth) {
+    return <Redirect to={path.SIGN_IN} />;
+  }
 
   const goFull = () => {
     if (

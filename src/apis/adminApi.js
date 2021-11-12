@@ -31,12 +31,6 @@ const adminApi = {
   signOut: () => {
     return axiosClient.post(PATH_URL.SIGN_OUT);
   },
-
-  // updatePassword: (password) => {
-  //   return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-  //     return axiosClient.post(PATH_URL.UPDATE_PASSWORD, password);
-  //   });
-  // },
 };
 
 export default adminApi;

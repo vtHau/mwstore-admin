@@ -5,7 +5,7 @@ import { role } from "../constants/role";
 import PrivateRoute from "./../guards/PrivateRoute";
 
 // Components
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 
 //admin
 import Admin from "../pages/Admin/Admin";
@@ -53,6 +53,7 @@ import PostNew from "../pages/Post/PostNew";
 //product
 import Product from "../pages/Product/Product";
 import ProductNew from "../pages/Product/ProductNew";
+import ProductReference from "../pages/Product/ProductReference";
 
 //product
 import Gallery from "../pages/Gallery/Gallery";
@@ -192,6 +193,11 @@ function Routes() {
         role={role.PRODUCT}
       />
       <PrivateRoute
+        path={path.PRODUCT_CRAWL}
+        component={ProductReference}
+        role={role.PRODUCT}
+      />
+      <PrivateRoute
         path={path.GALLERY_DETAIL + ":id"}
         component={Gallery}
         role={role.GALLERY}
@@ -201,14 +207,16 @@ function Routes() {
         component={Statistic}
         role={role.STATISTIC}
       />
-      {/*  <PrivateRoute
+
+      <PrivateRoute
         path={`${process.env.PUBLIC_URL}/products/physical/product-list`}
         component={Product_list}
       />
-       <PrivateRoute
+      <PrivateRoute
         path={`${process.env.PUBLIC_URL}/products/physical/product-detail`}
         component={Product_detail}
       />
+      {/*  
        <PrivateRoute
         path={`${process.env.PUBLIC_URL}/sales/orders`}
         component={Orders}

@@ -7,7 +7,7 @@ export class Digital_pro_list extends Component {
     render() {
         return (
             <Fragment>
-                <Breadcrumb title="Product List" parent="Digital" />
+                <Breadcrumb title="Product Hii" parent="Digital" />
                 {/* <!-- Container-fluid starts--> */}
                 <div className="container-fluid">
                     <div className="row">

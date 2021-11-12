@@ -21,7 +21,7 @@ const adminReducer = (state = initialState, action) => {
 
     case types.SIGN_OUT: {
       const newState = { isAuth: false, admin: {} };
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
       return { ...newState };
     }
 

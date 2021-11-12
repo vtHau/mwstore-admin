@@ -76,6 +76,8 @@ export const DELETE_SLIDER = BASE_URL_API + "slider/delete-slider";
 
 //product
 export const ALL_PRODUCT = BASE_URL_API + "product/all-product";
+export const PRODUCT_CRAWL = BASE_URL_API + "product/product-crawl";
+export const ADD_PRODUCT_CRAWL = BASE_URL_API + "product/add-product-crawl";
 export const TOP_PRODUCT = BASE_URL_API + "product/top-product";
 export const NEW_PRODUCT = BASE_URL_API + "product/new-product";
 export const UPDATE_PRODUCT = BASE_URL_API + "product/update-product";

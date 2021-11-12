@@ -93,7 +93,7 @@ function Routes() {
   return (
     <>
       <Route exact path={path.HOME} component={Home} />
-      <Route path={path.PROFILE} component={Profile} />
+      <Route path={path.PROFILE} component={Profile} role={path.PROFILE} />
 
       <PrivateRoute
         path={path.ADMIN_LIST}

@@ -19,8 +19,6 @@ export const UPDATE_PROFILE = BASE_URL_API + "update-profile";
 export const UPDATE_PASSWORD = BASE_URL_API + "update-password";
 export const DELETE_ADMIN = BASE_URL_API + "delete-admin";
 export const SIGN_IN = BASE_URL_API + "signin";
-export const SIGN_IN_SOCIAL = BASE_URL_API + "signin/redirect/";
-export const SIGN_IN_SOCIAL_CB = BASE_URL_API + "signin/callback/";
 export const SIGN_UP = BASE_URL_API + "signup";
 export const SIGN_OUT = BASE_URL_API + "signout";
 

@@ -79,11 +79,7 @@ const doughnutOptions = {
   tooltip: {
     trigger: "none",
   },
-  animation: {
-    startup: true,
-    easing: "linear",
-    duration: 1500,
-  },
+  animation: false,
   chartArea: { left: 0, top: 10, width: "360px", height: "100%" },
   enableInteractivity: false,
 };

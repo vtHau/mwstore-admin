@@ -8,9 +8,7 @@ const adminApi = {
     });
   },
   signIn: (value) => {
-    return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-      return axiosClient.post(PATH_URL.SIGN_IN, value);
-    });
+    return axiosClient.post(PATH_URL.SIGN_IN, value);
   },
   getAllAdmin: () => {
     return axiosClient.get(PATH_URL.ALL_ADMIN);
@@ -33,11 +31,7 @@ const adminApi = {
   signOut: () => {
     return axiosClient.post(PATH_URL.SIGN_OUT);
   },
-  // signOut: () => {
-  //   return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
-  //     return axiosClient.post(PATH_URL.SIGN_OUT);
-  //   });
-  // },
+
   // updatePassword: (password) => {
   //   return axiosClient.get(PATH_URL.BASE_URL_CSRF).then((res) => {
   //     return axiosClient.post(PATH_URL.UPDATE_PASSWORD, password);

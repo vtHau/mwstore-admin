@@ -24,7 +24,7 @@ function PrivateRoute({ component: Component, role, ...rest }) {
 
         if (
           role &&
-          !admin.roles.includes(role.toLowerCase()) &&
+          !admin.roles.includes(role) &&
           admin.role !== ROLE.FULL_PERMISSION
         )
           return <h2>Khong co quyen truy cap</h2>;

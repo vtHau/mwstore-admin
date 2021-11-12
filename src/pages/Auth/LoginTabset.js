@@ -1,45 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { signIn } from "./../../actions/action";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
 import { User } from "react-feather";
-import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
+import response from "./../../constants/response";
+import adminApi from "./../../apis/adminApi";
+import { signInValid } from "../../helpers/validate";
 import { path } from "../../constants/path";
+import { Redirect } from "react-router-dom";
 
 function LoginTabset() {
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const isAuth = useSelector((state) => state.adminReducer.isAuth);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: signInValid,
+    onSubmit: (values) => {
+      setConfirmLoading(true);
+      adminApi
+        .signIn(values)
+        .then((res) => {
+          if (res.status === response.SIGN_IN_SUCCESS) {
+            dispatch(signIn(res));
+          } else {
+            formik.setErrors({
+              email: "Email or password wrong",
+              password: "Email or password wrong",
+            });
+          }
 
-  const routeChange = () => {
-    history.push(path.HOME);
-  };
+          setConfirmLoading(false);
+        })
+        .catch((err) => {
+          setConfirmLoading(false);
+        });
+    },
+  });
+
+  if (isAuth) {
+    return <Redirect to={path.HOME} />;
+  }
 
   return (
     <Tabs>
       <TabList className="nav nav-tabs tab-coupon">
         <Tab className="nav-link">
           <User />
-          Đăng nhập
+          Sign In
         </Tab>
       </TabList>
 
       <TabPanel>
-        <form className="form-horizontal auth-form">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="form-horizontal auth-form"
+        >
           <div className="form-group">
             <input
-              required=""
-              name="login[username]"
+              name="email"
               type="email"
               className="form-control"
-              placeholder="Username"
-              id="exampleInputEmail1"
+              value={formik.values.email}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              placeholder="Please input email..."
             />
+            {formik.errors.email && formik.touched.email && (
+              <p className="error-field">{formik.errors.email}</p>
+            )}
           </div>
           <div className="form-group">
             <input
-              required=""
-              name="login[password]"
               type="password"
+              name="password"
               className="form-control"
-              placeholder="Password"
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              placeholder="Please input password..."
             />
+            {formik.errors.password && formik.touched.password && (
+              <p className="error-field">{formik.errors.password}</p>
+            )}
           </div>
           <div className="form-terms">
             <div className="custom-control custom-checkbox mr-sm-2">
@@ -54,35 +102,20 @@ function LoginTabset() {
                   id="chk-ani2"
                   type="checkbox"
                 />
-                Nhớ tài khoản tôi
+                Remember Me
               </label>
             </div>
           </div>
           <div className="form-button">
-            <button
+            <Button
               className="btn btn-primary"
-              type="submit"
-              onClick={routeChange}
+              type="primary"
+              htmlType="submit"
+              size="large"
+              loading={confirmLoading}
             >
-              Đăng nhập
-            </button>
-          </div>
-          <div className="form-footer">
-            <span>Đăng nhập với các nền tảng khác</span>
-            <ul className="social">
-              <li>
-                <a className="fa fa-facebook" href=""></a>
-              </li>
-              <li>
-                <a className="fa fa-twitter" href=""></a>
-              </li>
-              <li>
-                <a className="fa fa-instagram" href=""></a>
-              </li>
-              <li>
-                <a className="fa fa-pinterest" href=""></a>
-              </li>
-            </ul>
+              SignIn
+            </Button>
           </div>
         </form>
       </TabPanel>

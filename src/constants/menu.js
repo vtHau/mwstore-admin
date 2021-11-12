@@ -161,6 +161,7 @@ export const MENUITEMS = [
     title: "Profile",
     icon: Home,
     type: "link",
+    role: role.PROFILE,
     badgeType: "primary",
     active: false,
   },

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useAuth from "./../../hooks/useAuth";
-import { authToken } from "./../../actions/action";
-import { ArrowLeft } from "react-feather";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,6 +8,7 @@ import LoginTabset from "./LoginTabset";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 import AuthLoading from "./../../components/Loading/AuthLoading";
+import useTitle from "../../hooks/useTitle";
 
 const settings = {
   dots: true,
@@ -20,6 +19,8 @@ const settings = {
 
 function SignIn() {
   const [isAuth, isLoading] = useAuth();
+
+  useTitle("Sign In");
 
   if (!isLoading) {
     return <AuthLoading />;
@@ -43,14 +44,14 @@ function SignIn() {
                   <Slider className="single-item" {...settings}>
                     <div>
                       <div>
-                        <h3>Chào mừng đến với MWStore</h3>
-                        <p>Trang quản trị của hệ thống MWStore.</p>
+                        <h3>Welcome to MWStore</h3>
+                        <p>Admin page of system MWStore.</p>
                       </div>
                     </div>
                     <div>
                       <div>
-                        <h3>Chào mừng đến với MWStore</h3>
-                        <p>Trang quản trị của hệ thống MWStore.</p>
+                        <h3>Welcome to MWStore</h3>
+                        <p>Admin page of system MWStore.</p>
                       </div>
                     </div>
                   </Slider>
@@ -64,14 +65,6 @@ function SignIn() {
                 </div>
               </div>
             </div>
-            <a
-              href="https:mw-store.site"
-              target="_blank"
-              className="btn btn-primary back-btn"
-            >
-              <ArrowLeft />
-              Trang chủ
-            </a>
           </div>
         </div>
       </div>

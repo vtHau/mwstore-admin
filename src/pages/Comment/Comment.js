@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import commentApi from "../../apis/commentApi";
 import response from "../../constants/response";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import CommentItem from "./../../components/Comment/CommentItem";
 
 function Comment() {

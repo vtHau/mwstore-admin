@@ -3,11 +3,10 @@ import SearchHeader from "./SearchHeader";
 import Notification from "./Notification";
 import { useSelector } from "react-redux";
 import UserMenu from "./UserMenu";
-import { path } from "../../../constants/path";
+import { path } from "../../constants/path";
 import { AlignLeft, Maximize2, Bell, MoreHorizontal } from "react-feather";
 
-//images
-import logo from "../../../assets/images/dashboard/mwstore-logo.png";
+import logo from "./../../assets/images/dashboard/mwstore-logo.png";
 import { Redirect } from "react-router";
 
 function Header() {

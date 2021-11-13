@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import response from "../../constants/response";
 import statisticApi from "../../apis/statisticApi";
 import StatisticOrder from "./../../components/Statistic/StatisticOrder";

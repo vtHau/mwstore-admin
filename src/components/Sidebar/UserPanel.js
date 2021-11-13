@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import * as PATH_URL from "./../../../constants/apiUrl";
+import * as PATH_URL from "../../constants/apiUrl";
 
 function UserPanel() {
   const admin = useSelector((state) => state.adminReducer.admin);

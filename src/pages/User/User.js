@@ -7,7 +7,7 @@ import useTitle from "../../hooks/useTitle";
 import response from "../../constants/response";
 import * as PATH_URL from "../../constants/apiUrl";
 import UserItem from "./../../components/User/UserItem";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 
 function User() {
   const users = useSelector((state) => state.userReducer.users);

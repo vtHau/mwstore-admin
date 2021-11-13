@@ -1,7 +1,7 @@
 import React from "react";
 import useTitle from "../../hooks/useTitle";
 import ProductList from "../../components/Product/ProductList";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 
 function Slider() {
   useTitle("Product List");

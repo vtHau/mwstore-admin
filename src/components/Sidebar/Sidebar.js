@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import UserPanel from "./UserPanel";
 import { Link } from "react-router-dom";
-import { MENUITEMS } from "../../../constants/menu";
-import { path } from "../../../constants/path";
-import RoleAllow from "./../../RoleAllow";
+import { MENUITEMS } from "./../../constants/menu";
+import { path } from "./../../constants/path";
+import RoleAllow from "../RoleAllow";
 
 // image import
-import logo from "../../../assets/images/dashboard/mwstore-logo.png";
+import logo from "./../../assets/images/dashboard/mwstore-logo.png";
 
 export class sidebar extends Component {
   state = { selectedPath: "1", mainmenu: [] };

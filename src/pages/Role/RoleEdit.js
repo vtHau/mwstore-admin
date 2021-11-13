@@ -5,7 +5,7 @@ import { isEmpty } from "lodash";
 import { useParams, Redirect } from "react-router-dom";
 import { roleValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import roleApi from "../../apis/roleApi";
 import permissionApi from "../../apis/permissionApi";
 import response from "../../constants/response";

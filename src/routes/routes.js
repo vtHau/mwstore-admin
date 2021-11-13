@@ -64,9 +64,6 @@ import Statistic from "../pages/Statistic/Statistic";
 //profile
 import Profile from "../pages/Profile/Profile";
 
-import Translations from "../components/localization/translations";
-import Datatable from "../components/common/datatable";
-
 function Routes() {
   return (
     <>

@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import visitorApi from "../../apis/visitorApi";
 import response from "../../constants/response";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import * as PATH_URL from "../../constants/apiUrl";

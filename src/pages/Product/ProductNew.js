@@ -8,7 +8,7 @@ import productApi from "../../apis/productApi";
 import { productValid } from "../../helpers/validate";
 import { fetchAllProduct } from "./../../actions/action";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 

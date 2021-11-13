@@ -7,7 +7,7 @@ import productApi from "../../apis/productApi";
 import sliderApi from "../../apis/sliderApi";
 import { sliderValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 

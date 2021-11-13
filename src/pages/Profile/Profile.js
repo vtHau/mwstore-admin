@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import * as PATH_URL from "./../../constants/apiUrl";
 import TabProfile from "../../components/Profile/TabProfile";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 
 function Profile() {
   const admin = useSelector((state) => state.adminReducer.admin);

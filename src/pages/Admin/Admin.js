@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import { Table } from "react-bootstrap";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import adminApi from "../../apis/adminApi";
 import AdminItem from "./../../components/Admin/AdminItem";
 import response from "../../constants/response";

@@ -8,7 +8,7 @@ import brandApi from "./../../apis/brandApi";
 import { fetchAllBrand } from "./../../actions/action";
 import { brandValid } from "./../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "./../../constants/path";
 

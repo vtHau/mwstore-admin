@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import postApi from "../../apis/postApi";
 import response from "../../constants/response";
 import PostItem from "../../components/Post/PostItem";

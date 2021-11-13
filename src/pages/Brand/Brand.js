@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import BrandList from "./../../components/Brand/BrandList";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Upload, Button } from "antd";
 import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 import * as PATH_URL from "../../constants/apiUrl";

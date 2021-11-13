@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { signOutReq } from "../../../actions/action";
+import { signOutReq } from "../../actions/action";
 import { useSelector, useDispatch } from "react-redux";
-import { path } from "../../../constants/path";
-import * as PATH_URL from "./../../../constants/apiUrl";
+import { path } from "../../constants/path";
+import * as PATH_URL from "../../constants/apiUrl";
 
 function UserMenu() {
   const dispatch = useDispatch();

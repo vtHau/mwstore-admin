@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Divider } from "antd";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import orderApi from "../../apis/orderApi";
 import response from "../../constants/response";
 import OrderItem from "../../components/Order/OrderItem";

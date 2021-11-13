@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Select } from "antd";
 import useTitle from "../../hooks/useTitle";
 import ProductItemCrawl from "../../components/Product/ProductItemCrawl";
-import Breadcrumb from "../../components/common/breadcrumb";
+import Breadcrumb from "../../components/Common/Breadcrumb";
 import productApi from "../../apis/productApi";
 import response from "../../constants/response";
 import toast from "../../helpers/toast";

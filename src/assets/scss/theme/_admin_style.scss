@@ -2277,6 +2277,11 @@ ul.notification-dropdown.onhover-show-div {
           text-transform: $sidebar-txt-transform;
           font-weight: $sidebar-font-weight;
           color: $sidebar-font-color;
+          
+          &:hover {
+            cursor: pointer;
+          }
+
           svg {
             width: $sidebar-icon-size;
             height: $sidebar-icon-size;
@@ -2347,6 +2352,11 @@ ul.notification-dropdown.onhover-show-div {
             color: $sidebar-font-color;
             font-weight: $sidebar-font-weight;
             transition: $sidebar-transition;
+
+            &:hover {
+              cursor: pointer;
+            }
+
           }
           > a {
             > .fa-angle-down {

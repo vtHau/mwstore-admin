@@ -66,7 +66,7 @@ export class sidebar extends Component {
       mainmenu: MENUITEMS,
     });
   }
-
+  /* eslint-disable jsx-a11y/anchor-is-valid */
   render() {
     const mainmenu = this.state.mainmenu.map((menuItem, i) => (
       <RoleAllow key={i} allowedRole={menuItem.role}>
@@ -78,7 +78,7 @@ export class sidebar extends Component {
           )}
           {menuItem.type === "sub" ? (
             <a
-              href="# "
+              href={null}
               className="sidebar-header "
               onClick={() => this.setNavActive(menuItem)}
             >
@@ -130,7 +130,7 @@ export class sidebar extends Component {
                 >
                   {childrenItem.type === "sub" ? (
                     <a
-                      href="# "
+                      href={null}
                       onClick={() => this.setNavActive(childrenItem)}
                     >
                       <i className="fa fa-circle"></i>

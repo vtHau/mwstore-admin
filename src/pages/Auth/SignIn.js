@@ -39,7 +39,7 @@ function SignIn() {
               <div className="col-md-5 p-0 card-left">
                 <div className="card bg-primary">
                   <div className="svg-icon">
-                    <img src={stats} className="Img-fluid" />
+                    <img src={stats} className="Img-fluid" alt="login" />
                   </div>
                   <Slider className="single-item" {...settings}>
                     <div>

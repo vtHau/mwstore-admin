@@ -73,7 +73,7 @@ function Header() {
           <div className="mobile-sidebar">
             <div className="media-body text-right switch-sm">
               <label className="switch">
-                <a onClick={openCloseSidebar}>
+                <a onClick={openCloseSidebar} href="# ">
                   <AlignLeft />
                 </a>
               </label>

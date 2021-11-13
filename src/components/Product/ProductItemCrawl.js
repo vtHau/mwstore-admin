@@ -26,7 +26,6 @@ function ProductItemCrawl(props) {
       name,
       price,
       description,
-      description,
       brand_id,
       src,
     };
@@ -58,12 +57,13 @@ function ProductItemCrawl(props) {
           <div className="card-body product-box">
             <div className="img-wrapper">
               <div className="front">
-                <a className="bg-size">
+                <div className="bg-size">
                   <img
                     className="img-fluid blur-up bg-img lazyloaded"
                     src={product.image}
+                    alt={product.name}
                   />
-                </a>
+                </div>
                 <div className="product-hover">
                   <ul>
                     <li>
@@ -83,9 +83,9 @@ function ProductItemCrawl(props) {
               </div>
             </div>
             <div className="product-detail">
-              <a>
+              <div>
                 <h6>{product.name}</h6>
-              </a>
+              </div>
               <h4>{formatPrice(product.price)}</h4>
               <p>{formatString(product.desc, 40)}</p>
             </div>

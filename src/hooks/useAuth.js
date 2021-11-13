@@ -9,6 +9,7 @@ function useAuth() {
 
   useEffect(() => {
     dispatch(authToken(setIsLoading));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return [isAuth, isLoading];

@@ -5,7 +5,6 @@ import { MENUITEMS } from "./../../constants/menu";
 import { path } from "./../../constants/path";
 import RoleAllow from "../RoleAllow";
 
-// image import
 import logo from "./../../assets/images/dashboard/mwstore-logo.png";
 
 export class sidebar extends Component {
@@ -23,15 +22,16 @@ export class sidebar extends Component {
   componentDidMount() {
     var currentUrl = window.location.pathname;
 
-    this.state.mainmenu.filter((items) => {
+    this.state.mainmenu.forEach((items) => {
       if (!items.children) {
         if (items.path === currentUrl) this.setNavActive(items);
-        return false;
+        return null;
       }
-      items.children.filter((subItems) => {
+
+      items.children.forEach((subItems) => {
         if (subItems.path === currentUrl) this.setNavActive(subItems);
-        if (!subItems.children) return false;
-        subItems.children.filter((subSubItems) => {
+        if (!subItems.children) return;
+        subItems.children.forEach((subSubItems) => {
           if (subSubItems.path === currentUrl) this.setNavActive(subSubItems);
         });
       });
@@ -39,17 +39,17 @@ export class sidebar extends Component {
   }
 
   setNavActive(item) {
-    MENUITEMS.filter((menuItem) => {
-      if (menuItem != item) menuItem.active = false;
+    MENUITEMS.forEach((menuItem) => {
+      if (menuItem !== item) menuItem.active = false;
       if (menuItem.children && menuItem.children.includes(item))
         menuItem.active = true;
       if (menuItem.children) {
-        menuItem.children.filter((submenuItems) => {
-          if (submenuItems != item) {
+        menuItem.children.forEach((submenuItems) => {
+          if (submenuItems !== item) {
             submenuItems.active = false;
           }
           if (submenuItems.children) {
-            submenuItems.children.map((childItem) => {
+            submenuItems.children.forEach((childItem) => {
               childItem.active = false;
             });
             if (submenuItems.children.includes(item)) {
@@ -78,8 +78,8 @@ export class sidebar extends Component {
           )}
           {menuItem.type === "sub" ? (
             <a
+              href="# "
               className="sidebar-header "
-              href="javascript:void(0)"
               onClick={() => this.setNavActive(menuItem)}
             >
               <menuItem.icon />
@@ -130,7 +130,7 @@ export class sidebar extends Component {
                 >
                   {childrenItem.type === "sub" ? (
                     <a
-                      href="javascript:void(0)"
+                      href="# "
                       onClick={() => this.setNavActive(childrenItem)}
                     >
                       <i className="fa fa-circle"></i>

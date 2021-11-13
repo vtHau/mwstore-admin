@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import sliderApi from "./../../apis/sliderApi";
 import response from "../../constants/response";

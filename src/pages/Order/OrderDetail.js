@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Divider, Button } from "antd";
 import { isEmpty } from "lodash";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/Common/Breadcrumb";
 import orderApi from "../../apis/orderApi";
@@ -54,7 +54,7 @@ function OrderDetail() {
         }
       })
       .catch((err) => {});
-  }, [id]);
+  }, [id, code]);
 
   if (redirectOrder) {
     return <Redirect to={path.ORDER_LIST} />;

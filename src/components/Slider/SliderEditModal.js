@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
-import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { sliderUpdateValid } from "./../../helpers/validate";
 import sliderApi from "../../apis/sliderApi";

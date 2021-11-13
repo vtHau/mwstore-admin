@@ -30,6 +30,7 @@ function TopProduct() {
                 className="list-group-item list-group-item-action"
                 href={`${process.env.REACT_APP_BASE_URL_USER}product/${product.slug}`}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {product.name} - {product.visit} <i className="fa fa-eye"></i>
               </a>

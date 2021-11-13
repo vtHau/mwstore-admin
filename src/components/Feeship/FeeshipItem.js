@@ -4,12 +4,14 @@ import feeshipApi from "../../apis/feeshipApi";
 import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
+import FeeshipEditModal from "./FeeshipEditModal";
 import { formatPrice } from "../../helpers/formats";
 
 function FeeshipItem(props) {
   const { index, feeship, fetchAllFeeship } = props;
   const { city, province, village } = feeship;
   const [openPop, togglePop] = useToggle(false);
+  const [openModal, toggleModal] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const handleDelete = () => {
@@ -40,6 +42,9 @@ function FeeshipItem(props) {
       <td>{village.name}</td>
       <td>{formatPrice(feeship.feeship)}</td>
       <td>
+        <Button type="primary" onClick={toggleModal}>
+          Edit
+        </Button>
         <Popconfirm
           title="Bạn có thật sự muốn xóa ?"
           visible={openPop}
@@ -53,6 +58,12 @@ function FeeshipItem(props) {
             Delete
           </Button>
         </Popconfirm>
+        <FeeshipEditModal
+          feeship={feeship}
+          fetchAllFeeship={fetchAllFeeship}
+          openModal={openModal}
+          toggleModal={toggleModal}
+        />
       </td>
     </tr>
   );

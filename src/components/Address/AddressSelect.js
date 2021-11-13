@@ -57,7 +57,7 @@ function AddressSelect(props) {
   };
 
   const handleAdd = (value) => {
-    if (value < 100 || value > 1000000) {
+    if (value < 1000 || value > 1000000) {
       return toast.error("Fail", "Price from 100 into 1000000");
     }
 

@@ -311,3 +311,10 @@ export const passwordValid = Yup.object().shape({
     .max(50, "Mật khẩu quá dài")
     .required("Vui lòng nhập lại mật khẩu"),
 });
+
+export const feeshipValid = Yup.object().shape({
+  feeship: Yup.number()
+    .min(1000, "Feeship price from 1000")
+    .max(1000000, "Feeship price to 1000000")
+    .required("Please input feeship price"),
+});

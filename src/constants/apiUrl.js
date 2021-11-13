@@ -87,6 +87,7 @@ export const PRODUCT_NOT_POST = BASE_URL_API + "product/not-post";
 //visitor
 export const ALL_VISITOR = BASE_URL_API + "visitor/all-visitor";
 export const COUNT_VISITOR = BASE_URL_API + "visitor/count-visitor";
+export const DEVICE_VISITOR = BASE_URL_API + "visitor/device-visitor";
 
 //gallery
 export const GALLERY_PRODUCT = BASE_URL_API + "gallery/gallery-product";

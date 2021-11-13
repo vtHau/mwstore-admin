@@ -6,11 +6,33 @@ import { Table } from "react-bootstrap";
 import moment from "moment";
 import CountUp from "react-countup";
 import DatePicker from "react-datepicker";
-import { Bar, Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut, Pie } from "react-chartjs-2";
 import response from "../../constants/response";
 import statisticApi from "../../apis/statisticApi";
 import visitorApi from "../../apis/visitorApi";
 import productApi from "../../apis/productApi";
+
+const handleDataPie = (data) => {
+  return {
+    labels: ["Mobile", "Table", "Desktop"],
+    datasets: [
+      {
+        data,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+};
 
 const handleDataStatistic = (data) => {
   const { date, sale, profit } = data;
@@ -61,15 +83,11 @@ const lineOptions = {
   },
   tooltips: {
     callbacks: {
-      beforeTitle: function (context) {
-        // return "hello";
-      },
+      beforeTitle: function (context) {},
       title: function (context) {
         return "Date: " + context[0].label;
       },
-      afterTitle: function (context) {
-        // return "Quantity: " + quantity[context[0]];
-      },
+      afterTitle: function (context) {},
     },
     mode: "index",
     intersect: false,
@@ -111,6 +129,7 @@ function Statistic() {
   const [statistics, setStatistics] = useState({});
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
+  const [device, setDevice] = useState({});
   const [visitor, setVisitor] = useState({});
   const [dataHeader, setDataHeader] = useState({});
   const [dataDoughnut, setDataDoughnut] = useState({});
@@ -141,6 +160,15 @@ function Statistic() {
       .then((res) => {
         if (res.status === response.SUCCESS) {
           setVisitor(res.data);
+        }
+      })
+      .catch((err) => {});
+
+    visitorApi
+      .getDeviceVisitor()
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setDevice(handleDataPie(res.data));
         }
       })
       .catch((err) => {});
@@ -413,13 +441,26 @@ function Statistic() {
               </div>
             </div>
           </div>
+
           <div className="col-6">
+            <div className="card">
+              <div className="card-header">
+                <h5>Device Visit</h5>
+              </div>
+              <div className="card-body">
+                <Pie height={200} data={device} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
             <div className="card">
               <div className="card-header">
                 <h5>Top product view</h5>
               </div>
               <div className="card-body">
-                <ul class="list-group">
+                <ul className="list-group">
                   {products.map((product, key) => (
                     <a
                       key={key}
@@ -427,7 +468,8 @@ function Statistic() {
                       href={`${process.env.REACT_APP_BASE_URL_USER}product/${product.slug}`}
                       target="_blank"
                     >
-                      {product.name} - {product.visit} <i class="fa fa-eye"></i>
+                      {product.name} - {product.visit}{" "}
+                      <i className="fa fa-eye"></i>
                     </a>
                   ))}
                 </ul>

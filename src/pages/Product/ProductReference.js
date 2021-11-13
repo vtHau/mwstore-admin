@@ -10,6 +10,7 @@ import toast from "../../helpers/toast";
 const { Option } = Select;
 
 function ProductCrawl() {
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const [brand, setBrand] = useState("samsung");
   const [products, setProducts] = useState([]);
 

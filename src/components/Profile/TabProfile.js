@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import useToggle from "../../hooks/useToggle";
 import { Tabs, TabList, TabPanel, Tab } from "react-tabs";
-import ProfileEditModal from "../Profile/ProfileEditModal";
-import PasswordEditModal from "../Profile/PasswordEditModal";
+import ProfileEditModal from "./ProfileEditModal";
+import PasswordEditModal from "./PasswordEditModal";
 import { User } from "react-feather";
 
 function TabProfile() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import * as PATH_URL from "./../../constants/apiUrl";
-import TabProfile from "./../../components/settings/TabProfile";
+import TabProfile from "../../components/Profile/TabProfile";
 import Breadcrumb from "../../components/common/breadcrumb";
 
 function Profile() {

@@ -91,9 +91,6 @@ function Header() {
               </li>
               <li className="onhover-dropdown">
                 <Bell />
-                <span className="badge badge-pill badge-primary pull-right notification-badge">
-                  3
-                </span>
                 <span className="dot"></span>
                 <Notification />
               </li>

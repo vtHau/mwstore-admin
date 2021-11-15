@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Popconfirm, Modal } from "antd";
 // import response from "../../constants/response";
 // import toast from "../../helpers/toast";
+import ActivityModal from "./ActivityModal";
 import useToggle from "../../hooks/useToggle";
 import * as PATH_URL from "./../../constants/apiUrl";
 
@@ -9,6 +10,7 @@ function UserItem(props) {
   const { user, index } = props;
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
+  const [openActivity, toggleActivity] = useToggle(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const handleDelete = () => {};
@@ -45,6 +47,9 @@ function UserItem(props) {
       <td>{user.address || "Unknow"}</td>
       <td>
         <div className="btn-group">
+          <Button type="primary" onClick={toggleActivity}>
+            Activity
+          </Button>
           <Button type="primary" onClick={toggleModal}>
             Device
           </Button>
@@ -117,6 +122,11 @@ function UserItem(props) {
           </div>
         )}
       </Modal>
+      <ActivityModal
+        user={user}
+        openActivity={openActivity}
+        toggleActivity={toggleActivity}
+      />
     </tr>
   );
 }

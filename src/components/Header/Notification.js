@@ -22,7 +22,7 @@ function Notification() {
     if (page <= lastPage) {
       setLoading(true);
       activityApi
-        .getActivity({ page })
+        .getAllActivity({ page })
         .then((res) => {
           const result = res.data;
 
@@ -66,7 +66,9 @@ function Notification() {
             <li key={key}>
               <div className="media">
                 <AlertCircle />
-                <p className="mb-0">{activity.admin_content}</p>
+                <p className="mb-0">
+                  {activity.admin_content} - {activity.time}
+                </p>
               </div>
             </li>
           ))}

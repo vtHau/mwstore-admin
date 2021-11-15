@@ -102,6 +102,7 @@ export const DELETE_POST = BASE_URL_API + "post/delete-post";
 
 //activity
 export const GET_ACTIVITY = BASE_URL_API + "activity/get-activity";
+export const ALL_ACTIVITY = BASE_URL_API + "activity/all-activity";
 
 //statistic
 export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";

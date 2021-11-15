@@ -100,6 +100,9 @@ export const GET_POST = BASE_URL_API + "post/get-post";
 export const UPDATE_POST = BASE_URL_API + "post/update-post";
 export const DELETE_POST = BASE_URL_API + "post/delete-post";
 
+//activity
+export const GET_ACTIVITY = BASE_URL_API + "activity/get-activity";
+
 //statistic
 export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";
 export const FILTER_DATE = BASE_URL_API + "statistic/filter-date";

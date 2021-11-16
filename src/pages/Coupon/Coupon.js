@@ -10,10 +10,15 @@ import toast from "../../helpers/toast";
 import response from "../../constants/response";
 import { fetchAllCoupon } from "../../actions/action";
 import { useDispatch } from "react-redux";
+import useDownload from "../../hooks/useDownload";
 
 function Coupon() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const dispatch = useDispatch();
+  const [downloadFile, isDownloading] = useDownload(
+    PATH_URL.EXPORT_EXCEL_COUPON,
+    "coupon"
+  );
 
   useTitle("Coupon list");
 
@@ -72,9 +77,8 @@ function Coupon() {
                 shape="round"
                 size="large"
                 icon={<DownloadOutlined />}
-                onClick={() => {
-                  return window.open(PATH_URL.EXPORT_EXCEL_COUPON);
-                }}
+                loading={isDownloading}
+                onClick={downloadFile}
               >
                 Export Excel
               </Button>

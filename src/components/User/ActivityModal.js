@@ -26,7 +26,6 @@ function ActivityModal(props) {
       activityApi
         .getActivity({ page, user_id: user.id })
         .then((res) => {
-          console.log(res);
           const result = res.data;
 
           if (page <= result.last_page) {

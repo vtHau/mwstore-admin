@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
+import useDownload from "../../hooks/useDownload";
 import BrandList from "./../../components/Brand/BrandList";
 import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Upload, Button } from "antd";
@@ -13,6 +14,10 @@ import { fetchAllBrand } from "../../actions/action";
 
 function Brand() {
   const dispatch = useDispatch();
+  const [downloadFile, isDownloading] = useDownload(
+    PATH_URL.EXPORT_EXCEL_BRAND,
+    "brand"
+  );
   const [confirmLoading, setConfirmLoading] = useState(false);
   useTitle("Brand List");
 
@@ -70,10 +75,9 @@ function Brand() {
                 type="primary"
                 shape="round"
                 size="large"
+                loading={isDownloading}
                 icon={<DownloadOutlined />}
-                onClick={() => {
-                  return window.open(PATH_URL.EXPORT_EXCEL_BRAND);
-                }}
+                onClick={downloadFile}
               >
                 Export Excel
               </Button>

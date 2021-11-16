@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import visitorApi from "../../apis/visitorApi";
 import response from "../../constants/response";
+import useDownload from "../../hooks/useDownload";
 import useTitle from "../../hooks/useTitle";
 import Breadcrumb from "../../components/Common/Breadcrumb";
 import { Button } from "antd";
@@ -10,6 +11,10 @@ import * as PATH_URL from "../../constants/apiUrl";
 
 function Visitor() {
   const [visitors, setVisitors] = useState([]);
+  const [downloadFile, isDownloading] = useDownload(
+    PATH_URL.EXPORT_EXCEL_VISITOR,
+    "visitor"
+  );
 
   useTitle("All Visitor");
 
@@ -79,10 +84,9 @@ function Visitor() {
                 type="primary"
                 shape="round"
                 size="large"
+                loading={isDownloading}
                 icon={<DownloadOutlined />}
-                onClick={() => {
-                  return window.open(PATH_URL.EXPORT_EXCEL_VISITOR);
-                }}
+                onClick={downloadFile}
               >
                 Export Excel
               </Button>

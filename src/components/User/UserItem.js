@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Button, Popconfirm, Modal } from "antd";
-// import response from "../../constants/response";
-// import toast from "../../helpers/toast";
 import ActivityModal from "./ActivityModal";
 import useToggle from "../../hooks/useToggle";
 import * as PATH_URL from "./../../constants/apiUrl";
@@ -109,6 +107,7 @@ function UserItem(props) {
                 <div className="card-device-body">{user.device.browser}</div>
               </div>
             </div>
+
             <div className="col-6">
               <div className="card-device">
                 <div className="card-device-title">

@@ -11,6 +11,8 @@ import { formatPrice, formatPhone } from "./../../helpers/formats";
 import { path } from "../../constants/path";
 import WaveTopBottomLoading from "./../../components/Loading/WaveTopBottomLoading";
 import * as PATH_URL from "../../constants/apiUrl";
+import useDownload from "../../hooks/useDownload";
+import { DownloadOutlined } from "@ant-design/icons";
 
 function OrderDetail() {
   const { code } = useParams();
@@ -23,6 +25,13 @@ function OrderDetail() {
   const [couponPrice, setCouponPrice] = useState(0);
   const [feeshipPrice, setFeeshipPrice] = useState(25000);
   const [redirectOrder, setRedirectOrder] = useState(false);
+  const [keyOrder, setKeyOrder] = useState("");
+
+  const [downloadFile, isDownloading] = useDownload(
+    keyOrder,
+    "order_detail",
+    "pdf"
+  );
 
   useTitle("Order Detail");
 
@@ -39,6 +48,12 @@ function OrderDetail() {
           setUser(user);
           setShipping(shipping);
           setProducts(products);
+          setKeyOrder(
+            PATH_URL.EXPORT_PDF_ORDER +
+              new Buffer(
+                `${order.id}--${order.code}--${order.user_id}--${order.time}`
+              ).toString("base64")
+          );
 
           if (order.coupon !== null) {
             setCouponPrice(
@@ -192,19 +207,13 @@ function OrderDetail() {
                           <td>
                             <Button
                               type="primary"
-                              onClick={() => {
-                                const key = new Buffer(
-                                  `${order.id}--${order.code}--${order.user_id}--${order.time}`
-                                ).toString("base64");
-
-                                return window.open(
-                                  PATH_URL.PRINT_ORDER + key,
-                                  "Popup",
-                                  "width=600, height=600"
-                                );
-                              }}
+                              shape="round"
+                              size="large"
+                              loading={isDownloading}
+                              icon={<DownloadOutlined />}
+                              onClick={downloadFile}
                             >
-                              Print
+                              Export PDF
                             </Button>
                           </td>
                         </tr>

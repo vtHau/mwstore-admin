@@ -66,7 +66,6 @@ export const ALL_ORDER = BASE_URL_API + "order/all-order";
 export const CONFIRM_ORDER = BASE_URL_API + "order/confirm-order";
 export const DETAIL_ORDER = BASE_URL_API + "order/detail-order";
 export const DELETE_ORDER = BASE_URL_API + "order/delete-order";
-export const PRINT_ORDER = BASE_URL + "print/order/";
 
 //slider
 export const ALL_SLIDER = BASE_URL_API + "slider/all-slider";
@@ -115,6 +114,7 @@ export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";
 export const EXPORT_EXCEL_USER = BASE_URL_API + "export/user";
 export const EXPORT_EXCEL_COUPON = BASE_URL_API + "export/coupon";
 export const EXPORT_EXCEL_VISITOR = BASE_URL_API + "export/visitor";
+export const EXPORT_PDF_ORDER = BASE_URL_API + "export/order/";
 
 //import
 export const IMPORT_EXCEL_BRAND = BASE_URL_API + "import/brand";

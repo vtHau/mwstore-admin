@@ -36,11 +36,9 @@ function useDownload(path, fileName = "downloadFile", extension = "xlsx") {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
 
-  const downloadFile = () => {
-    setIsLoading(true);
-    if (!linkFile) {
-      initFileDownload();
-    }
+  const downloadFile = async () => {
+    await setIsLoading(true);
+    await initFileDownload();
 
     try {
       linkFile.click();

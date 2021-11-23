@@ -3,7 +3,7 @@ import queryString from "query-string";
 import * as PATH_URL from "../constants/apiUrl";
 
 const axiosClient = axios.create({
-  baseURL: PATH_URL.BASE_URL_API,
+  baseURL: PATH_URL.BASE_URL,
   headers: {
     accept: "application/json",
     "content-type": "application/json",

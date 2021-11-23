@@ -64,6 +64,9 @@ import Statistic from "../pages/Statistic/Statistic";
 //profile
 import Profile from "../pages/Profile/Profile";
 
+//message
+import Message from "../pages/Message/Message";
+
 function Routes() {
   return (
     <>
@@ -78,6 +81,11 @@ function Routes() {
       <PrivateRoute
         path={path.ADMIN_NEW}
         component={AdminNew}
+        role={role.ADMIN}
+      />
+      <PrivateRoute
+        path={path.MESSAGE_LIST}
+        component={Message}
         role={role.ADMIN}
       />
       <PrivateRoute path={path.ROLE_LIST} component={Role} role={role.ROLE} />

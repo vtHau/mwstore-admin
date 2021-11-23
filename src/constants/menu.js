@@ -128,6 +128,16 @@ export const MENUITEMS = [
     children: [{ path: path.USER_LIST, title: "User List", type: "link" }],
   },
   {
+    title: "Message",
+    icon: Users,
+    type: "sub",
+    active: false,
+    role: role.USER,
+    children: [
+      { path: path.MESSAGE_LIST, title: "Message List", type: "link" },
+    ],
+  },
+  {
     title: "Order",
     icon: Users,
     type: "sub",

@@ -1,6 +1,7 @@
-export const BASE_URL = "http://localhost:8000/";
-export const BASE_URL_API = BASE_URL + "api/admin/";
-export const BASE_URL_CSRF = BASE_URL + "sanctum/csrf-cookie";
+export const BASE_URL = process.env.REACT_APP_BASE_URL_SERVER;
+export const BASE_URL_NODE = process.env.REACT_APP_BASE_URL_NODE;
+export const BASE_URL_API = "api/admin/";
+export const BASE_URL_CSRF = "sanctum/csrf-cookie";
 export const BASE_URL_IMAGE = BASE_URL + "admins/uploads/";
 
 //image
@@ -108,6 +109,10 @@ export const GET_STATISTIC = BASE_URL_API + "statistic/get-statistic";
 export const FILTER_DATE = BASE_URL_API + "statistic/filter-date";
 export const FILTER_OTHER = BASE_URL_API + "statistic/filter-other";
 export const COUNT_GENERAL = BASE_URL_API + "statistic/count-general";
+
+//message
+export const ALL_MESSAGE = BASE_URL_API + "message/get-message";
+export const NEW_MESSAGE = BASE_URL_API + "message/new-message";
 
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";

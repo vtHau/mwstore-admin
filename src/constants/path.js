@@ -9,6 +9,7 @@ export const path = {
   COUPON_LIST: "/coupon/list-coupon",
   COUPON_NEW: "/coupon/new-coupon",
   PROFILE: "/profile",
+  MESSAGE_LIST: "/message/list-message",
   COMMENT_LIST: "/comment/list-comment",
   COMMENT_NOT_CONFIRM: "/comment/notconfirm-comment",
   FEESHIP_LIST: "/feeship/feeship-list",

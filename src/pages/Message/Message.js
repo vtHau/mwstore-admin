@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb";
 import { useSelector } from "react-redux";
 import * as PATH_URL from "../../constants/apiUrl";
 import messageApi from "../../apis/messageApi";
-import toast from "../../helpers/toast";
+import { formatSlug } from "./../../helpers/formats";
 import response from "../../constants/response";
 
 function Message() {
@@ -14,11 +14,13 @@ function Message() {
   const [chat, setChat] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [filterUser, setFilterUser] = useState([]);
   const [messages, setMessages] = useState([]);
   const [loadMessage, setLoadMessage] = useState(false);
   const [emotion, setEmotion] = useState(false);
   const socket = useRef();
   const messagesEndRef = useRef(null);
+  const typingTimeoutRef = useRef(null);
 
   useTitle("Message");
 
@@ -28,6 +30,10 @@ function Message() {
       setArrivalMessage(data);
     });
   }, []);
+
+  useEffect(() => {
+    setFilterUser(users);
+  }, [users]);
 
   useEffect(() => {
     if (loadMessage) {
@@ -52,7 +58,6 @@ function Message() {
       arrivalMessage.admin_id === 1 &&
       arrivalMessage.user_id === currentUser.id &&
       setMessages((prev) => [...prev, arrivalMessage]);
-    // setLoadMessage(true);
   }, [arrivalMessage, currentUser]);
 
   useEffect(() => {
@@ -60,7 +65,6 @@ function Message() {
   }, [messages]);
 
   const getUser = (user) => {
-    // setMessages([]);
     setCurrentUser(user);
     setLoadMessage(true);
   };
@@ -128,7 +132,6 @@ function Message() {
     socket.current.emit("send_message", data);
     setChat("");
     setMessages([...messages, data]);
-    // setLoadMessage(true);
   };
 
   const checkEnter = (e) => {
@@ -137,10 +140,44 @@ function Message() {
     }
   };
 
+  const handleChangeKeyword = (e) => {
+    const keyword = e.target.value;
+
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      const newUser = users.filter((user) => {
+        const index = formatSlug(user.name).indexOf(formatSlug(keyword));
+        return index !== -1;
+      });
+      setFilterUser(newUser ? newUser : []);
+    }, 400);
+  };
+
+  const onMouseEnter = () => {
+    const topScroll =
+      window.pageYOffset || window.document.documentElement.scrollTop;
+    const leftScroll =
+      window.pageXOffset || window.document.documentElement.scrollLeft;
+
+    window.onscroll = function () {
+      window.scrollTo(topScroll, leftScroll);
+    };
+  };
+
+  const onMouseLeave = () => {
+    window.onscroll = function () {};
+  };
+
   return (
     <>
-      <Breadcrumb title="Message List" parent="Message" />
-      <div className="container-fluid">
+      <div
+        className="container-fluid"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         <div className="row app-one">
           <div className="col-sm-4 side">
             <div className="side-one">
@@ -162,42 +199,46 @@ function Message() {
                 <div className="col-sm-12 searchBox-inner">
                   <div className="form-group has-feedback">
                     <input
+                      onChange={handleChangeKeyword}
                       id="searchText"
                       type="text"
-                      className="form-control"
-                      name="searchText"
-                      placeholder="Search"
+                      className="search-input"
+                      placeholder="Input keyword to search..."
                     />
                     <span className="glyphicon glyphicon-search form-control-feedback"></span>
                   </div>
                 </div>
               </div>
-              {users.map((user, key) => (
-                <div
-                  className="row sideBar-body"
-                  key={key}
-                  onClick={() => getUser(user)}
-                >
-                  <div className="col-sm-3 col-xs-3 sideBar-avatar">
-                    <div className="avatar-icon">
-                      <img
-                        src={PATH_URL.AVATAR_IMAGE + user.image}
-                        alt={user.name}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-sm-9 col-xs-9 sideBar-main">
-                    <div className="row">
-                      <div className="col-sm-8 col-xs-8 sideBar-name">
-                        <span className="name-meta">{user.name}</span>
+
+              <div className="list-convention">
+                {!!filterUser.length &&
+                  filterUser.map((user, key) => (
+                    <div
+                      className="row sideBar-body"
+                      key={key}
+                      onClick={() => getUser(user)}
+                    >
+                      <div className="col-sm-3 col-xs-3 sideBar-avatar">
+                        <div className="avatar-icon">
+                          <img
+                            src={PATH_URL.AVATAR_IMAGE + user.image}
+                            alt={user.name}
+                          />
+                        </div>
                       </div>
-                      <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
-                        <span className="time-meta pull-right">Online</span>
+                      <div className="col-sm-9 col-xs-9 sideBar-main">
+                        <div className="row">
+                          <div className="col-sm-8 col-xs-8 sideBar-name">
+                            <span className="name-meta">{user.name}</span>
+                          </div>
+                          <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
+                            {/* <span className="time-meta pull-right">Online</span> */}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  ))}
+              </div>
             </div>
           </div>
 
@@ -215,32 +256,44 @@ function Message() {
                   </div>
                   <div className="col-sm-8 col-xs-7 heading-name">
                     <h4 className="heading-name-meta">{currentUser.name}</h4>
-                    <span className="heading-online">Online</span>
+                    {/* <span className="heading-online">Online</span> */}
                   </div>
                 </>
               )}
             </div>
             <div className="row message" id="conversation">
               <div className="row message-previous">
-                <div className="col-sm-12 previous" ref={messagesEndRef}>
-                  {messages.map((message, key) =>
-                    message.type === "ADMIN_SEND" ? (
-                      <div className="message-main-sender" key={key}>
-                        <div className="sender">
-                          <span className="message-time">Bạn</span>
-                          <div className="message-text">{message.message}</div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="message-main-receiver" key={key}>
-                        <div className="receiver">
-                          <span className="message-time">
-                            {currentUser.name}
-                          </span>
-                          <div className="message-text">{message.message}</div>
-                        </div>
-                      </div>
-                    )
+                <div className="col-sm-12 previous">
+                  {currentUser ? (
+                    <>
+                      {messages.map((message, key) =>
+                        message.type === "ADMIN_SEND" ? (
+                          <div className="message-main-sender" key={key}>
+                            <div className="sender">
+                              <span className="message-time">Bạn</span>
+                              <div className="message-text">
+                                {message.message}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="message-main-receiver" key={key}>
+                            <div className="receiver">
+                              <span className="message-time">
+                                {currentUser.name}
+                              </span>
+                              <div className="message-text">
+                                {message.message}
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
+                    </>
+                  ) : (
+                    <span className="noConversationText">
+                      Open a conversation to start a chat.
+                    </span>
                   )}
 
                   {!true && (
@@ -254,6 +307,7 @@ function Message() {
                     </div>
                   )}
                 </div>
+                <div ref={messagesEndRef} />
               </div>
             </div>
             {emotion && (

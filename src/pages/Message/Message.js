@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
 import { useSelector } from "react-redux";
 import * as PATH_URL from "../../constants/apiUrl";
 import messageApi from "../../apis/messageApi";
@@ -17,7 +16,6 @@ function Message() {
   const [filterUser, setFilterUser] = useState([]);
   const [messages, setMessages] = useState([]);
   const [loadMessage, setLoadMessage] = useState(false);
-  const [emotion, setEmotion] = useState(false);
   const socket = useRef();
   const messagesEndRef = useRef(null);
   const typingTimeoutRef = useRef(null);
@@ -69,61 +67,9 @@ function Message() {
     setLoadMessage(true);
   };
 
-  const onClickIcon = (value) => {
-    setChat(chat + " " + value + " ");
-  };
-
-  function formatIcon(send) {
-    //Đây là list icon dùng để duyệt và đổ ra dữ liệu
-    const icon = [
-      {
-        id: 1,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742760.svg' />`,
-        category: ":(",
-      },
-      {
-        id: 2,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742750.svg' />`,
-        category: "*_*",
-      },
-      {
-        id: 3,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742920.svg' />`,
-        category: ":)",
-      },
-      {
-        id: 4,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742822.svg' />`,
-        category: "T_T",
-      },
-      {
-        id: 5,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742787.svg' />`,
-        category: "-,-",
-      },
-      {
-        id: 6,
-        image: `<img src='https://www.flaticon.com/svg/static/icons/svg/742/742745.svg' />`,
-        category: ":*",
-      },
-    ];
-
-    //Duyệt vòng foreach của list icon để kiểm tra chuỗi truyền vào có tồn tại category không
-    //Nếu trong cái chuỗi string đó có tồn tại category của icon thì nó sẽ replace thành thẻ <image>
-    icon.forEach((element) => {
-      if (send.indexOf(element.category) > -1) {
-        send = send.replace(element.category, element.image);
-      }
-    });
-
-    return send;
-  }
-
   const handleSend = () => {
-    const formatMessage = formatIcon(chat);
-
     const data = {
-      message: formatMessage,
+      message: chat,
       user_id: currentUser.id,
       admin_id: 1,
       type: "ADMIN_SEND",
@@ -310,59 +256,8 @@ function Message() {
                 <div ref={messagesEndRef} />
               </div>
             </div>
-            {emotion && (
-              <div className="show_icon">
-                <div className="list_icon">
-                  <div className="icon" onClick={() => onClickIcon(":(")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742760.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="icon" onClick={() => onClickIcon("*_*")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742750.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="icon" onClick={() => onClickIcon(":)")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742920.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="icon" onClick={() => onClickIcon("T_T")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742822.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="icon" onClick={() => onClickIcon("-,-")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742787.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="icon" onClick={() => onClickIcon(":*")}>
-                    <img
-                      className="img_icon"
-                      src="https://www.flaticon.com/svg/static/icons/svg/742/742745.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
             <div className="row reply">
-              <div
-                className="col-sm-1 col-xs-1 reply-emojis"
-                onClick={() => setEmotion(!emotion)}
-              >
+              <div className="col-sm-1 col-xs-1 reply-emojis">
                 <svg
                   className="a8c37x1j ms05siws hr662l2t b7h9ocf4"
                   height="20px"

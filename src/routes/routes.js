@@ -67,6 +67,9 @@ import Profile from "../pages/Profile/Profile";
 //message
 import Message from "../pages/Message/Message";
 
+//message
+import Notification from "../pages/Notification/Notification";
+
 function Routes() {
   return (
     <>
@@ -105,6 +108,7 @@ function Routes() {
         component={BrandNew}
         role={role.BRAND}
       />
+      <PrivateRoute path={path.NOTIFICATION} component={Notification} />
       <PrivateRoute
         path={path.COUPON_LIST}
         component={Coupon}

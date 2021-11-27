@@ -320,3 +320,14 @@ export const feeshipValid = Yup.object().shape({
     .max(1000000, "Feeship price to 1000000")
     .required("Please enter feeship price"),
 });
+
+export const notiValid = Yup.object().shape({
+  title: Yup.string()
+    .min(2, "Title too short")
+    .max(20, "Title too long")
+    .required("Please enter title"),
+  body: Yup.string()
+    .min(2, "Body too short")
+    .max(20, "Body too long")
+    .required("Please enter body"),
+});

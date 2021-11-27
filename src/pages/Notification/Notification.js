@@ -1,39 +1,71 @@
 import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
-import { Upload, Button } from "antd";
-import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
-import CouponList from "../../components/Coupon/CouponList";
+import { Button, Modal } from "antd";
 import Breadcrumb from "../../components/Common/Breadcrumb";
+import { Table } from "react-bootstrap";
 import * as PATH_URL from "../../constants/apiUrl";
 import notificationApi from "../../apis/notificationApi";
 import toast from "../../helpers/toast";
 import response from "../../constants/response";
-import { fetchAllCoupon } from "../../actions/action";
-import { useDispatch } from "react-redux";
+import useToggle from "../../hooks/useToggle";
+import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+import { notiValid } from "./../../helpers/validate";
 
 function Notification() {
+  const users = useSelector((state) => state.userReducer.users);
   const [confirmLoading, setConfirmLoading] = useState(false);
+  const [openSendCoupon, toggleSendCoupon] = useToggle(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const dispatch = useDispatch();
   useTitle("Notification");
 
-  const handleClickSendOneUser = () => {};
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      title: "",
+      body: "",
+    },
+    validationSchema: notiValid,
+    onSubmit: (value) => {
+      const { title, body } = value;
+      setTitle(title);
+      setBody(body);
+      toggleSendCoupon();
+    },
+  });
 
-  const handleClickSendAllUser = () => {
-    const noti = { title, body, type: "ALL_USER" };
-
-    console.log("noti: ", noti);
+  const handleSendUser = (user_id) => {
+    const noti = { title, body, user_id, type: "ONE_USER" };
 
     notificationApi
       .newNotification(noti)
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          toast.success("Thành công", "Gửi thông báo thành công");
+          return toast.success("Thành công", "Gửi thông báo thành công");
         }
       })
       .catch((err) => {
-        toast.error("Thất bại", "Gửi thông báo thất bại");
+        return toast.error("Thất bại", "Gửi thông báo thất bại");
+      });
+  };
+
+  const handleSendAll = () => {
+    setConfirmLoading(true);
+    const noti = { title, body, type: "ALL_USER" };
+
+    notificationApi
+      .newNotification(noti)
+      .then((res) => {
+        if (res.status === response.SUCCESS) {
+          setConfirmLoading(false);
+          return toast.success("Thành công", "Gửi thông báo thành công");
+        }
+        setConfirmLoading(false);
+      })
+      .catch((err) => {
+        setConfirmLoading(false);
+        return toast.error("Thất bại", "Gửi thông báo thất bại");
       });
   };
 
@@ -48,7 +80,7 @@ function Notification() {
           <div className="card-body">
             <div className="clearfix"></div>
             <div className="product-physical">
-              <form className="form-custom">
+              <form className="form-custom" onSubmit={formik.handleSubmit}>
                 <div className="digital-add needs-validation">
                   <div className="form-group">
                     <label className="col-form-label pt-0">Title</label>
@@ -56,9 +88,14 @@ function Notification() {
                       type="text"
                       name="title"
                       className="form-control"
-                      onChange={(e) => setTitle(e.target.value)}
+                      value={formik.values.title}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
                       placeholder="Please input title..."
                     />
+                    {formik.errors.title && formik.touched.title && (
+                      <p className="error-field">{formik.errors.title}</p>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="col-form-label pt-0">Content</label>
@@ -66,21 +103,19 @@ function Notification() {
                       type="text"
                       name="body"
                       className="form-control"
-                      onChange={(e) => setBody(e.target.value)}
-                      placeholder="Please input content..."
+                      value={formik.values.body}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      placeholder="Please input body..."
                     />
+                    {formik.errors.body && formik.touched.body && (
+                      <p className="error-field">{formik.errors.body}</p>
+                    )}
                   </div>
                 </div>
                 <div className="submit-box">
-                  <Button
-                    type="primary"
-                    style={{ marginRight: "4px" }}
-                    onClick={handleClickSendAllUser}
-                  >
-                    Send All User
-                  </Button>
-                  <Button type="primary" onClick={handleClickSendOneUser}>
-                    One user
+                  <Button type="primary" htmlType="submit">
+                    Send notification
                   </Button>
                 </div>
               </form>
@@ -88,6 +123,70 @@ function Notification() {
           </div>
         </div>
       </div>
+
+      <Modal
+        visible={openSendCoupon}
+        onOk={toggleSendCoupon}
+        onCancel={toggleSendCoupon}
+        footer={null}
+      >
+        <p className="title-section">Send Notification</p>
+        <Table
+          className="table-custom"
+          style={{ height: "430px", overflowY: "scroll", display: "block" }}
+        >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, key) => (
+              <tr key={key}>
+                <td>
+                  <div className="widget-content p-0">
+                    <div className="widget-content-wrapper">
+                      <div className="widget-content-left">
+                        <img
+                          className="rounded-circle border-circle"
+                          src={PATH_URL.AVATAR_IMAGE + user.image}
+                          alt={user.name}
+                        />
+                      </div>
+                      <div className="widget-content-left flex2">
+                        <div className="widget-heading">{user.name}</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>{user.email}</td>
+                <td>
+                  <Button
+                    type="primary"
+                    onClick={() => handleSendUser(user.id)}
+                  >
+                    Send
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            type="primary"
+            shape="round"
+            size="large"
+            loading={confirmLoading}
+            onClick={handleSendAll}
+          >
+            Send all
+          </Button>
+        </div>
+      </Modal>
     </>
   );
 }

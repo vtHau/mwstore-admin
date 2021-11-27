@@ -114,6 +114,9 @@ export const COUNT_GENERAL = BASE_URL_API + "statistic/count-general";
 export const ALL_MESSAGE = BASE_URL_API + "message/get-message";
 export const NEW_MESSAGE = BASE_URL_API + "message/new-message";
 
+//notification
+export const NEW_NOTIFICATION = BASE_URL_NODE + "notification";
+
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";
 export const EXPORT_EXCEL_USER = BASE_URL_API + "export/user";

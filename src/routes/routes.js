@@ -74,7 +74,7 @@ function Routes() {
   return (
     <>
       <Route exact path={path.HOME} component={Home} />
-      <Route path={path.PROFILE} component={Profile} role={path.PROFILE} />
+      <Route path={path.PROFILE} component={Profile} />
 
       <PrivateRoute
         path={path.ADMIN_LIST}
@@ -108,7 +108,11 @@ function Routes() {
         component={BrandNew}
         role={role.BRAND}
       />
-      <PrivateRoute path={path.NOTIFICATION} component={Notification} />
+      <PrivateRoute
+        path={path.NOTIFICATION}
+        component={Notification}
+        role={role.NOTIFICATION}
+      />
       <PrivateRoute
         path={path.COUPON_LIST}
         component={Coupon}

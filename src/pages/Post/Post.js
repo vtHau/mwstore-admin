@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import postApi from "../../apis/postApi";
 import response from "../../constants/response";
 import PostItem from "../../components/Post/PostItem";
@@ -9,7 +9,7 @@ import PostItem from "../../components/Post/PostItem";
 function Post() {
   const [posts, setPosts] = useState([]);
 
-  useTitle("Post list");
+  useTitle("Post List");
 
   const fetchAllPost = () => {
     postApi
@@ -32,7 +32,7 @@ function Post() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Post Details</h5>
+            <h5>Post List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

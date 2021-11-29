@@ -1,10 +1,10 @@
 import React from "react";
 import useTitle from "../../hooks/useTitle";
 import SliderList from "../../components/Slider/SliderList";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 function Slider() {
-  useTitle("Slider list");
+  useTitle("Slider List");
 
   return (
     <>
@@ -12,7 +12,7 @@ function Slider() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Slider Details</h5>
+            <h5>Slider List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

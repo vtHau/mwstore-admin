@@ -7,7 +7,7 @@ import productApi from "../../apis/productApi";
 import sliderApi from "../../apis/sliderApi";
 import { sliderValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 
@@ -16,7 +16,7 @@ function SliderNew() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  useTitle("Slider list");
+  useTitle("Slider New");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -74,7 +74,7 @@ function SliderNew() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Slider new</h5>
+            <h5>Slider New</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>
@@ -156,7 +156,6 @@ function SliderNew() {
                       )}
                     </div>
                   </div>
-                  
                 </div>
                 <div className="submit-box">
                   <Button

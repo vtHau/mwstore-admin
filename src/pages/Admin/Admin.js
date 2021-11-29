@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import { Table } from "react-bootstrap";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import adminApi from "../../apis/adminApi";
 import AdminItem from "./../../components/Admin/AdminItem";
 import response from "../../constants/response";
@@ -31,7 +31,7 @@ function Admin() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Admin Details</h5>
+            <h5>Admin List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

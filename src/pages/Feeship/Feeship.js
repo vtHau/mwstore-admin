@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Divider } from "antd";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import feeshipApi from "../../apis/feeshipApi";
 import AddressSelect from "./../../components/Address/AddressSelect";
 import response from "../../constants/response";
@@ -10,7 +10,7 @@ import FeeshipItem from "./../../components/Feeship/FeeshipItem";
 
 function Feeship() {
   const [feeships, setFeeships] = useState([]);
-  useTitle("Feeship list");
+  useTitle("Feeship");
 
   const fetchAllFeeship = () => {
     feeshipApi
@@ -29,11 +29,11 @@ function Feeship() {
 
   return (
     <>
-      <Breadcrumb title="Feeship List" parent="Feeship" />
+      <Breadcrumb title="Feeship" parent="Feeship" />
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Feeship Details</h5>
+            <h5>Feeship</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

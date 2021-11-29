@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import RoleItem from "../../components/Role/RoleItem";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Table } from "react-bootstrap";
 import roleApi from "../../apis/roleApi";
 import response from "../../constants/response";
 
-function Brand() {
+function Role() {
   const [roles, setRoles] = useState([]);
   useTitle("Role List");
 
@@ -31,7 +31,7 @@ function Brand() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Role Details</h5>
+            <h5>Role List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>
@@ -68,4 +68,4 @@ function Brand() {
   );
 }
 
-export default Brand;
+export default Role;

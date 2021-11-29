@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import orderApi from "../../apis/orderApi";
 import response from "../../constants/response";
 import OrderItem from "../../components/Order/OrderItem";
 
 function Order() {
   const [orders, setOrders] = useState([]);
-  useTitle("Order list");
+  useTitle("Order List");
 
   const fetchAllOrder = () => {
     orderApi
@@ -31,7 +31,7 @@ function Order() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Order Details</h5>
+            <h5>Order List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { Redirect } from "react-router-dom";
 import { postUpdateValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import productApi from "../../apis/productApi";
 import postApi from "../../apis/postApi";
 import response from "../../constants/response";

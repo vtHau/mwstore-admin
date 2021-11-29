@@ -9,7 +9,7 @@ function UserItem(props) {
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
   const [openActivity, toggleActivity] = useToggle(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [confirmLoading] = useState(false);
 
   const handleDelete = () => {};
 

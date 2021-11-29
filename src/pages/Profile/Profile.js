@@ -1,11 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import useTitle from "../../hooks/useTitle";
 import * as PATH_URL from "./../../constants/apiUrl";
 import TabProfile from "../../components/Profile/TabProfile";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 function Profile() {
   const admin = useSelector((state) => state.adminReducer.admin);
+
+  useTitle("Profile");
 
   return (
     <>

@@ -3,7 +3,7 @@ import useTitle from "../../hooks/useTitle";
 import { Upload, Button } from "antd";
 import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 import CouponList from "../../components/Coupon/CouponList";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import * as PATH_URL from "../../constants/apiUrl";
 import importApi from "../../apis/importApi";
 import toast from "../../helpers/toast";
@@ -20,7 +20,7 @@ function Coupon() {
     "coupon"
   );
 
-  useTitle("Coupon list");
+  useTitle("Coupon List");
 
   const importCoupon = (options) => {
     setConfirmLoading(true);
@@ -53,7 +53,7 @@ function Coupon() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Coupon Details</h5>
+            <h5>Coupon List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

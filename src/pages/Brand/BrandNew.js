@@ -8,7 +8,7 @@ import brandApi from "./../../apis/brandApi";
 import { fetchAllBrand } from "./../../actions/action";
 import { brandValid } from "./../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "./../../constants/path";
 
@@ -17,7 +17,7 @@ function BrandNew() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  useTitle("Brand list");
+  useTitle("Brand New");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -57,7 +57,7 @@ function BrandNew() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Brand new</h5>
+            <h5>Brand New</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

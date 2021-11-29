@@ -4,7 +4,7 @@ import visitorApi from "../../apis/visitorApi";
 import response from "../../constants/response";
 import useDownload from "../../hooks/useDownload";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import * as PATH_URL from "../../constants/apiUrl";
@@ -16,7 +16,7 @@ function Visitor() {
     "visitor"
   );
 
-  useTitle("All Visitor");
+  useTitle("Visitor");
 
   const fetchAllVisitor = () => {
     visitorApi
@@ -35,11 +35,11 @@ function Visitor() {
 
   return (
     <>
-      <Breadcrumb title="All Visitor" parent="Visitor" />
+      <Breadcrumb title="Visitor" parent="Visitor" />
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Visitor Details</h5>
+            <h5>Visitor</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

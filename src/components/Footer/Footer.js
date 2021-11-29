@@ -13,7 +13,7 @@ function Footer() {
             </div>
             <div className="col-md-6">
               <p className="pull-right mb-0">
-                Creative team MWStore<i className="fa fa-heart"></i>
+                MWStore<i className="fa fa-heart"></i>
               </p>
             </div>
           </div>

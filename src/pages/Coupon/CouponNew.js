@@ -11,7 +11,7 @@ import { fetchAllCoupon } from "./../../actions/action";
 import couponApi from "../../apis/couponApi";
 import { couponNewValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 
@@ -21,7 +21,7 @@ function CouponNew() {
   const [redirect, setRedirect] = useState(false);
   const [startDate] = useState(new Date());
 
-  useTitle("Coupon new");
+  useTitle("Coupon New");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -75,7 +75,7 @@ function CouponNew() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Coupon new</h5>
+            <h5>Coupon New</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

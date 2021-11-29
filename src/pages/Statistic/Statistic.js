@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
+import useTitle from "../../hooks/useTitle";
 import response from "../../constants/response";
 import statisticApi from "../../apis/statisticApi";
 import StatisticOrder from "./../../components/Statistic/StatisticOrder";
@@ -38,6 +39,8 @@ const handldeDoughnut = (data) => ({
 function Statistic() {
   const [dataHeader, setDataHeader] = useState({});
   const [dataDoughnut, setDataDoughnut] = useState({});
+
+  useTitle("Statistic");
 
   useEffect(() => {
     statisticApi

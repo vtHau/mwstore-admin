@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import useTitle from "../../hooks/useTitle";
 import * as PATH_URL from "../../constants/apiUrl";
 import UserItem from "./../../components/User/UserItem";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 function User() {
   const users = useSelector((state) => state.userReducer.users);
@@ -23,7 +23,7 @@ function User() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>User Details</h5>
+            <h5>User List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

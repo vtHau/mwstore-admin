@@ -4,7 +4,7 @@ import { Divider, Button } from "antd";
 import { isEmpty } from "lodash";
 import { useParams, Redirect } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import orderApi from "../../apis/orderApi";
 import response from "../../constants/response";
 import { formatPrice, formatPhone } from "./../../helpers/formats";

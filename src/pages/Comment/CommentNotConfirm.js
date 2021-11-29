@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import commentApi from "../../apis/commentApi";
 import response from "../../constants/response";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import CommentItem from "./../../components/Comment/CommentItem";
 
 function CommentNotConfirm() {
@@ -31,7 +31,7 @@ function CommentNotConfirm() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Comment Details</h5>
+            <h5>Comment</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

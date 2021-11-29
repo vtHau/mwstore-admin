@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import { Button, Modal } from "antd";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Table } from "react-bootstrap";
 import * as PATH_URL from "../../constants/apiUrl";
 import notificationApi from "../../apis/notificationApi";

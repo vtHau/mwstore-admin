@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import useDownload from "../../hooks/useDownload";
 import BrandList from "./../../components/Brand/BrandList";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Upload, Button } from "antd";
 import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 import * as PATH_URL from "../../constants/apiUrl";
@@ -52,7 +52,7 @@ function Brand() {
       <div className="container-fluid">
         <div className="card">
           <div className="card-header">
-            <h5>Brand Details</h5>
+            <h5>Brand List</h5>
           </div>
           <div className="card-body">
             <div className="clearfix"></div>

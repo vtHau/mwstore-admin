@@ -6,7 +6,7 @@ import { Table } from "react-bootstrap";
 import { useParams, Redirect } from "react-router-dom";
 import { galleryValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import galleryApi from "../../apis/galleryApi";
 import response from "../../constants/response";
 import GalleryItem from "./../../components/Gallery/GalleryItem";

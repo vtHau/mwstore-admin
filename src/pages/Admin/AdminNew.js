@@ -6,7 +6,7 @@ import toast from "../../helpers/toast";
 import adminApi from "../../apis/adminApi";
 import { adminNormalValid } from "../../helpers/validate";
 import useTitle from "../../hooks/useTitle";
-import Breadcrumb from "../../components/Common/Breadcrumb";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { Redirect } from "react-router-dom";
 import { path } from "../../constants/path";
 import roleApi from "../../apis/roleApi";

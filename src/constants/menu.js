@@ -178,7 +178,7 @@ export const MENUITEMS = [
   {
     title: "Statistic",
     path: path.STATISTIC,
-    icon: BarChart,
+    icon: BarChart2,
     type: "link",
     role: role.STATISTIC,
     active: false,
@@ -186,7 +186,7 @@ export const MENUITEMS = [
   {
     title: "Visitor",
     path: path.VISITOR,
-    icon: BarChart2,
+    icon: BarChart,
     type: "link",
     role: role.VISITOR,
     active: false,

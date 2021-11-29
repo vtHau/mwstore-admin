@@ -1,8 +1,9 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect, IndexRoute } from "react-router-dom";
 import { path } from "../constants/path";
 import { role } from "../constants/role";
 import PrivateRoute from "./../guards/PrivateRoute";
+import AuthLayout from "./../layouts/AuthLayout";
 
 // Components
 import Home from "../pages/Home/Home";
@@ -67,137 +68,174 @@ import Profile from "../pages/Profile/Profile";
 //message
 import Message from "../pages/Message/Message";
 
-//message
+//notification
 import Notification from "../pages/Notification/Notification";
+
+//signin
+import SignIn from "../pages/Auth/SignIn";
+
+import NotFound from "../pages/NotFound";
+import Forbidden from "../pages/Forbidden";
 
 function Routes() {
   return (
-    <>
-      <Route exact path={path.HOME} component={Home} />
-      <Route path={path.PROFILE} component={Profile} />
+    <Switch>
+      <Route exact path={path.SIGN_IN} component={SignIn} />
+      <Route exact path={path.FORBIDDEN} component={Forbidden} />
 
-      <PrivateRoute
-        path={path.ADMIN_LIST}
-        component={Admin}
-        role={role.ADMIN}
-      />
-      <PrivateRoute
-        path={path.ADMIN_NEW}
-        component={AdminNew}
-        role={role.ADMIN}
-      />
-      <PrivateRoute
-        path={path.MESSAGE_LIST}
-        component={Message}
-        role={role.ADMIN}
-      />
-      <PrivateRoute path={path.ROLE_LIST} component={Role} role={role.ROLE} />
-      <PrivateRoute path={path.ROLE_NEW} component={RoleNew} role={role.ROLE} />
-      <PrivateRoute
-        path={path.ROLE_EDIT + ":id"}
-        component={RoleEdit}
-        role={role.ROLE}
-      />
-      <PrivateRoute
-        path={path.BRAND_LIST}
-        component={Brand}
-        role={role.BRAND}
-      />
-      <PrivateRoute
-        path={path.BRAND_NEW}
-        component={BrandNew}
-        role={role.BRAND}
-      />
-      <PrivateRoute
-        path={path.NOTIFICATION}
-        component={Notification}
-        role={role.NOTIFICATION}
-      />
-      <PrivateRoute
-        path={path.COUPON_LIST}
-        component={Coupon}
-        role={role.COUPON}
-      />
-      <PrivateRoute
-        path={path.COUPON_NEW}
-        component={CouponNew}
-        role={role.COUPON}
-      />
-      <PrivateRoute
-        path={path.COMMENT_LIST}
-        component={Comment}
-        role={role.COMMENT}
-      />
-      <PrivateRoute
-        path={path.COMMENT_NOT_CONFIRM}
-        component={CommentNotConfirm}
-        role={role.COMMENT}
-      />
-      <PrivateRoute path={path.USER_LIST} component={User} role={role.USER} />
-      <PrivateRoute
-        path={path.FEESHIP_LIST}
-        component={Feeship}
-        role={role.FEESHIP}
-      />
-      <PrivateRoute
-        exact
-        path={path.ORDER_LIST}
-        component={Order}
-        role={role.ORDER}
-      />
-      <PrivateRoute
-        path={path.ORDER_DETAIL + ":code"}
-        component={OrderDetail}
-        role={role.ORDER}
-      />
-      <PrivateRoute
-        path={path.SLIDER_LIST}
-        component={Slider}
-        role={role.SLIDER}
-      />
-      <PrivateRoute
-        path={path.SLIDER_NEW}
-        component={SliderNew}
-        role={role.SLIDER}
-      />
-      <PrivateRoute
-        path={path.VISITOR}
-        component={Visitor}
-        role={role.VISITOR}
-      />
-      <PrivateRoute path={path.POST_LIST} component={Post} role={role.POST} />
-      <PrivateRoute
-        path={path.POST_EDIT + ":id"}
-        component={PostEdit}
-        role={role.POST}
-      />
-      <PrivateRoute path={path.POST_NEW} component={PostNew} role={role.POST} />
-      <PrivateRoute
-        path={path.PRODUCT_LIST}
-        component={Product}
-        role={role.PRODUCT}
-      />
-      <PrivateRoute
-        path={path.PRODUCT_NEW}
-        component={ProductNew}
-        role={role.PRODUCT}
-      />
-      <PrivateRoute
-        path={path.PRODUCT_CRAWL}
-        component={ProductReference}
-        role={role.PRODUCT}
-      />
-      <PrivateRoute
-        path={path.GALLERY_DETAIL + ":id"}
-        component={Gallery}
-        role={role.GALLERY}
-      />
-      <PrivateRoute
-        path={path.STATISTIC}
-        component={Statistic}
-        role={role.STATISTIC}
-      />
-    </>
+      <Route>
+        <AuthLayout>
+          <Switch>
+            <PrivateRoute exact path={path.HOME} component={Home} />
+            <PrivateRoute path={path.PROFILE} component={Profile} />
+
+            <PrivateRoute
+              path={path.ADMIN_LIST}
+              component={Admin}
+              role={role.ADMIN}
+            />
+            <PrivateRoute
+              path={path.ADMIN_NEW}
+              component={AdminNew}
+              role={role.ADMIN}
+            />
+            <PrivateRoute
+              path={path.MESSAGE_LIST}
+              component={Message}
+              role={role.ADMIN}
+            />
+            <PrivateRoute
+              path={path.ROLE_LIST}
+              component={Role}
+              role={role.ROLE}
+            />
+            <PrivateRoute
+              path={path.ROLE_NEW}
+              component={RoleNew}
+              role={role.ROLE}
+            />
+            <PrivateRoute
+              path={path.ROLE_EDIT + ":id"}
+              component={RoleEdit}
+              role={role.ROLE}
+            />
+            <PrivateRoute
+              path={path.BRAND_LIST}
+              component={Brand}
+              role={role.BRAND}
+            />
+            <PrivateRoute
+              path={path.BRAND_NEW}
+              component={BrandNew}
+              role={role.BRAND}
+            />
+            <PrivateRoute
+              path={path.NOTIFICATION}
+              component={Notification}
+              role={role.NOTIFICATION}
+            />
+            <PrivateRoute
+              path={path.COUPON_LIST}
+              component={Coupon}
+              role={role.COUPON}
+            />
+            <PrivateRoute
+              path={path.COUPON_NEW}
+              component={CouponNew}
+              role={role.COUPON}
+            />
+            <PrivateRoute
+              path={path.COMMENT_LIST}
+              component={Comment}
+              role={role.COMMENT}
+            />
+            <PrivateRoute
+              path={path.COMMENT_NOT_CONFIRM}
+              component={CommentNotConfirm}
+              role={role.COMMENT}
+            />
+            <PrivateRoute
+              path={path.USER_LIST}
+              component={User}
+              role={role.USER}
+            />
+            <PrivateRoute
+              path={path.FEESHIP_LIST}
+              component={Feeship}
+              role={role.FEESHIP}
+            />
+            <PrivateRoute
+              exact
+              path={path.ORDER_LIST}
+              component={Order}
+              role={role.ORDER}
+            />
+            <PrivateRoute
+              path={path.ORDER_DETAIL + ":code"}
+              component={OrderDetail}
+              role={role.ORDER}
+            />
+            <PrivateRoute
+              path={path.SLIDER_LIST}
+              component={Slider}
+              role={role.SLIDER}
+            />
+            <PrivateRoute
+              path={path.SLIDER_NEW}
+              component={SliderNew}
+              role={role.SLIDER}
+            />
+            <PrivateRoute
+              path={path.VISITOR}
+              component={Visitor}
+              role={role.VISITOR}
+            />
+            <PrivateRoute
+              path={path.POST_LIST}
+              component={Post}
+              role={role.POST}
+            />
+            <PrivateRoute
+              path={path.POST_EDIT + ":id"}
+              component={PostEdit}
+              role={role.POST}
+            />
+            <PrivateRoute
+              path={path.POST_NEW}
+              component={PostNew}
+              role={role.POST}
+            />
+            <PrivateRoute
+              path={path.PRODUCT_LIST}
+              component={Product}
+              role={role.PRODUCT}
+            />
+            <PrivateRoute
+              path={path.PRODUCT_NEW}
+              component={ProductNew}
+              role={role.PRODUCT}
+            />
+            <PrivateRoute
+              path={path.PRODUCT_CRAWL}
+              component={ProductReference}
+              role={role.PRODUCT}
+            />
+            <PrivateRoute
+              path={path.GALLERY_DETAIL + ":id"}
+              component={Gallery}
+              role={role.GALLERY}
+            />
+            <PrivateRoute
+              path={path.STATISTIC}
+              component={Statistic}
+              role={role.STATISTIC}
+            />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </AuthLayout>
+      </Route>
+      <Route path="*" component={NotFound} />
+    </Switch>
   );
 }
 

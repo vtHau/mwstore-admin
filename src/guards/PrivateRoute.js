@@ -27,7 +27,13 @@ function PrivateRoute({ component: Component, role, ...rest }) {
           !admin.roles.includes(role) &&
           admin.role !== ROLE.FULL_PERMISSION
         )
-          return <h2>Khong co quyen truy cap</h2>;
+          return (
+            <Redirect
+              to={{
+                pathname: path.FORBIDDEN,
+              }}
+            />
+          );
         return <Component {...props} />;
       }}
     />

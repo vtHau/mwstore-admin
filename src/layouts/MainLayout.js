@@ -3,9 +3,9 @@ import useInitFetch from "../hooks/useInitFetch";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import Routes from "./../routes/routes";
 
 function MainLayout(props) {
+  const { children } = props;
   const [divName, setDivName] = useState("RTL");
 
   useInitFetch();
@@ -25,9 +25,7 @@ function MainLayout(props) {
         <Header />
         <div className="page-body-wrapper">
           <Sidebar />
-          <div className="page-body">
-            <Routes />
-          </div>
+          <div className="page-body">{children}</div>
           <Footer />
         </div>
       </div>

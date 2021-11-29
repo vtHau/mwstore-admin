@@ -30,4 +30,5 @@ export const path = {
   ROLE_LIST: "/role/role-list/",
   ROLE_NEW: "/role/new-role/",
   GALLERY_DETAIL: "/gallery/detail/",
+  FORBIDDEN: "/403",
 };

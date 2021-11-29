@@ -5,7 +5,8 @@ import MainLayout from "../layouts/MainLayout";
 import { path } from "./../constants/path";
 import AuthLoading from "./../components/Loading/AuthLoading";
 
-function AuthLayout() {
+function AuthLayout(props) {
+  const { children } = props;
   const [isAuth, isLoading] = useAuth();
 
   if (!isLoading) {
@@ -15,7 +16,7 @@ function AuthLayout() {
   if (isLoading && !isAuth) {
     return <Redirect to={path.SIGN_IN} />;
   }
-  return <MainLayout />;
+  return <MainLayout>{children}</MainLayout>;
 }
 
 export default AuthLayout;

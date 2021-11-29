@@ -908,3 +908,10 @@ ul.box-list-noti {
 .reply-emojis i {
   cursor: pointer;
 }
+
+.title-hello {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

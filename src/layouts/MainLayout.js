@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useInitFetch from "../hooks/useInitFetch";
+import useNotification from "../hooks/useNotification";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
@@ -8,6 +9,7 @@ function MainLayout(props) {
   const { children } = props;
   const [divName, setDivName] = useState("RTL");
 
+  useNotification();
   useInitFetch();
 
   const changeRtl = () => {

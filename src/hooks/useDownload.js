@@ -5,6 +5,7 @@ import axiosClient from "../apis/axiosClient";
 
 function useDownload(path, fileName = "downloadFile", extension = "xlsx") {
   const [isLoading, setIsLoading] = useState(false);
+  const [initFetch, setInitFetch] = useState(true);
   const [linkFile, setLinkFile] = useState();
 
   const initFileDownload = () => {
@@ -26,6 +27,7 @@ function useDownload(path, fileName = "downloadFile", extension = "xlsx") {
           );
           document.body.appendChild(link);
           setLinkFile(link);
+          setInitFetch(false);
         })
         .catch((err) => {});
     }
@@ -53,7 +55,7 @@ function useDownload(path, fileName = "downloadFile", extension = "xlsx") {
     }, 500);
   };
 
-  return [downloadFile, isLoading];
+  return [downloadFile, isLoading, initFetch];
 }
 
 export default useDownload;

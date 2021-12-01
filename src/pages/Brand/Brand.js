@@ -14,7 +14,7 @@ import { fetchAllBrand } from "../../actions/action";
 
 function Brand() {
   const dispatch = useDispatch();
-  const [downloadFile, isDownloading] = useDownload(
+  const [downloadFile, isDownloading, initFetch] = useDownload(
     PATH_URL.EXPORT_EXCEL_BRAND,
     "brand"
   );
@@ -75,6 +75,7 @@ function Brand() {
                 type="primary"
                 shape="round"
                 size="large"
+                disabled={initFetch}
                 loading={isDownloading}
                 icon={<DownloadOutlined />}
                 onClick={downloadFile}

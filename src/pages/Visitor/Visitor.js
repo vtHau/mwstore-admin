@@ -11,7 +11,7 @@ import * as PATH_URL from "../../constants/apiUrl";
 
 function Visitor() {
   const [visitors, setVisitors] = useState([]);
-  const [downloadFile, isDownloading] = useDownload(
+  const [downloadFile, isDownloading, initFetch] = useDownload(
     PATH_URL.EXPORT_EXCEL_VISITOR,
     "visitor"
   );
@@ -84,6 +84,7 @@ function Visitor() {
                 type="primary"
                 shape="round"
                 size="large"
+                disabled={initFetch}
                 loading={isDownloading}
                 icon={<DownloadOutlined />}
                 onClick={downloadFile}

@@ -11,7 +11,7 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 function User() {
   const users = useSelector((state) => state.userReducer.users);
-  const [downloadFile, isDownloading] = useDownload(
+  const [downloadFile, isDownloading, initFetch] = useDownload(
     PATH_URL.EXPORT_EXCEL_USER,
     "user"
   );
@@ -54,6 +54,7 @@ function User() {
                 type="primary"
                 shape="round"
                 size="large"
+                disabled={initFetch}
                 loading={isDownloading}
                 icon={<DownloadOutlined />}
                 onClick={downloadFile}

@@ -27,7 +27,7 @@ function OrderDetail() {
   const [redirectOrder, setRedirectOrder] = useState(false);
   const [keyOrder, setKeyOrder] = useState("");
 
-  const [downloadFile, isDownloading] = useDownload(
+  const [downloadFile, isDownloading, initFetch] = useDownload(
     keyOrder,
     "order_detail",
     "pdf"
@@ -209,6 +209,7 @@ function OrderDetail() {
                               type="primary"
                               shape="round"
                               size="large"
+                              disabled={initFetch}
                               loading={isDownloading}
                               icon={<DownloadOutlined />}
                               onClick={downloadFile}

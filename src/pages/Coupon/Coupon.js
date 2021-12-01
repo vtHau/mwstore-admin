@@ -15,7 +15,7 @@ import useDownload from "../../hooks/useDownload";
 function Coupon() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const dispatch = useDispatch();
-  const [downloadFile, isDownloading] = useDownload(
+  const [downloadFile, isDownloading, initFetch] = useDownload(
     PATH_URL.EXPORT_EXCEL_COUPON,
     "coupon"
   );
@@ -76,6 +76,7 @@ function Coupon() {
                 type="primary"
                 shape="round"
                 size="large"
+                disabled={initFetch}
                 icon={<DownloadOutlined />}
                 loading={isDownloading}
                 onClick={downloadFile}

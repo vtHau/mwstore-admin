@@ -133,7 +133,7 @@ function OrderDetail() {
                         <tr>
                           <td>{shipping.name}</td>
                           <td>{shipping.email}</td>
-                          <td>{formatPhone(shipping.phone)}</td>
+                          <td>{formatPhone(shipping.phone || "")}</td>
                           <td>
                             {shipping.method === 0
                               ? "Cash"

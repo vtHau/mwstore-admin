@@ -98,7 +98,7 @@ function CommentItem(props) {
       <td>{comment.comment}</td>
       <td>{comment.time}</td>
       <td>
-        {comment.status === 0 ? (
+        {comment.status === "0" ? (
           <span className="badge badge-danger">Not Confirm</span>
         ) : (
           <span className="badge badge-success">Confirm</span>
@@ -106,7 +106,7 @@ function CommentItem(props) {
       </td>
       <td>
         <div className="btn-group">
-          {comment.status === 0 && (
+          {comment.status === "0" && (
             <Button
               type="primary"
               onClick={handleConfirm}

@@ -103,7 +103,7 @@ function OrderDetail() {
                         <tr>
                           <td>{user.name}</td>
                           <td>{user.email}</td>
-                          <td>{formatPhone(user.phone)}</td>
+                          <td>{formatPhone(user.phone || "")}</td>
                           <td>
                             {user.address !== null
                               ? order.user.address

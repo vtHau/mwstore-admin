@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect, IndexRoute } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { path } from "../constants/path";
 import { role } from "../constants/role";
 import PrivateRoute from "./../guards/PrivateRoute";

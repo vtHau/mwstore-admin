@@ -53,6 +53,7 @@ export const DELETE_COMMENT = BASE_URL_API + "comment/delete-comment";
 
 //user
 export const ALL_USER = BASE_URL_API + "user/all-user";
+export const DELETE_USER = BASE_URL_API + "user/delete-user";
 
 //feeship
 export const ALL_FEESHIP = BASE_URL_API + "feeship/all-feeship";

@@ -3,15 +3,37 @@ import { Button, Popconfirm, Modal } from "antd";
 import ActivityModal from "./ActivityModal";
 import useToggle from "../../hooks/useToggle";
 import * as PATH_URL from "./../../constants/apiUrl";
+import userApi from "../../apis/userApi";
+import response from "./../../constants/response";
+import toast from "../../helpers/toast";
+import { useDispatch } from "react-redux";
+import { fetchAllUser } from "./../../actions/action";
 
 function UserItem(props) {
   const { user, index } = props;
+  const dispatch = useDispatch();
   const [openPop, togglePop] = useToggle(false);
   const [openModal, toggleModal] = useToggle(false);
   const [openActivity, toggleActivity] = useToggle(false);
-  const [confirmLoading] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    setConfirmLoading(true);
+    userApi
+      .deleteUser({ id: user.id })
+      .then((res) => {
+        setConfirmLoading(false);
+
+        if (res.status === response.SUCCESS) {
+          dispatch(fetchAllUser());
+          toast.success("Success", "Delete user success");
+        }
+      })
+      .catch((err) => {
+        setConfirmLoading(false);
+        toast.error("Fail", "Delete user fail");
+      });
+  };
 
   return (
     <tr>

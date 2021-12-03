@@ -29,7 +29,7 @@ function UserMenu() {
       <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
         <li>
           <Link to={path.PROFILE}>
-            <i data-feather="user"></i>Edit Profile
+            <i data-feather="user"></i>Profile
           </Link>
         </li>
         <li onClick={handleLogout}>

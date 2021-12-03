@@ -102,7 +102,7 @@ function Routes() {
             <PrivateRoute
               path={path.MESSAGE_LIST}
               component={Message}
-              role={role.ADMIN}
+              role={role.MESSAGE}
             />
             <PrivateRoute
               path={path.ROLE_LIST}

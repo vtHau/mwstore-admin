@@ -100,7 +100,7 @@ function AdminNew() {
                       value={formik.values.name}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      placeholder="Please input product name..."
+                      placeholder="Please input name..."
                     />
                     {formik.errors.name && formik.touched.name && (
                       <p className="error-field">{formik.errors.name}</p>
@@ -116,7 +116,7 @@ function AdminNew() {
                       value={formik.values.email}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      placeholder="Please input product email..."
+                      placeholder="Please input email..."
                     />
                     {formik.errors.email && formik.touched.email && (
                       <p className="error-field">{formik.errors.email}</p>
@@ -132,7 +132,7 @@ function AdminNew() {
                       value={formik.values.password}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      placeholder="Please input product password..."
+                      placeholder="Please input password..."
                     />
                     {formik.errors.password && formik.touched.password && (
                       <p className="error-field">{formik.errors.password}</p>
@@ -181,7 +181,7 @@ function AdminNew() {
                       value={formik.values.description}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      placeholder="Please input brand description..."
+                      placeholder="Please input description..."
                     ></textarea>
                     {formik.errors.description &&
                       formik.touched.description && (

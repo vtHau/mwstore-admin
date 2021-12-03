@@ -155,7 +155,7 @@ export const MENUITEMS = [
     icon: MessageCircle,
     type: "link",
     active: false,
-    role: role.USER,
+    role: role.MESSAGE,
     path: path.MESSAGE_LIST,
   },
 

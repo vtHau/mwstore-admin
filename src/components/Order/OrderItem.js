@@ -83,7 +83,7 @@ function OrderItem(props) {
       </td>
       <td>
         <div className="btn-group">
-          {order.status === "1" && (
+          {order.status === "0" && (
             <Button
               type="primary"
               onClick={handleConfirm}

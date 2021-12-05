@@ -75,7 +75,7 @@ function OrderItem(props) {
       <td>{order.user.email}</td>
       <td>{order.time}</td>
       <td>
-        {order.status === 0 ? (
+        {order.status === "0" ? (
           <span className="badge badge-danger">Processing</span>
         ) : (
           <span className="badge badge-success">Processed</span>
@@ -83,7 +83,7 @@ function OrderItem(props) {
       </td>
       <td>
         <div className="btn-group">
-          {order.status === 1 && (
+          {order.status === "1" && (
             <Button
               type="primary"
               onClick={handleConfirm}

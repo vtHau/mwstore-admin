@@ -135,9 +135,9 @@ function OrderDetail() {
                           <td>{shipping.email}</td>
                           <td>{formatPhone(shipping.phone || "")}</td>
                           <td>
-                            {shipping.method === 0
+                            {shipping.method === "0"
                               ? "Cash"
-                              : shipping.method === 1
+                              : shipping.method === "1"
                               ? "VN Pay"
                               : "Momo"}
                           </td>

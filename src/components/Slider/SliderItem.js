@@ -55,7 +55,7 @@ function SliderItem(props) {
         </div>
       </td>
       <td>
-        {slider.show_hide === 1 ? (
+        {slider.show_hide === "1" ? (
           <span className="badge badge-success">Show</span>
         ) : (
           <span className="badge badge-danger">Hide</span>

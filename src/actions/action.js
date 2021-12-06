@@ -109,6 +109,15 @@ export const initProduct = (values) => {
 
 export const authToken = (setIsLoading) => {
   return (dispatch) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      dispatch(signOut());
+      if (setIsLoading !== undefined) {
+        setIsLoading(true);
+      }
+      return false;
+    }
+
     adminApi
       .authToken()
       .then((res) => {

@@ -1,15 +1,18 @@
 import React from "react";
-import { LoopCircleLoading } from "react-loadingg";
+import HashLoader from "react-spinners/HashLoader";
 
 const loading = {
   backgroundColor: "rgba(0, 0, 0, 0.02)",
   height: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 function AuthLoading() {
   return (
     <div style={loading}>
-      <LoopCircleLoading color="#5985ff" speed={0.5} />
+      <HashLoader color="#5985ff" speedMultiplier={1.5} size={80} />
     </div>
   );
 }

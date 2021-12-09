@@ -65,7 +65,7 @@ function SliderItem(props) {
       <td>{formatPrice(product.price)}</td>
       <td>{product.brand.name}</td>
       <td>
-        {product.feather === 1 ? (
+        {product.feather === "1" ? (
           <span className="badge badge-success">Feather</span>
         ) : (
           <span className="badge badge-danger">Not Feather</span>

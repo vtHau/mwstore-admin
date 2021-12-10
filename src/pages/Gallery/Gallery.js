@@ -63,7 +63,7 @@ function Gallery() {
           if (res.status === response.SUCCESS) {
             getGalleryProduct();
             formik.setFieldValue("image", []);
-            toast.success("Success", "Save gallery success");
+            return toast.success("Success", "Save gallery success");
           }
           return toast.success("Fail", "Save gallery fail");
         })

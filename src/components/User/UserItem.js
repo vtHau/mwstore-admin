@@ -26,6 +26,7 @@ function UserItem(props) {
 
         if (res.status === response.SUCCESS) {
           dispatch(fetchAllUser());
+          setConfirmLoading(false);
           toast.success("Success", "Delete user success");
         }
       })

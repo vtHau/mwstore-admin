@@ -25,7 +25,7 @@ function ProductNew() {
     initialValues: {
       name: "",
       price: 1000,
-      brand_id: brands[0].id || "",
+      brand_id: (brands[0] && brands[0].id) || "",
       feather: 1,
       description: "",
       image: null,

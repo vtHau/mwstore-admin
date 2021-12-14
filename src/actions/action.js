@@ -93,7 +93,7 @@ export const fetchAllProduct = () => {
       .getAllProduct()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          dispatch(initProduct(res));
+          dispatch(initProduct(res.data));
         }
       })
       .catch((err) => {});

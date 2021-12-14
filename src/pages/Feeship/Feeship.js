@@ -17,7 +17,7 @@ function Feeship() {
       .getAllFeeship()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setFeeships(res.feeships);
+          setFeeships(res.data);
         }
       })
       .catch((err) => {});

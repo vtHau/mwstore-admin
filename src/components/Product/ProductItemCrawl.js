@@ -39,7 +39,7 @@ function ProductItemCrawl(props) {
           dispatch(fetchAllProduct());
           return toast.success("Success", "Add product success");
         }
-        if (res.status === response.PRODUCT_EXIST) {
+        if (res.message === response.PRODUCT_EXIST) {
           return toast.warning("Warning", "Product exist");
         }
         return toast.error("Fail", "Add product fail");

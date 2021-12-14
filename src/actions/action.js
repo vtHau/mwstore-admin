@@ -13,7 +13,7 @@ export const fetchAllBrand = () => {
       .getAllBrand()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          dispatch(initBrand(res));
+          dispatch(initBrand(res.data));
         }
       })
       .catch((err) => {});

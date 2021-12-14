@@ -15,7 +15,7 @@ function Comment() {
       .getAllComment()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setComments(res.comments);
+          setComments(res.data);
         }
       })
       .catch((err) => {});

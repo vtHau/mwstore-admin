@@ -52,7 +52,7 @@ function PostNew() {
       .getProductNotPost()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setProducts(res.products);
+          setProducts(res.data);
         }
       })
       .catch((err) => {});

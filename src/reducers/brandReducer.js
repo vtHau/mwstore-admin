@@ -7,7 +7,7 @@ const initialState = {
 const brandReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_BRAND: {
-      const { brands } = action.payload;
+      const brands = action.payload;
       return { brands };
     }
 

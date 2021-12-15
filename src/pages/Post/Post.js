@@ -16,7 +16,7 @@ function Post() {
       .getAllPost()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setPosts(res.posts);
+          setPosts(res.data);
         }
       })
       .catch((err) => {});

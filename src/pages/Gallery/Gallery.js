@@ -27,7 +27,7 @@ function Gallery() {
       .getGallery({ id })
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setGallerys(res.gallerys);
+          setGallerys(res.data);
         } else {
           setRedirect(true);
         }

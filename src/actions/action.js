@@ -33,7 +33,7 @@ export const fetchAllCoupon = () => {
       .getAllCoupon()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          dispatch(initCoupon(res));
+          dispatch(initCoupon(res.data));
         }
       })
       .catch((err) => {});

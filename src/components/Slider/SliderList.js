@@ -12,7 +12,7 @@ function BrandList() {
       .getAllSlider()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setSliders(res.sliders);
+          setSliders(res.data);
         }
       })
       .catch((err) => {});

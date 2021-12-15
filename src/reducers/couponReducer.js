@@ -7,7 +7,7 @@ const initialState = {
 const couponReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_COUPON: {
-      const { coupons } = action.payload;
+      const coupons = action.payload;
       return { coupons };
     }
 

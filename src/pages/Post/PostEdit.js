@@ -27,7 +27,7 @@ function PostEdit() {
       .getPost({ id })
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setPost(res.post);
+          setPost(res.data);
         } else {
           setRedirectPost(true);
         }

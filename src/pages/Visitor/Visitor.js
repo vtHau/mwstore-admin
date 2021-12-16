@@ -23,7 +23,7 @@ function Visitor() {
       .getAllVisitor()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setVisitors(res.visitors);
+          setVisitors(res.data);
         }
       })
       .catch((err) => {});

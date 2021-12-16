@@ -26,7 +26,7 @@ function LoginTabset() {
       adminApi
         .signIn(values)
         .then((res) => {
-          if (res.status === response.SIGN_IN_SUCCESS) {
+          if (res.status === response.SUCCESS) {
             dispatch(signIn(res));
           } else {
             formik.setErrors({

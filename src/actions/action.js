@@ -121,7 +121,7 @@ export const authToken = (setIsLoading) => {
     adminApi
       .authToken()
       .then((res) => {
-        if (res.status === response.AUTH_SUCCESS) {
+        if (res.status === response.SUCCESS) {
           dispatch(signIn(res));
         } else {
           dispatch(signOut());
@@ -151,7 +151,7 @@ export const signOutReq = () => {
     adminApi
       .signOut()
       .then((res) => {
-        if (res.status === response.SIGN_OUT_SUCCESS) {
+        if (res.status === response.SUCCESS) {
           dispatch(signOut());
         }
       })

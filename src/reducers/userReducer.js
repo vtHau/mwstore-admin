@@ -7,7 +7,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_USER: {
-      const { users } = action.payload;
+      const users = action.payload;
       return { users };
     }
 

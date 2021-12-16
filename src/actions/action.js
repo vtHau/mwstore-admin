@@ -53,7 +53,7 @@ export const fetchAllUser = () => {
       .getAllUser()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          dispatch(initUser(res));
+          dispatch(initUser(res.data));
         }
       })
       .catch((err) => {});

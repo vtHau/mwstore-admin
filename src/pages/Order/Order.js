@@ -15,7 +15,7 @@ function Order() {
       .getAllOrder()
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setOrders(res.orders);
+          setOrders(res.data);
         }
       })
       .catch((err) => {});

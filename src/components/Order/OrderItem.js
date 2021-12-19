@@ -83,7 +83,7 @@ function OrderItem(props) {
       </td>
       <td>
         <div className="btn-group">
-          {order.status === "0" && (
+          {/* {order.status === "0" && ( */}
             <Button
               type="primary"
               onClick={handleConfirm}
@@ -91,7 +91,7 @@ function OrderItem(props) {
             >
               Confirm
             </Button>
-          )}
+          {/* )} */}
           <Button type="primary">
             <Link to={path.ORDER_DETAIL + order.code}>Detail</Link>
           </Button>

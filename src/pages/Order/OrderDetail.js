@@ -40,7 +40,7 @@ function OrderDetail() {
       .getOrderDetail({ code })
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          const { order } = res;
+          const order = res.data;
           const { user, shipping, order_details: products } = order;
 
           setTotalPrice(parseInt(order.total_order));

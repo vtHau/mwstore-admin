@@ -20,10 +20,10 @@ function StatisticHeader(props) {
                     </div>
                   </div>
                   <div className="media-body col-8">
-                    <span className="m-0">Brand</span>
+                    <span className="m-0">Order</span>
                     <h3 className="mb-0">
                       <CountUp className="counter" end={dataHeader[4]} />
-                      <small> Brand</small>
+                      <small> Order</small>
                     </h3>
                   </div>
                 </div>

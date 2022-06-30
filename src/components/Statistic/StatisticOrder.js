@@ -1,11 +1,33 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import response from "../../constants/response";
 import statisticApi from "../../apis/statisticApi";
 
-const handleDataStatistic = (data) => {
+const handleDataLine = (data) => {
+  const { date, sale, profit } = data;
+
+  return {
+    labels: date,
+    datasets: [
+      {
+        label: "Sales (VND)",
+        data: sale,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Profit (VND)",
+        data: profit,
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
+};
+
+const handleDataBar = (data) => {
   const { date, sale, profit } = data;
 
   return {
@@ -70,7 +92,9 @@ const lineOptions = {
 };
 
 function StatisticOrder(props) {
-  const [statistics, setStatistics] = useState({});
+  const [typeChar, setTypeChar] = useState("BAR");
+  const [dataBar, setDataBar] = useState({});
+  const [dataLine, setDataLine] = useState({});
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [errorDay, setErrorDay] = useState(false);
@@ -80,7 +104,8 @@ function StatisticOrder(props) {
       .filterOther({ date_filter: "TODAY" })
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setStatistics(handleDataStatistic(res.data));
+          setDataBar(handleDataBar(res.data));
+          setDataLine(handleDataLine(res.data));
         }
       })
       .catch((err) => {});
@@ -110,7 +135,8 @@ function StatisticOrder(props) {
         .filterDate({ start_date: startFilter, end_date: endFilter })
         .then((res) => {
           if (res.status === response.SUCCESS) {
-            setStatistics(handleDataStatistic(res.data));
+            setDataBar(handleDataBar(res.data));
+            setDataLine(handleDataLine(res.data));
           }
         })
         .catch((err) => {});
@@ -122,10 +148,15 @@ function StatisticOrder(props) {
       .filterOther({ date_filter: e.target.value })
       .then((res) => {
         if (res.status === response.SUCCESS) {
-          setStatistics(handleDataStatistic(res.data));
+          setDataBar(handleDataBar(res.data));
+          setDataLine(handleDataLine(res.data));
         }
       })
       .catch((err) => {});
+  };
+
+  const handleTypeChar = (e) => {
+    setTypeChar(e.target.value);
   };
 
   return (
@@ -184,16 +215,35 @@ function StatisticOrder(props) {
                     <option value="LAST_ONE_YEAR">Last one year</option>
                   </select>
                 </div>
+                <div className="col-3">
+                  <label className="col-form-label">Type char</label>
+                  <select
+                    className="browser-default custom-select"
+                    onChange={handleTypeChar}
+                  >
+                    <option value="BAR">Bar char</option>
+                    <option value="LINE">Line char</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
           <div className="market-chart">
-            <Bar
-              data={statistics}
-              options={lineOptions}
-              width={778}
-              height={308}
-            />
+            {typeChar === "BAR" ? (
+              <Bar
+                data={dataBar}
+                options={lineOptions}
+                width={778}
+                height={308}
+              />
+            ) : (
+              <Line
+                data={dataLine}
+                options={lineOptions}
+                width={778}
+                height={308}
+              />
+            )}
           </div>
         </div>
       </div>

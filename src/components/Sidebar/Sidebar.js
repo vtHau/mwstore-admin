@@ -17,7 +17,7 @@ export class sidebar extends Component {
     this.setState({
       mainmenu: MENUITEMS,
     });
-  }
+  }s
 
   componentDidMount() {
     var currentUrl = window.location.pathname;

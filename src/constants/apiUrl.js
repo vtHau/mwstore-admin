@@ -116,7 +116,7 @@ export const ALL_MESSAGE = BASE_URL_API + "message/get-message";
 export const NEW_MESSAGE = BASE_URL_API + "message/new-message";
 
 //notification
-export const NEW_NOTIFICATION = BASE_URL_NODE + "notification";
+export const NEW_NOTIFICATION = BASE_URL_API + "notification/send";
 
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";

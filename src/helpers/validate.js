@@ -330,4 +330,5 @@ export const notiValid = Yup.object().shape({
     .min(2, "Body too short")
     .max(20, "Body too long")
     .required("Please enter body"),
+  image: Yup.string().url(),
 });

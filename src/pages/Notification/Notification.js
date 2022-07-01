@@ -18,6 +18,7 @@ function Notification() {
   const [openSendCoupon, toggleSendCoupon] = useToggle(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [image, setImage] = useState("");
   useTitle("Notification");
 
   const formik = useFormik({
@@ -25,18 +26,20 @@ function Notification() {
     initialValues: {
       title: "",
       body: "",
+      image: "",
     },
     validationSchema: notiValid,
     onSubmit: (value) => {
-      const { title, body } = value;
+      const { title, body, image } = value;
       setTitle(title);
       setBody(body);
+      setImage(image);
       toggleSendCoupon();
     },
   });
 
   const handleSendUser = (user_id) => {
-    const noti = { title, body, user_id, type: "ONE_USER" };
+    const noti = { title, body, image, user_id, type: "ONE_USER" };
 
     notificationApi
       .newNotification(noti)
@@ -52,7 +55,7 @@ function Notification() {
 
   const handleSendAll = () => {
     setConfirmLoading(true);
-    const noti = { title, body, type: "ALL_USER" };
+    const noti = { title, body, image, type: "ALL_USER" };
 
     notificationApi
       .newNotification(noti)
@@ -110,6 +113,23 @@ function Notification() {
                     />
                     {formik.errors.body && formik.touched.body && (
                       <p className="error-field">{formik.errors.body}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label pt-0">
+                      Image (no require)
+                    </label>
+                    <input
+                      type="text"
+                      name="image"
+                      className="form-control"
+                      value={formik.values.image}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      placeholder="Please input image link..."
+                    />
+                    {formik.errors.image && formik.touched.image && (
+                      <p className="error-field">{formik.errors.image}</p>
                     )}
                   </div>
                 </div>

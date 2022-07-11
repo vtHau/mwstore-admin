@@ -21,6 +21,7 @@ function OrderDetail() {
   const [user, setUser] = useState({});
   const [shipping, setShipping] = useState({});
   const [products, setProducts] = useState([]);
+  const [productPrice, setProductPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [couponPrice, setCouponPrice] = useState(0);
   const [feeshipPrice, setFeeshipPrice] = useState(25000);
@@ -41,13 +42,26 @@ function OrderDetail() {
       .then((res) => {
         if (res.status === response.SUCCESS) {
           const order = res.data;
-          const { user, shipping, order_details: products } = order;
 
-          setTotalPrice(parseInt(order.total_order));
+          const {
+            user,
+            shipping,
+            product_money,
+            total_money,
+            coupon_money,
+            feeship_money,
+            order_details: products,
+          } = order;
+
+          setTotalPrice(parseInt(total_money));
           setOrder(order);
           setUser(user);
+          setCouponPrice(parseInt(coupon_money));
+          setFeeshipPrice(parseInt(feeship_money));
+          setProductPrice(parseInt(product_money));
           setShipping(shipping);
           setProducts(products);
+
           setKeyOrder(
             PATH_URL.EXPORT_PDF_ORDER +
               new Buffer(
@@ -122,7 +136,6 @@ function OrderDetail() {
                       <thead>
                         <tr>
                           <th>Name</th>
-                          <th>Email</th>
                           <th>Phone</th>
                           <th>Payment</th>
                           <th>Note</th>
@@ -132,14 +145,15 @@ function OrderDetail() {
                       <tbody>
                         <tr>
                           <td>{shipping.name}</td>
-                          <td>{shipping.email}</td>
                           <td>{formatPhone(shipping.phone || "")}</td>
                           <td>
-                            {shipping.method === "0"
+                            {shipping.method === 0
                               ? "Cash"
-                              : shipping.method === "1"
+                              : shipping.method === 1
                               ? "VN Pay"
-                              : "Momo"}
+                              : shipping.method === 2
+                              ? "Momo"
+                              : "Paypal"}
                           </td>
                           <td>
                             {shipping.note !== null ? shipping.note : "No Note"}
@@ -196,14 +210,10 @@ function OrderDetail() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{formatPrice(totalPrice)}</td>
+                          <td>{formatPrice(productPrice)}</td>
                           <td>{formatPrice(couponPrice)}</td>
                           <td>{formatPrice(feeshipPrice)}</td>
-                          <td>
-                            {formatPrice(
-                              totalPrice + feeshipPrice - couponPrice
-                            )}
-                          </td>
+                          <td>{formatPrice(totalPrice)}</td>
                           <td>
                             <Button
                               type="primary"

@@ -42,9 +42,10 @@ function Order() {
                     <tr>
                       <th>Code Order</th>
                       <th className="text-left">Name</th>
-                      <th>Email</th>
-                      <th>Time</th>
                       <th>Status</th>
+                      <th>Money</th>
+                      <th>Time</th>
+                      <th>Update</th>
                       <th>Action</th>
                     </tr>
                   </thead>

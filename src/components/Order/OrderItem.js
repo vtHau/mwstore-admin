@@ -1,16 +1,71 @@
 import React, { useState } from "react";
-import { Popconfirm, Button } from "antd";
+import { Popconfirm, Button, Select } from "antd";
 import orderApi from "../../apis/orderApi";
 import response from "../../constants/response";
 import useToggle from "../../hooks/useToggle";
 import toast from "../../helpers/toast";
-import * as PATH_URL from "../../constants/apiUrl";
+import { formatPrice } from "../../helpers/formats";
 import { path } from "../../constants/path";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+const { Option } = Select;
+
+const orderTab = [
+  {
+    key: "all",
+    name: "All",
+  },
+  {
+    key: "awaiting_payment",
+    name: "unpaid",
+  },
+  {
+    key: "processing",
+    name: "Processing",
+  },
+  {
+    key: "transporting",
+    name: "Transporting",
+  },
+  {
+    key: "delivered",
+    name: "Delivered",
+  },
+  {
+    key: "canceled",
+    name: "Canceled",
+  },
+];
+
+const changeStatus = [
+  {
+    key: "processing",
+    name: "Processing",
+  },
+  {
+    key: "transporting",
+    name: "Transporting",
+  },
+  {
+    key: "delivered",
+    name: "Delivered",
+  },
+  {
+    key: "canceled",
+    name: "Canceled",
+  },
+];
+
+const statusText = orderTab.reduce((states, state) => {
+  const { key, name } = state;
+  return { ...states, [key]: name };
+}, {});
 
 function OrderItem(props) {
+  const history = useHistory();
   const { order, fetchAllOrder } = props;
   const [openPop, togglePop] = useToggle(false);
+  const [currentStatus, setCurrentStatus] = useState();
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const handleDelete = () => {
@@ -38,19 +93,24 @@ function OrderItem(props) {
   const handleConfirm = () => {
     setConfirmLoading(true);
     orderApi
-      .confirmOrder({ code: order.code })
+      .udpateStatus({ code: order.code, status: currentStatus })
       .then((res) => {
         setConfirmLoading(false);
         if (res.status === response.SUCCESS) {
           fetchAllOrder();
-          return toast.success("Success", "Comfirm order success");
+          toast.success("Success", "Update order success");
+          return history.go(0);
         }
-        return toast.error("Fail", "Comfirm order fail");
+        return toast.error("Fail", "Update order fail");
       })
       .catch((err) => {
         setConfirmLoading(false);
-        return toast.error("Fail", "Comfirm order fail");
+        return toast.error("Fail", "Update order fail");
       });
+  };
+
+  const handleChangeStatus = (e) => {
+    setCurrentStatus(e);
   };
 
   return (
@@ -59,38 +119,46 @@ function OrderItem(props) {
       <td className="text-left">
         <div className="widget-content p-0">
           <div className="widget-content-wrapper">
-            <div className="widget-content-left">
-              <img
-                className="rounded-circle border-circle"
-                src={PATH_URL.AVATAR_IMAGE + order.user.image}
-                alt={order.user.name}
-              />
-            </div>
             <div className="widget-content-left flex2">
               <div className="widget-heading">{order.user.name}</div>
             </div>
           </div>
         </div>
       </td>
-      <td>{order.user.email}</td>
-      <td>{order.time}</td>
       <td>
-        {order.status === "0" ? (
-          <span className="badge badge-danger">Processing</span>
-        ) : (
-          <span className="badge badge-success">Processed</span>
-        )}
+        <span>{statusText[order.status]}</span>
+      </td>
+      <td>{formatPrice(order.total_money)}</td>
+      <td>{order.time}</td>
+
+      <td>
+        <Select
+          // showSearch
+          // optionFilterProp="children"
+          // value={currentProvince}
+          onChange={handleChangeStatus}
+        >
+          {changeStatus &&
+            changeStatus.length > 0 &&
+            changeStatus.map((status) => {
+              if (order.status !== status.key) {
+                return (
+                  <Option key={status.key} value={status.key}>
+                    {status.name}
+                  </Option>
+                );
+              }
+            })}
+        </Select>
+
+        <Button type="primary" onClick={handleConfirm} loading={confirmLoading}>
+          Confirm
+        </Button>
       </td>
       <td>
         <div className="btn-group">
           {/* {order.status === "0" && ( */}
-            <Button
-              type="primary"
-              onClick={handleConfirm}
-              loading={confirmLoading}
-            >
-              Confirm
-            </Button>
+
           {/* )} */}
           <Button type="primary">
             <Link to={path.ORDER_DETAIL + order.code}>Detail</Link>

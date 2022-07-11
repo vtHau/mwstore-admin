@@ -11,6 +11,9 @@ const orderApi = {
   confirmOrder: (order) => {
     return axiosClient.post(PATH_URL.CONFIRM_ORDER, order);
   },
+  udpateStatus: (data) => {
+    return axiosClient.post(PATH_URL.UPDATE_STATUS, data);
+  },
   deleteOrder: (order) => {
     return axiosClient.post(PATH_URL.DELETE_ORDER, order);
   },

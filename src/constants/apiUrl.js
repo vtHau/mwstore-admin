@@ -66,6 +66,7 @@ export const ALL_ADDRESS = BASE_URL_API + "address/all-address";
 //order
 export const ALL_ORDER = BASE_URL_API + "order/all-order";
 export const CONFIRM_ORDER = BASE_URL_API + "order/confirm-order";
+export const UPDATE_STATUS = BASE_URL_API + "order/update-status";
 export const DETAIL_ORDER = BASE_URL_API + "order/detail-order";
 export const DELETE_ORDER = BASE_URL_API + "order/delete-order";
 

@@ -122,6 +122,7 @@ export const NEW_NOTIFICATION = BASE_URL_API + "notification/send";
 //export
 export const EXPORT_EXCEL_BRAND = BASE_URL_API + "export/brand";
 export const EXPORT_EXCEL_USER = BASE_URL_API + "export/user";
+export const EXPORT_CSV_USER = BASE_URL_API + "export/user-csv";
 export const EXPORT_EXCEL_COUPON = BASE_URL_API + "export/coupon";
 export const EXPORT_EXCEL_VISITOR = BASE_URL_API + "export/visitor";
 export const EXPORT_PDF_ORDER = BASE_URL_API + "export/order/";

@@ -15,6 +15,11 @@ function User() {
     PATH_URL.EXPORT_EXCEL_USER,
     "user"
   );
+  const [downloadFileCSV, isDownloadingCSV, initFetchCSV] = useDownload(
+    PATH_URL.EXPORT_CSV_USER,
+    "user",
+    "csv"
+  );
   useTitle("User List");
 
   return (
@@ -50,6 +55,18 @@ function User() {
             </div>
 
             <div className="pull-right import-export">
+              <Button
+                type="primary"
+                shape="round"
+                size="large"
+                disabled={initFetchCSV}
+                loading={isDownloadingCSV}
+                icon={<DownloadOutlined />}
+                onClick={downloadFileCSV}
+              >
+                Export CSV
+              </Button>
+
               <Button
                 type="primary"
                 shape="round"
